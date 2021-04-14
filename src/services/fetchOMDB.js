@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-const fetchOMDB = (search, updater) => {
+const fetchOMDB = (searchQuery, updater) => {
   const source = axios.CancelToken.source();
-  const apiKey = 'aa82963a';
+  const apiKeyOMDB = process.env.REACT_APP_OMDB_API_KEY;
 
   axios
-    .get(`http://www.omdbapi.com/?s=${search}&apikey=${apiKey}`, {
+    .get(`http://www.omdbapi.com/?s=${searchQuery}&apikey=${apiKeyOMDB}`, {
       cancelToken: source.token,
     })
     .then((res) => res.data)

@@ -5,6 +5,8 @@ import SearchOptionsList from './SearchOptionsList';
 import './SearchContainer.css';
 import loadingSpinner from '../assets/loading.gif';
 import fetchOMDB from '../services/fetchOMDB';
+import fetchTasteDive from '../services/fetchTasteDive';
+import fetchJsonp from 'fetch-jsonp';
 
 const SearchBar = (props) => {
   const [search, setSearch] = useState('');
@@ -84,7 +86,12 @@ const SearchBar = (props) => {
         </div>
       )}
       <div className="search-button-container">
-        <button className="search-button">Search</button>
+        <button
+          className="search-button"
+          onClick={() => fetchTasteDive(dropdownSearchValue, setMediaList)}
+        >
+          Search
+        </button>
       </div>
     </div>
   );

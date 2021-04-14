@@ -11,7 +11,6 @@ function App() {
       <header className="App-header"></header>
       <div className="auto-container">
         <Home setMediaList={setMediaList} />
-        <SearchContainer />
       </div>
     </div>
   );
