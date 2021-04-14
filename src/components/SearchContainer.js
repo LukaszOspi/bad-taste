@@ -4,13 +4,15 @@ import useDebounce from '../services/useDebounce';
 import SearchOptionsList from './SearchOptionsList';
 import './SearchContainer.css';
 import loadingSpinner from '../assets/loading.gif';
+import fetchOMDB from '../services/fetchOMDB';
 
-const SearchBar = () => {
+const SearchBar = (props) => {
   const [search, setSearch] = useState('');
   const [dropdownSearchValue, setDropdownSearchValue] = useState('');
   const [options, setOptions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [display, setDisplay] = useState(false);
+  const { setMediaList } = props;
 
   const handleLoading = () => {
     if (!isLoading) {
@@ -27,27 +29,19 @@ const SearchBar = () => {
     setDropdownSearchValue('');
   };
 
-  const fetchMovies = () => {
-    const source = axios.CancelToken.source();
-    const apiKey = 'aa82963a';
-
-    axios
-      .get(`http://www.omdbapi.com/?s=${search}&apikey=${apiKey}`, {
-        cancelToken: source.token,
-      })
-      .then((res) => res.data)
-      .then((data) => setOptions(data.Search))
-      .then(setIsLoading(false))
-      .then(setDisplay(true))
-      .catch((err) => {
-        console.error('Catched error: ' + err.message);
-      });
-  };
-
   useDebounce(
     () => {
       if (search && dropdownSearchValue !== search) {
-        fetchMovies();
+        const promise = new Promise((resolve, reject) => {
+          fetchOMDB(search, setOptions);
+          resolve();
+          reject();
+        });
+
+        promise.then(() => {
+          setIsLoading(false);
+          setDisplay(true);
+        });
       }
     },
     [search],
