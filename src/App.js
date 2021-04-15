@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import './App.css';
 import Home from './components/Home';
-import SearchContainer from './components/SearchContainer';
 
 function App() {
   const [mediaList, setMediaList] = useState([]);

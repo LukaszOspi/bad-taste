@@ -6,7 +6,6 @@ import './SearchContainer.css';
 import loadingSpinner from '../assets/loading.gif';
 import fetchOMDB from '../services/fetchOMDB';
 import fetchTasteDive from '../services/fetchTasteDive';
-import fetchJsonp from 'fetch-jsonp';
 
 const SearchBar = (props) => {
   const [search, setSearch] = useState('');
@@ -20,7 +19,9 @@ const SearchBar = (props) => {
     if (!isLoading) {
       setIsLoading(true);
       setDisplay(false);
+      setSearch('');
       setDropdownSearchValue('');
+      setOptions([]);
     }
   };
 
@@ -32,18 +33,16 @@ const SearchBar = (props) => {
   };
 
   useDebounce(
-    () => {
+    async () => {
       if (search && dropdownSearchValue !== search) {
-        const promise = new Promise((resolve, reject) => {
-          fetchOMDB(search, setOptions);
-          resolve();
-          reject();
-        });
-
-        promise.then(() => {
+        try {
+          await fetchOMDB(search, setOptions);
           setIsLoading(false);
           setDisplay(true);
-        });
+          console.log('fetchOMDB in useDebounce completed successfully');
+        } catch (err) {
+          console.log(`fetchOMDB() in useDebounce failed with error ${err}`);
+        }
       }
     },
     [search],
