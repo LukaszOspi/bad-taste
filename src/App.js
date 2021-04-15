@@ -1,10 +1,18 @@
+import React from "react";
 import './App.css';
+import FilterButton from './Components/FilterButton';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header"></header>
+      <div className="filter-button">
+          <FilterButton />
+      </div>
+    
     </div>
+    
+
+  
   );
 }
 

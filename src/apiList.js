@@ -1,4 +1,5 @@
-export default [
+import React from 'react';
+const apiItems = [
     {
         id:'book-api',
         src:"https://www.googleapis.com/books/v1/volumes",
@@ -6,17 +7,19 @@ export default [
     },
     {
         id:'film-api',
-        src:"",
-        api_key:""
+        src:"f",
+        api_key:"fk"
     },
     {
         id:'music-api',
-        src:"",
-        api_key:""
+        src:"m",
+        api_key:"mk"
     },
     {
         id:'tv-api',
-        src:"",
-        api_key:""
+        src:"tv",
+        api_key:"tvk"
     }
 ]
+
+export default apiItems
