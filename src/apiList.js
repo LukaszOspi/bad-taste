@@ -1,0 +1,22 @@
+export default [
+    {
+        id:'book-api',
+        src:"https://www.googleapis.com/books/v1/volumes",
+        api_key:'AIzaSyD7eNMSIkdb-PVwQZuZcDsa1X6PTERDhYI'
+    },
+    {
+        id:'film-api',
+        src:"",
+        api_key:""
+    },
+    {
+        id:'music-api',
+        src:"",
+        api_key:""
+    },
+    {
+        id:'tv-api',
+        src:"",
+        api_key:""
+    }
+]
