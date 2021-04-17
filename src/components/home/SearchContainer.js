@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import useDebounce from '../services/useDebounce';
+import useDebounce from '../../services/useDebounce';
 import SearchOptionsList from './SearchOptionsList';
 import './SearchContainer.css';
-import loadingSpinner from '../assets/loading.gif';
-import fetchOMDB from '../services/fetchOMDB';
-import fetchTasteDive from '../services/fetchTasteDive';
+import loadingSpinner from '../../assets/loading.gif';
+import fetchOMDB from '../../services/fetchOMDB';
+import fetchTasteDive from '../../services/fetchTasteDive';
 
 const SearchBar = (props) => {
   const [search, setSearch] = useState('');
@@ -39,9 +39,8 @@ const SearchBar = (props) => {
           await fetchOMDB(search, setOptions);
           setIsLoading(false);
           setDisplay(true);
-          console.log('fetchOMDB in useDebounce completed successfully');
         } catch (err) {
-          console.log(`fetchOMDB() in useDebounce failed with error ${err}`);
+          console.error(`fetchOMDB() in useDebounce failed with error ${err}`);
         }
       }
     },
