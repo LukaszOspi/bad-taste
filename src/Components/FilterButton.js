@@ -1,9 +1,10 @@
-import React from "react";
-import apiItems from '../apiList.js';
+import React, {useState} from "react";
+import apiList from '../apiList.js';
 
 function FilterButton (props) {
+    const [apiKey, setApiKey] = React.useState(props.id);
     const onClick = () => {
-        console.log(apiItems)
+        console.log(apiList)
     }
     return (
         <button 

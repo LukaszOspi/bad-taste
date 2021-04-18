@@ -1,4 +1,7 @@
-const apiItems = [
+import React, {useState} from 'react';
+
+function Api() {
+const [apiList, setApiList] = React.useState([
     {
         id:'book-api',
         src:"https://www.googleapis.com/books/v1/volumes",
@@ -19,6 +22,6 @@ const apiItems = [
         src:"tv",
         api_key:"tvk"
     }
-]
-
-export default apiItems
+]);
+}
+export default Api;
