@@ -46,14 +46,11 @@ const SwipeContainer = (props) => {
       outputArrWithDuplicates,
       'imdbID'
     );
-    // console.log(outputArrUniqueValues);
     return outputArrUniqueValues;
   };
 
   const filteredMediaList = async () => {
     await setMediaDetails(await output(await unfilteredMediaList()));
-    // console.log(mediaDetails);
-    // return filteredItems;
   };
 
   useEffect(() => {
@@ -74,9 +71,7 @@ const SwipeContainer = (props) => {
 
   return (
     <>
-      {!mediaDetails ? (
-        <></>
-      ) : (
+      {mediaDetails.length === 0 ? null : (
         <div className="swipe-container">
           <div className="card-item">
             <h1>{mediaDetails[displayIndex].Title}</h1>
