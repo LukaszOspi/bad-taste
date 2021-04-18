@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <div className="filter-button">
-          <FilterButton filterName='Book'/>
+          <FilterButton filterName='Book'id='book-api'/>
           <FilterButton filterName='Film'/>
           <FilterButton filterName='Music'/>
           <FilterButton filterName='TV'/>
