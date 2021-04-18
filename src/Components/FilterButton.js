@@ -1,15 +1,19 @@
-import React, {useState} from "react";
-import apiItems from './apiList';
+import React from "react";
+import apiItems from '../apiList.js';
 
-export default function FilterButton() {
-    const [apiToCall, setApiToCall] = useState("");
-    
+function FilterButton (props) {
+    const onClick = () => {
+        console.log(apiItems)
+    }
     return (
-        <div>
-           <button>Book</button> 
-        </div>
+        <button 
+        onClick= {onClick}
+        >
+        {props.filterName}
+        </button> 
+    
     )
 }
 
-
+export default FilterButton;
  
