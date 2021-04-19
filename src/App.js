@@ -1,6 +1,6 @@
 import React from "react";
 import './App.css';
-import FilterButton from './Components/FilterButton';
+import FilterButton from './components/FilterButton';
 import { useState } from 'react';
 import Home from './components/home/Home';
 
