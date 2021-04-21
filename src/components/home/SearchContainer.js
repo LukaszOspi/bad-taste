@@ -58,6 +58,10 @@ const SearchBar = (props) => {
     };
   }, [search]);
 
+  useEffect(() => {
+    fetchTasteDive(dropdownSearchValue, setMediaList);
+  }, [dropdownSearchValue]);
+
   return (
     <div className="flex-container flex-column pos-rel">
       <input
@@ -83,14 +87,6 @@ const SearchBar = (props) => {
           />
         </div>
       )}
-      <div className="search-button-container">
-        <button
-          className="search-button"
-          onClick={() => fetchTasteDive(dropdownSearchValue, setMediaList)}
-        >
-          Search
-        </button>
-      </div>
     </div>
   );
 };
