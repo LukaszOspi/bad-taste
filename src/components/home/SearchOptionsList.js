@@ -1,12 +1,17 @@
 import SearchOptions from './SearchOptions';
 import './SearchOptionsList.css';
+import { useHistory } from 'react-router-dom';
+import React from 'react';
 
 const SearchOptionsList = (props) => {
   const { options, setDropdownSearchValue, setSearch, setDisplay } = props;
+  const history = useHistory();
   const getTitleFromClick = (value, id) => {
     setDropdownSearchValue({ title: value, id });
     setSearch(value);
     setDisplay(false);
+
+    history.push('/card-page');
   };
 
   return (

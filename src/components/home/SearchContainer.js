@@ -5,18 +5,13 @@ import SearchOptionsList from './SearchOptionsList';
 import './SearchContainer.css';
 import loadingSpinner from '../../assets/loading.gif';
 import fetchTMDB from '../../services/fetchTMDB';
-import fetchTasteDive from '../../services/fetchTasteDive';
 
 const SearchBar = (props) => {
   const [search, setSearch] = useState('');
-  const [dropdownSearchValue, setDropdownSearchValue] = useState({
-    title: '',
-    id: '',
-  });
   const [options, setOptions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [display, setDisplay] = useState(false);
-  const { setMediaList } = props;
+  const { dropdownSearchValue, setDropdownSearchValue } = props;
 
   const handleLoading = () => {
     if (!isLoading) {
@@ -61,10 +56,6 @@ const SearchBar = (props) => {
       source.cancel('component got unmounted');
     };
   }, [search]);
-
-  useEffect(() => {
-    fetchTasteDive(dropdownSearchValue, setMediaList);
-  }, [dropdownSearchValue]);
 
   return (
     <div className="auto-container">
