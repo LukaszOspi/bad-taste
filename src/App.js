@@ -1,6 +1,6 @@
 import React from "react";
 import './App.css';
-import FilterButton from './components/FilterButton';
+import Card from './components/FilterButton';
 import { useState } from 'react';
 import Home from './components/home/Home';
 
@@ -12,10 +12,7 @@ function App() {
       
       <header className="App-header"></header>
       <div className="filter-button">
-          <FilterButton filterName='Book'id='book-api'/>
-          <FilterButton filterName='Film'/>
-          <FilterButton filterName='Music'/>
-          <FilterButton filterName='TV'/>
+          <Card />
       </div>
       <div className="auto-container">
         <Home setMediaList={setMediaList} />
