@@ -1,8 +1,10 @@
 import SearchContainer from './SearchContainer';
 
-const Home = (props) => {
-  const { setMediaList, dropdownSearchValue, setDropdownSearchValue } = props;
-
+const Home = ({
+  setMediaList,
+  dropdownSearchValue,
+  setDropdownSearchValue,
+}) => {
   return (
     <div>
       <SearchContainer

@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import fetchOMDB from '../../services/fetchOMDB';
 import { getUniqueListByKey } from '../../services/utilityFunctions';
 
-const SwipeContainer = (props) => {
-  const { mediaList, mediaDetails, setMediaDetails } = props;
+const SwipeContainer = ({ mediaList, mediaDetails, setMediaDetails }) => {
   const [displayIndex, setDisplayIndex] = useState(0);
   const dislikedMedia = [];
   const likedMedia = [];

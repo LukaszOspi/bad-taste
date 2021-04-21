@@ -1,11 +1,5 @@
-import { useState, useEffect } from 'react';
-import {
-  Switch,
-  BrowserRouter as Router,
-  Route,
-  Link,
-  useHistory,
-} from 'react-router-dom';
+import { useState } from 'react';
+import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import Home from './components/home/Home';
 import CardPage from './components/card_page/CardPage';

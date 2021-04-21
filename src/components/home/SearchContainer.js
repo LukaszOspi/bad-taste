@@ -6,19 +6,21 @@ import './SearchContainer.css';
 import loadingSpinner from '../../assets/loading.gif';
 import fetchTMDB from '../../services/fetchTMDB';
 
-const SearchBar = (props) => {
+const SearchBar = ({ dropdownSearchValue, setDropdownSearchValue }) => {
   const [search, setSearch] = useState('');
   const [options, setOptions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [display, setDisplay] = useState(false);
-  const { dropdownSearchValue, setDropdownSearchValue } = props;
 
   const handleLoading = () => {
     if (!isLoading) {
       setIsLoading(true);
       setDisplay(false);
       setSearch('');
-      setDropdownSearchValue('');
+      setDropdownSearchValue({
+        title: '',
+        id: '',
+      });
       setOptions([]);
     }
   };
@@ -27,7 +29,10 @@ const SearchBar = (props) => {
     setOptions([]);
     setIsLoading(false);
     setDisplay(false);
-    setDropdownSearchValue('');
+    setDropdownSearchValue({
+      title: '',
+      id: '',
+    });
   };
 
   useDebounce(
@@ -50,7 +55,6 @@ const SearchBar = (props) => {
     if (!search) {
       resetOptions();
     }
-    console.log(dropdownSearchValue);
     return () => {
       const source = axios.CancelToken.source();
       source.cancel('component got unmounted');
