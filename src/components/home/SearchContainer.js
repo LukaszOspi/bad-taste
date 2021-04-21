@@ -4,12 +4,15 @@ import useDebounce from '../../services/useDebounce';
 import SearchOptionsList from './SearchOptionsList';
 import './SearchContainer.css';
 import loadingSpinner from '../../assets/loading.gif';
-import fetchOMDB from '../../services/fetchOMDB';
+import fetchTMDB from '../../services/fetchTMDB';
 import fetchTasteDive from '../../services/fetchTasteDive';
 
 const SearchBar = (props) => {
   const [search, setSearch] = useState('');
-  const [dropdownSearchValue, setDropdownSearchValue] = useState('');
+  const [dropdownSearchValue, setDropdownSearchValue] = useState({
+    title: '',
+    id: '',
+  });
   const [options, setOptions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [display, setDisplay] = useState(false);
@@ -34,13 +37,13 @@ const SearchBar = (props) => {
 
   useDebounce(
     async () => {
-      if (search && dropdownSearchValue !== search) {
+      if (search && dropdownSearchValue.title !== search) {
         try {
-          await fetchOMDB(search, setOptions);
+          await fetchTMDB(search, setOptions);
           setIsLoading(false);
           setDisplay(true);
         } catch (err) {
-          console.error(`fetchOMDB() in useDebounce failed with error ${err}`);
+          console.error(`fetchTMDB() in useDebounce failed with error ${err}`);
         }
       }
     },
@@ -52,6 +55,7 @@ const SearchBar = (props) => {
     if (!search) {
       resetOptions();
     }
+    console.log(dropdownSearchValue);
     return () => {
       const source = axios.CancelToken.source();
       source.cancel('component got unmounted');

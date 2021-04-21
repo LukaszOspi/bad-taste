@@ -3,8 +3,8 @@ import './SearchOptionsList.css';
 
 const SearchOptionsList = (props) => {
   const { options, setDropdownSearchValue, setSearch, setDisplay } = props;
-  const getTitleFromClick = (value) => {
-    setDropdownSearchValue(value);
+  const getTitleFromClick = (value, id) => {
+    setDropdownSearchValue({ title: value, id });
     setSearch(value);
     setDisplay(false);
   };
@@ -15,15 +15,14 @@ const SearchOptionsList = (props) => {
         options.map((option, index) => {
           return (
             <div
-              onClick={() => getTitleFromClick(option.Title)}
+              onClick={() => getTitleFromClick(option.title, option.id)}
               key={index}
               tabIndex="0"
             >
               <SearchOptions
-                Poster={option.Poster}
-                Title={option.Title}
-                Year={option.Year}
-                Type={option.Type}
+                poster={option.poster_path}
+                title={option.title}
+                year={option.release_date}
               />
             </div>
           );
