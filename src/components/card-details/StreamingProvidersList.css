@@ -1,4 +1,10 @@
 .streaming-options {
   display: flex;
   flex-direction: column;
+  width: 70vw;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-around;
 }

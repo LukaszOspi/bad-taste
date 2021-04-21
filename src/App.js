@@ -14,6 +14,8 @@ function App() {
     id: '',
   });
 
+  console.log(streamingProvidersList);
+
   return (
     <div className="App">
       <header className="App-header"></header>

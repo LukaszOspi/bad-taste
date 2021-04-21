@@ -13,7 +13,7 @@ const SwipeContainer = ({
   const history = useHistory();
 
   useEffect(() => {
-    if (mediaList.length !== 0 && displayIndex) {
+    if (mediaList.length !== 0) {
       fetchStreamingProvidersTMDB(
         mediaList[displayIndex].id,
         setStreamingProvidersList

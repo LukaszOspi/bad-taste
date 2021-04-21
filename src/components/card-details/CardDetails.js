@@ -13,7 +13,13 @@ const CardDetails = ({ streamingProvidersList }) => {
     <div className="card-details">
       <button onClick={showList}>Back to the list</button>
       <h2>Additional details for this movie</h2>
-      <StreamingProvidersList streamingProvidersList={streamingProvidersList} />
+      {streamingProvidersList === undefined ? (
+        <p>This content is not availabe online in your region</p>
+      ) : (
+        <StreamingProvidersList
+          streamingProvidersList={streamingProvidersList}
+        />
+      )}
     </div>
   );
 };
