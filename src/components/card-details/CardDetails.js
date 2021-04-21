@@ -1,21 +1,13 @@
-import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import fetchStreamingProvidersTMDB from '../../services/fetchStreamingProvidersTMDB';
+
 import StreamingProvidersList from './StreamingProvidersList';
 
-const CardDetails = ({ displayIndex, mediaList }) => {
+const CardDetails = ({ streamingProvidersList }) => {
   const history = useHistory();
-  const [streamingProvidersList, setStreamingProvidersList] = useState({});
+
   const showList = () => {
     history.push('/card-page');
   };
-
-  useEffect(() => {
-    fetchStreamingProvidersTMDB(
-      mediaList[displayIndex].id,
-      setStreamingProvidersList
-    );
-  }, []);
 
   return (
     <div className="card-details">

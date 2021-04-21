@@ -1,11 +1,25 @@
 import { useHistory } from 'react-router-dom';
+import { useEffect } from 'react';
+import fetchStreamingProvidersTMDB from '../../services/fetchStreamingProvidersTMDB';
 
-const SwipeContainer = ({ mediaList, displayIndex, setDisplayIndex }) => {
+const SwipeContainer = ({
+  mediaList,
+  displayIndex,
+  setDisplayIndex,
+  setStreamingProvidersList,
+}) => {
   const dislikedMedia = [];
   const likedMedia = [];
   const history = useHistory();
 
-  console.log(mediaList);
+  useEffect(() => {
+    if (mediaList.length !== 0 && displayIndex) {
+      fetchStreamingProvidersTMDB(
+        mediaList[displayIndex].id,
+        setStreamingProvidersList
+      );
+    }
+  }, [mediaList, displayIndex]);
 
   const handleLike = (e) => {
     if (e.target.value === 'Dislike') {
