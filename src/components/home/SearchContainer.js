@@ -67,30 +67,32 @@ const SearchBar = (props) => {
   }, [dropdownSearchValue]);
 
   return (
-    <div className="flex-container flex-column pos-rel">
-      <input
-        placeholder="Type to search"
-        value={search}
-        onChange={(e) => {
-          handleLoading();
-          setSearch(e.target.value);
-        }}
-      />
-      {isLoading && (
-        <div className="loading-indicator">
-          <img src={loadingSpinner} alt="loading" />
-        </div>
-      )}
-      {display && (
-        <div className="autoContainer">
-          <SearchOptionsList
-            options={options}
-            setDropdownSearchValue={setDropdownSearchValue}
-            setSearch={setSearch}
-            setDisplay={setDisplay}
-          />
-        </div>
-      )}
+    <div className="auto-container">
+      <div className="flex-container flex-column pos-rel">
+        <input
+          placeholder="Type to search"
+          value={search}
+          onChange={(e) => {
+            handleLoading();
+            setSearch(e.target.value);
+          }}
+        />
+        {isLoading && (
+          <div className="loading-indicator">
+            <img src={loadingSpinner} alt="loading" />
+          </div>
+        )}
+        {display && (
+          <div className="autoContainer">
+            <SearchOptionsList
+              options={options}
+              setDropdownSearchValue={setDropdownSearchValue}
+              setSearch={setSearch}
+              setDisplay={setDisplay}
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 };

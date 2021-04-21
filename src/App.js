@@ -10,9 +10,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header"></header>
-      <div className="auto-container">
-        <Home setMediaList={setMediaList} />
-      </div>
+      <Home setMediaList={setMediaList} />
       <CardPage
         mediaList={mediaList}
         mediaDetails={mediaDetails}

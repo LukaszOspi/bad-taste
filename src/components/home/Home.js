@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import SearchContainer from './SearchContainer';
 
 const Home = (props) => {
