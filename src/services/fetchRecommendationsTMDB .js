@@ -16,9 +16,6 @@ const fetchRecommendationsTMDB = async (searchID, updater) => {
     const data = await res.data.results;
     // filter out movies without a poster image
     const filteredData = data.filter((media) => media.poster_path !== null);
-    // order list by popularity index
-    filteredData.sort((a, b) => b.popularity - a.popularity);
-
     // if updater function is undefined then return data
     return updater === undefined
       ? await filteredData

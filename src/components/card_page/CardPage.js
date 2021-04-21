@@ -1,28 +1,18 @@
 import { useEffect } from 'react';
 import Header from './Header';
 import SwipeContainer from './SwipeContainer';
-import fetchTasteDive from '../../services/fetchTasteDive';
+import fetchRecommendationsTMDB from '../../services/fetchRecommendationsTMDB ';
 
-const CardPage = ({
-  mediaList,
-  setMediaList,
-  mediaDetails,
-  setMediaDetails,
-  dropdownSearchValue,
-}) => {
+const CardPage = ({ mediaList, setMediaList, dropdownSearchValue }) => {
   useEffect(() => {
-    fetchTasteDive(dropdownSearchValue, setMediaList);
+    fetchRecommendationsTMDB(dropdownSearchValue.id, setMediaList);
   }, [dropdownSearchValue]);
 
   return (
     <div className="card-page">
-      <h1>test</h1>
+      <h3>You should give this a look</h3>
       <Header />
-      <SwipeContainer
-        mediaList={mediaList}
-        mediaDetails={mediaDetails}
-        setMediaDetails={setMediaDetails}
-      />
+      <SwipeContainer mediaList={mediaList} />
     </div>
   );
 };

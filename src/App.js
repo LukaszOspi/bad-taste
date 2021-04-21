@@ -3,10 +3,11 @@ import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import Home from './components/home/Home';
 import CardPage from './components/card_page/CardPage';
+import CardDetails from './components/card-details/CardDetails';
 
 function App() {
   const [mediaList, setMediaList] = useState([]);
-  const [mediaDetails, setMediaDetails] = useState([]);
+  const [displayIndex, setDisplayIndex] = useState(0);
   const [dropdownSearchValue, setDropdownSearchValue] = useState({
     title: '',
     id: '',
@@ -28,9 +29,12 @@ function App() {
             dropdownSearchValue={dropdownSearchValue}
             mediaList={mediaList}
             setMediaList={setMediaList}
-            mediaDetails={mediaDetails}
-            setMediaDetails={setMediaDetails}
+            displayIndex={displayIndex}
+            setDisplayIndex={setDisplayIndex}
           />
+        </Route>
+        <Route path="/card-details">
+          <CardDetails displayIndex={displayIndex} mediaList={mediaList} />
         </Route>
       </Switch>
     </div>

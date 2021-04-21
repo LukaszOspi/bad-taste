@@ -15,7 +15,6 @@ const fetchTMDB = async (searchQuery, updater) => {
     const filteredData = data.filter((media) => media.poster_path !== null);
     // order list by popularity index
     filteredData.sort((a, b) => b.popularity - a.popularity);
-    console.log(filteredData);
     // if updater function is undefined then return data
     return updater === undefined
       ? await filteredData
