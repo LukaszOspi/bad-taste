@@ -1,41 +1,56 @@
-import { useState, useEffect} from 'react';
-import { Switch, BrowserRouter as Router, Route, Link, useHistory} from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import {
+  Switch,
+  BrowserRouter as Router,
+  Route,
+  Link,
+  useHistory,
+} from 'react-router-dom';
 import './App.css';
 import Home from './components/home/Home';
 import CardPage from './components/card_page/CardPage';
 
-
 function App() {
   const [mediaList, setMediaList] = useState([]);
   const [mediaDetails, setMediaDetails] = useState([]);
+  const [dropdownSearchValue, setDropdownSearchValue] = useState('');
 
-//   const redirectCard= () => {
-//     let history = useHistory();
-// history.push('/card-page')
-//   };
+  // function setDropdownSearchValue(newValue, originalValue=dropdownSearchValue) {
+  //   originalValue = newValue
+  //   return originalValue
+  // }
+  // setDropdownSearchValue('ospi', dropdownSearchValue)
 
-//   useEffect(() => {
-//     redirectCard();
-//   }, [mediaList]);
+  //   const redirectCard= () => {
+  //     let history = useHistory();
+  // history.push('/card-page')
+  //   };
 
+  //   useEffect(() => {
+  //     redirectCard();
+  //   }, [mediaList]);
 
   return (
-
-
-<div className='auto-container'>
+    <div className="auto-container">
       <Switch>
-          <Route exact path="/">
-            <Home setMediaList={setMediaList} />
-           </Route>
-          <Route path="/card-page">
-            <CardPage
-              mediaList={mediaList}
-              mediaDetails={mediaDetails}
-              setMediaDetails={setMediaDetails} />
-          </Route>
+        <Route exact path="/">
+          <Home
+            setMediaList={setMediaList}
+            dropdownSearchValue={dropdownSearchValue}
+            setDropdownSearchValue={setDropdownSearchValue}
+          />
+        </Route>
+        <Route path="/card-page">
+          <CardPage
+            dropdownSearchValue={dropdownSearchValue}
+            mediaList={mediaList}
+            setMediaList={setMediaList}
+            mediaDetails={mediaDetails}
+            setMediaDetails={setMediaDetails}
+          />
+        </Route>
       </Switch>
     </div>
-
   );
 }
 

@@ -9,11 +9,11 @@ import fetchTasteDive from '../../services/fetchTasteDive';
 
 const SearchBar = (props) => {
   const [search, setSearch] = useState('');
-  const [dropdownSearchValue, setDropdownSearchValue] = useState('');
+  // const [dropdownSearchValue, setDropdownSearchValue] = useState('');
   const [options, setOptions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [display, setDisplay] = useState(false);
-  const { setMediaList } = props;
+  const { setMediaList, dropdownSearchValue, setDropdownSearchValue } = props;
 
   const handleLoading = () => {
     if (!isLoading) {
@@ -58,9 +58,9 @@ const SearchBar = (props) => {
     };
   }, [search]);
 
-  useEffect(() => {
-    fetchTasteDive(dropdownSearchValue, setMediaList);
-  }, [dropdownSearchValue]);
+  // useEffect(() => {
+  //   fetchTasteDive(dropdownSearchValue, setMediaList);
+  // }, [dropdownSearchValue]);
 
   return (
     <div className="flex-container flex-column pos-rel">
