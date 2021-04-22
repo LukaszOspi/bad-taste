@@ -8,13 +8,12 @@ import CardDetails from './components/card-details/CardDetails';
 function App() {
   const [mediaList, setMediaList] = useState([]);
   const [displayIndex, setDisplayIndex] = useState(0);
-  const [streamingProvidersList, setStreamingProvidersList] = useState({});
+  const [streamingProvidersList, setStreamingProvidersList] = useState();
+  const [mediaDetails, setMediaDetails] = useState();
   const [dropdownSearchValue, setDropdownSearchValue] = useState({
     title: '',
     id: '',
   });
-
-  console.log(streamingProvidersList);
 
   return (
     <div className="App">
@@ -35,13 +34,13 @@ function App() {
             displayIndex={displayIndex}
             setDisplayIndex={setDisplayIndex}
             setStreamingProvidersList={setStreamingProvidersList}
+            setMediaDetails={setMediaDetails}
           />
         </Route>
         <Route path="/card-details">
           <CardDetails
-            displayIndex={displayIndex}
-            mediaList={mediaList}
             streamingProvidersList={streamingProvidersList}
+            mediaDetails={mediaDetails}
           />
         </Route>
       </Switch>
