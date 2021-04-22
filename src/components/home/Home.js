@@ -1,12 +1,17 @@
-import { useEffect, useState } from 'react';
 import SearchContainer from './SearchContainer';
 
-const Home = (props) => {
-  const { setMediaList } = props;
-
+const Home = ({
+  setMediaList,
+  dropdownSearchValue,
+  setDropdownSearchValue,
+}) => {
   return (
     <div>
-      <SearchContainer setMediaList={setMediaList} />
+      <SearchContainer
+        setMediaList={setMediaList}
+        dropdownSearchValue={dropdownSearchValue}
+        setDropdownSearchValue={setDropdownSearchValue}
+      />
     </div>
   );
 };

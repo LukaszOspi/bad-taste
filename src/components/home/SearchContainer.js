@@ -4,23 +4,23 @@ import useDebounce from '../../services/useDebounce';
 import SearchOptionsList from './SearchOptionsList';
 import './SearchContainer.css';
 import loadingSpinner from '../../assets/loading.gif';
-import fetchOMDB from '../../services/fetchOMDB';
-import fetchTasteDive from '../../services/fetchTasteDive';
+import fetchTMDB from '../../services/fetchTMDB';
 
-const SearchBar = (props) => {
+const SearchBar = ({ dropdownSearchValue, setDropdownSearchValue }) => {
   const [search, setSearch] = useState('');
-  const [dropdownSearchValue, setDropdownSearchValue] = useState('');
   const [options, setOptions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [display, setDisplay] = useState(false);
-  const { setMediaList } = props;
 
   const handleLoading = () => {
     if (!isLoading) {
       setIsLoading(true);
       setDisplay(false);
       setSearch('');
-      setDropdownSearchValue('');
+      setDropdownSearchValue({
+        title: '',
+        id: '',
+      });
       setOptions([]);
     }
   };
@@ -29,18 +29,21 @@ const SearchBar = (props) => {
     setOptions([]);
     setIsLoading(false);
     setDisplay(false);
-    setDropdownSearchValue('');
+    setDropdownSearchValue({
+      title: '',
+      id: '',
+    });
   };
 
   useDebounce(
     async () => {
-      if (search && dropdownSearchValue !== search) {
+      if (search && dropdownSearchValue.title !== search) {
         try {
-          await fetchOMDB(search, setOptions);
+          await fetchTMDB(search, setOptions);
           setIsLoading(false);
           setDisplay(true);
         } catch (err) {
-          console.error(`fetchOMDB() in useDebounce failed with error ${err}`);
+          console.error(`fetchTMDB() in useDebounce failed with error ${err}`);
         }
       }
     },
@@ -59,37 +62,31 @@ const SearchBar = (props) => {
   }, [search]);
 
   return (
-    <div className="flex-container flex-column pos-rel">
-      <input
-        placeholder="Type to search"
-        value={search}
-        onChange={(e) => {
-          handleLoading();
-          setSearch(e.target.value);
-        }}
-      />
-      {isLoading && (
-        <div className="loading-indicator">
-          <img src={loadingSpinner} alt="loading" />
-        </div>
-      )}
-      {display && (
-        <div className="autoContainer">
-          <SearchOptionsList
-            options={options}
-            setDropdownSearchValue={setDropdownSearchValue}
-            setSearch={setSearch}
-            setDisplay={setDisplay}
-          />
-        </div>
-      )}
-      <div className="search-button-container">
-        <button
-          className="search-button"
-          onClick={() => fetchTasteDive(dropdownSearchValue, setMediaList)}
-        >
-          Search
-        </button>
+    <div className="auto-container">
+      <div className="flex-container flex-column pos-rel">
+        <input
+          placeholder="Type to search"
+          value={search}
+          onChange={(e) => {
+            handleLoading();
+            setSearch(e.target.value);
+          }}
+        />
+        {isLoading && (
+          <div className="loading-indicator">
+            <img src={loadingSpinner} alt="loading" />
+          </div>
+        )}
+        {display && (
+          <div className="autoContainer">
+            <SearchOptionsList
+              options={options}
+              setDropdownSearchValue={setDropdownSearchValue}
+              setSearch={setSearch}
+              setDisplay={setDisplay}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

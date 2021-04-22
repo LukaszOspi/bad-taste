@@ -11,7 +11,8 @@ const fetchOMDB = async (searchQuery, updater) => {
       cancelToken: source.token,
     });
     const data = await res.data.Search;
-    await updater(data);
+    // if updater function is undefined then return data
+    return updater === undefined ? await data : await updater(data);
   } catch (err) {
     console.error(`fetchOMDB() failed with error ${err}`);
   }
