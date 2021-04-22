@@ -1,8 +1,8 @@
 import { useHistory } from 'react-router-dom';
-
 import StreamingProvidersList from './StreamingProvidersList';
+import MediaInfo from './MediaInfo';
 
-const CardDetails = ({ streamingProvidersList }) => {
+const CardDetails = ({ streamingProvidersList, mediaDetails }) => {
   const history = useHistory();
 
   const showList = () => {
@@ -13,6 +13,11 @@ const CardDetails = ({ streamingProvidersList }) => {
     <div className="card-details">
       <button onClick={showList}>Back to the list</button>
       <h2>Additional details for this movie</h2>
+      {!mediaDetails ? (
+        <p>Error while trying to gather information about this content</p>
+      ) : (
+        <MediaInfo mediaDetails={mediaDetails} />
+      )}
       {streamingProvidersList === undefined ? (
         <p>This content is not availabe online in your region</p>
       ) : (
