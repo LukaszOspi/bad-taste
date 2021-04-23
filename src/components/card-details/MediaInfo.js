@@ -1,3 +1,5 @@
+import CastList from './CastList';
+
 const MediaInfo = ({ mediaDetails, mediaCredits }) => {
   console.log(mediaCredits);
   const genresList = mediaDetails.genres.map((genre) => ` ${genre.name}`);
@@ -30,7 +32,7 @@ const MediaInfo = ({ mediaDetails, mediaCredits }) => {
         })}
       </p>
       <h3>Cast: </h3>
-      <p></p>
+      {<CastList mediaCredits={mediaCredits} />}
     </div>
   );
 };
