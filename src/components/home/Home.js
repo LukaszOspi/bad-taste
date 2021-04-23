@@ -1,3 +1,4 @@
+import FilterButton from './FilterButton';
 import SearchContainer from './SearchContainer';
 
 const Home = ({
@@ -6,13 +7,18 @@ const Home = ({
   setDropdownSearchValue,
 }) => {
   return (
-    <div>
-      <SearchContainer
-        setMediaList={setMediaList}
-        dropdownSearchValue={dropdownSearchValue}
-        setDropdownSearchValue={setDropdownSearchValue}
-      />
-    </div>
+    <>
+      <div className="filter-button">
+        <FilterButton />
+      </div>
+      <div>
+        <SearchContainer
+          setMediaList={setMediaList}
+          dropdownSearchValue={dropdownSearchValue}
+          setDropdownSearchValue={setDropdownSearchValue}
+        />
+      </div>
+    </>
   );
 };
 
