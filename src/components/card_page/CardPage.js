@@ -11,6 +11,7 @@ const CardPage = ({
   setDisplayIndex,
   setStreamingProvidersList,
   setMediaDetails,
+  setMediaCredits,
 }) => {
   useEffect(() => {
     fetchRecommendationsTMDB(dropdownSearchValue.id, setMediaList);
@@ -26,6 +27,7 @@ const CardPage = ({
         setDisplayIndex={setDisplayIndex}
         setStreamingProvidersList={setStreamingProvidersList}
         setMediaDetails={setMediaDetails}
+        setMediaCredits={setMediaCredits}
       />
     </div>
   );

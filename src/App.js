@@ -11,6 +11,7 @@ function App() {
   const [displayIndex, setDisplayIndex] = useState(0);
   const [streamingProvidersList, setStreamingProvidersList] = useState();
   const [mediaDetails, setMediaDetails] = useState();
+  const [mediaCredits, setMediaCredits] = useState();
   const [dropdownSearchValue, setDropdownSearchValue] = useState({
     title: '',
     id: '',
@@ -36,12 +37,14 @@ function App() {
             setDisplayIndex={setDisplayIndex}
             setStreamingProvidersList={setStreamingProvidersList}
             setMediaDetails={setMediaDetails}
+            setMediaCredits={setMediaCredits}
           />
         </Route>
         <Route path="/card-details">
           <CardDetails
             streamingProvidersList={streamingProvidersList}
             mediaDetails={mediaDetails}
+            mediaCredits={mediaCredits}
           />
         </Route>
       </Switch>

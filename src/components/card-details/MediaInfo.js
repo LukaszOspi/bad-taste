@@ -1,10 +1,12 @@
-const MediaInfo = ({ mediaDetails }) => {
-  console.log(mediaDetails);
+const MediaInfo = ({ mediaDetails, mediaCredits }) => {
+  console.log(mediaCredits);
   const genresList = mediaDetails.genres.map((genre) => ` ${genre.name}`);
   const mediaLength =
     mediaDetails.runtime % 60 === 0
       ? `${mediaDetails.runtime / 60}h`
       : `${parseInt(mediaDetails.runtime / 60)}h ${mediaDetails.runtime % 60}m`;
+
+  const directorList = mediaCredits.crew.filter((c) => c.job === 'Director');
 
   return (
     <div className="media-info">
@@ -21,7 +23,14 @@ const MediaInfo = ({ mediaDetails }) => {
       />
       <h3>Overview: </h3>
       <p>{mediaDetails.overview}</p>
-      <h4>Director: </h4>
+      <h3>{directorList.length > 1 ? 'Directors: ' : 'Director: '}</h3>
+      <p>
+        {directorList.map((d, i) => {
+          return i === directorList.length - 1 ? `${d.name}.` : `${d.name}, `;
+        })}
+      </p>
+      <h3>Cast: </h3>
+      <p></p>
     </div>
   );
 };
