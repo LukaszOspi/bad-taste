@@ -7,18 +7,14 @@ const Home = ({
   setDropdownSearchValue,
 }) => {
   return (
-    <>
-      <div className="filter-button">
-        <FilterButton />
-      </div>
-      <div>
-        <SearchContainer
-          setMediaList={setMediaList}
-          dropdownSearchValue={dropdownSearchValue}
-          setDropdownSearchValue={setDropdownSearchValue}
-        />
-      </div>
-    </>
+    <div>
+      <FilterButton />
+      <SearchContainer
+        setMediaList={setMediaList}
+        dropdownSearchValue={dropdownSearchValue}
+        setDropdownSearchValue={setDropdownSearchValue}
+      />
+    </div>
   );
 };
 

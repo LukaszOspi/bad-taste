@@ -66,33 +66,36 @@ const FilterButton = () => {
   // `;
 
   return (
-    <div className={styles.card}>
-      <h1>Medium you want to search</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pulvinar sed
-        elementum egestas blandit. Proin augue lacus, phasellus vel lorem risus.
-      </p>
-      <div className={styles.cardButtons}>
-        <div
-          onMouseEnter={() => setStyle('#424246', '#fdfdfd')}
-          onMouseOut={() => setStyle('#fdfdfd', '#424246')}
-          //className={styles.blackButton}
-        >
-          Movie
-        </div>
-        <div
-          onMouseEnter={() => setStyle('#1d499b', '#fdfdfd')}
-          onMouseOut={() => setStyle('#fdfdfd', '#424246')}
-          //className={styles.blueButton}
-        >
-          Book
-        </div>
-        <div
-          onMouseEnter={() => setStyle('#f9d648', '#424246')}
-          onMouseOut={() => setStyle('#fdfdfd', '#424246')}
-          //className={styles.yellowButton}
-        >
-          Music
+    <div className="filter-button">
+      <div className={styles.card}>
+        <h1>Medium you want to search</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pulvinar sed
+          elementum egestas blandit. Proin augue lacus, phasellus vel lorem
+          risus.
+        </p>
+        <div className={styles.cardButtons}>
+          <div
+            onMouseEnter={() => setStyle('#424246', '#fdfdfd')}
+            onMouseOut={() => setStyle('#fdfdfd', '#424246')}
+            //className={styles.blackButton}
+          >
+            Movie
+          </div>
+          <div
+            onMouseEnter={() => setStyle('#1d499b', '#fdfdfd')}
+            onMouseOut={() => setStyle('#fdfdfd', '#424246')}
+            //className={styles.blueButton}
+          >
+            Book
+          </div>
+          <div
+            onMouseEnter={() => setStyle('#f9d648', '#424246')}
+            onMouseOut={() => setStyle('#fdfdfd', '#424246')}
+            //className={styles.yellowButton}
+          >
+            Music
+          </div>
         </div>
       </div>
     </div>
