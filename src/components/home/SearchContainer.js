@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useReducer } from 'react';
 import axios from 'axios';
 import useDebounce from '../../services/useDebounce';
 import SearchOptionsList from './SearchOptionsList';

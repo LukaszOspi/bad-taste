@@ -5,16 +5,23 @@ import './CastList.css';
 const INCREMENT = 'increment';
 const DECREMENT = 'decrement';
 
-function reducer(state, action) {
-  switch (action.type) {
-    case 'increment':
-      return state + 1;
-    case 'decrement':
-      return state - 1;
-    default:
-      return state;
-  }
-}
+const reducer = (state, action) => {
+  // switch (action.type) {
+  //   case 'increment':
+  //     return state + 1;
+  //   case 'decrement':
+  //     return state - 1;
+  //   default:
+  //     return state;
+  // }
+  const indexAction = {
+    increment: () => state + 1,
+    decrement: () => state - 1,
+    default: () => state,
+  };
+
+  return (indexAction[action.type] || indexAction.default)();
+};
 
 const CastList = ({ mediaCredits }) => {
   const [index, dispatch] = useReducer(reducer, 0);
@@ -28,6 +35,7 @@ const CastList = ({ mediaCredits }) => {
         {mediaCredits.cast.map((c, i) =>
           i >= index && i <= index + 6 ? (
             <CastMember
+              key={c.id}
               castPicture={c.profile_path}
               name={c.name}
               character={c.character}
