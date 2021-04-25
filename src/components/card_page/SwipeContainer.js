@@ -1,7 +1,8 @@
 import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
-import fetchStreamingProvidersTMDB from '../../services/fetchStreamingProvidersTMDB';
-import fetchDetailsTMDB from '../../services/fetchDetailsTMDB';
+import fetchStreamingProvidersTMDB from '../../services/movieFetch/fetchStreamingProvidersTMDB';
+import fetchDetailsTMDB from '../../services/movieFetch/fetchDetailsTMDB';
+import fetchCreditsTMDB from '../../services/movieFetch/fetchCreditsTMDB';
 
 const SwipeContainer = ({
   mediaList,
@@ -9,6 +10,7 @@ const SwipeContainer = ({
   setDisplayIndex,
   setStreamingProvidersList,
   setMediaDetails,
+  setMediaCredits,
 }) => {
   const dislikedMedia = [];
   const likedMedia = [];
@@ -21,6 +23,7 @@ const SwipeContainer = ({
         setStreamingProvidersList
       );
       fetchDetailsTMDB(mediaList[displayIndex].id, setMediaDetails);
+      fetchCreditsTMDB(mediaList[displayIndex].id, setMediaCredits);
     }
   }, [mediaList, displayIndex]);
 

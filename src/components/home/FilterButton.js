@@ -1,8 +1,8 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { css, jsx } from '@emotion/react';
-import styles from './FilterButton.css';
+import './FilterButton.css';
 
 const FilterButton = () => {
   const [background, setBackground] = useState('#fdfdfd');

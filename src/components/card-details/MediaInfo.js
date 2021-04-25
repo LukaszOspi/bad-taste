@@ -1,28 +1,63 @@
-const MediaInfo = ({ mediaDetails }) => {
-  console.log(mediaDetails);
-  const genresList = mediaDetails.genres.map((genre) => ` ${genre.name}`);
+import { useState } from 'react';
+import CastList from './CastList';
+import YoutubeModalPlayer from './YoutubeModalPlayer';
+
+const MediaInfo = ({ mediaDetails, mediaCredits }) => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
   const mediaLength =
     mediaDetails.runtime % 60 === 0
       ? `${mediaDetails.runtime / 60}h`
       : `${parseInt(mediaDetails.runtime / 60)}h ${mediaDetails.runtime % 60}m`;
 
-  return (
-    <div className="media-info">
-      <h2>
-        {mediaDetails.title} {`(${mediaDetails.release_date.slice(0, 4)})`}
-      </h2>
-      <p>{`${mediaDetails.release_date} - ${genresList} - ${mediaLength}`}</p>
-      <p>{mediaDetails.tagline}</p>
+  const directorList = mediaCredits.crew.filter((c) => c.job === 'Director');
+  const mediaTrailerList = mediaDetails.videos.results.filter(
+    (m) => m.type === 'Trailer'
+  );
 
+  return (
+    <>
       <img
         className="media-info-image"
-        alt="media poster"
-        src={`https://image.tmdb.org/t/p/w185${mediaDetails.poster_path}`}
+        alt="backdrop"
+        src={`https://image.tmdb.org/t/p/w780${mediaDetails.backdrop_path}`}
       />
-      <h3>Overview: </h3>
-      <p>{mediaDetails.overview}</p>
-      <h4>Director: </h4>
-    </div>
+      <div className="media-info">
+        <div className="media-info-metadata">
+          <h3 id="media-title">
+            {mediaDetails.title} {`(${mediaDetails.release_date.slice(0, 4)})`}
+          </h3>
+          <div className="media-rating-trailer">
+            <h4>{`Rating: ${mediaDetails.vote_average} / 10`}</h4>
+            <YoutubeModalPlayer
+              modalIsOpen={modalIsOpen}
+              setModalIsOpen={setModalIsOpen}
+              youtubeKey={mediaTrailerList[0]['key']}
+            />
+          </div>
+        </div>
+        <p className="genres">{`${mediaDetails.release_date} - ${mediaLength}`}</p>
+        <p className="genres">
+          {mediaDetails.genres.map((g, i) =>
+            i === mediaDetails.genres.length - 1 ? `${g.name}.` : `${g.name}, `
+          )}
+        </p>
+        <div id="media-overview-section">
+          <p className="tagline">{mediaDetails.tagline}</p>
+          <h4>Overview: </h4>
+          <p id="overview">{mediaDetails.overview}</p>
+        </div>
+        <div id="director">
+          <h4>{directorList.length > 1 ? 'Directors: ' : 'Director: '}</h4>
+          <p id="director-name">
+            {directorList.map((d, i) =>
+              i === directorList.length - 1 ? `${d.name}.` : `${d.name}, `
+            )}
+          </p>
+        </div>
+        <CastList mediaCredits={mediaCredits} />
+      </div>
+    </>
   );
 };
 

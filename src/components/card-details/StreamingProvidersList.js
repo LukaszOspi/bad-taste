@@ -8,13 +8,13 @@ const StreamingProvidersList = ({ streamingProvidersList }) => {
         <p>This content is not availabe for streaming in your region</p>
       ) : (
         <div className="stream">
-          <h3>Stream:</h3>
+          <h4 className="streaming-title">Stream:</h4>
           <div className="icons">
             {streamingProvidersList.flatrate.map((provider) => {
               return (
                 <StreamingProviders
                   logo={provider.logo_path}
-                  name={provider.provider_name}
+                  // name={provider.provider_name}
                   key={provider.provider_id}
                 />
               );
@@ -26,13 +26,13 @@ const StreamingProvidersList = ({ streamingProvidersList }) => {
         <p>This content is not availabe for buy in your region</p>
       ) : (
         <div className="buy">
-          <h3>Buy:</h3>
+          <h4 className="streaming-title">Buy:</h4>
           <div className="icons">
             {streamingProvidersList.buy.map((provider) => {
               return (
                 <StreamingProviders
                   logo={provider.logo_path}
-                  name={provider.provider_name}
+                  // name={provider.provider_name}
                   key={provider.provider_id}
                 />
               );
@@ -44,13 +44,13 @@ const StreamingProvidersList = ({ streamingProvidersList }) => {
         <p>This content is not availabe for rent in your region</p>
       ) : (
         <div className="rent">
-          <h3>Rent:</h3>
+          <h4 className="streaming-title">Rent:</h4>
           <div className="icons">
             {streamingProvidersList.rent.map((provider) => {
               return (
                 <StreamingProviders
                   logo={provider.logo_path}
-                  name={provider.provider_name}
+                  // name={provider.provider_name}
                   key={provider.provider_id}
                 />
               );
