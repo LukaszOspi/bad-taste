@@ -106,7 +106,6 @@ input {
 .option,
 span {
   font-size: 28px;
-  text-transform: capitalize;
 }
 
 .flex-container {

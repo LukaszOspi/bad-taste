@@ -1,6 +1,6 @@
 import { useReducer } from 'react';
-import CastMember from './CardMember';
-import './CastList.css';
+import CastMember from './CastMember';
+// import './CastList.css';
 
 const reducer = (state, action) => {
   // switch (action.type) {
@@ -25,22 +25,33 @@ const CastList = ({ mediaCredits }) => {
 
   return (
     <div className="cast">
-      {index > 0 && (
-        <button onClick={() => dispatch({ type: 'decrement' })}>{`<`}</button>
-      )}
-      <div className="cast-list">
-        {mediaCredits.cast.map((c, i) =>
-          i >= index && i <= index + 6 ? (
-            <CastMember
-              key={c.id}
-              castPicture={c.profile_path}
-              name={c.name}
-              character={c.character}
-            />
-          ) : null
+      <h4 id="cast-title">Top Billed Cast: </h4>
+      <div id="slide-show">
+        {index === 0 ? (
+          <button className="slide-show-button" disabled>{`<`}</button>
+        ) : (
+          <button
+            className="slide-show-button"
+            onClick={() => dispatch({ type: 'decrement' })}
+          >{`<`}</button>
         )}
+        <div className="cast-list">
+          {mediaCredits.cast.map((c, i) =>
+            i === index ? (
+              <CastMember
+                key={c.id}
+                castPicture={c.profile_path}
+                name={c.name}
+                character={c.character}
+              />
+            ) : null
+          )}
+        </div>
+        <button
+          className="slide-show-button"
+          onClick={() => dispatch({ type: 'increment' })}
+        >{`>`}</button>
       </div>
-      <button onClick={() => dispatch({ type: 'increment' })}>{`>`}</button>
     </div>
   );
 };

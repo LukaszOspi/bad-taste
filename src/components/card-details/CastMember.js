@@ -4,7 +4,7 @@ const CastMember = ({ castPicture, name, character }) => {
       <img
         className="cast-picture"
         alt="actor"
-        src={`https://image.tmdb.org/t/p/w45${castPicture}`}
+        src={`https://image.tmdb.org/t/p/w185${castPicture}`}
       />
       <div className="cast-details">
         <h3 className="cast-name">{name}</h3>

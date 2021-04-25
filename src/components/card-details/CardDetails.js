@@ -1,6 +1,7 @@
 import { useHistory } from 'react-router-dom';
 import StreamingProvidersList from './StreamingProvidersList';
 import MediaInfo from './MediaInfo';
+import './CardDetails.css';
 
 const CardDetails = ({
   streamingProvidersList,
@@ -16,7 +17,8 @@ const CardDetails = ({
   return (
     <div className="card-details">
       <button onClick={showList}>Back to the list</button>
-      <h2>Additional details for this movie</h2>
+      <br />
+      <br />
       {!mediaDetails ? (
         <p>Error while trying to gather information about this content</p>
       ) : (
