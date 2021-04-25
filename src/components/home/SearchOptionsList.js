@@ -8,12 +8,14 @@ const SearchOptionsList = ({
   setDropdownSearchValue,
   setSearch,
   setDisplay,
+  // dispatch,
 }) => {
   const history = useHistory();
   const getTitleFromClick = (value, id) => {
     setDropdownSearchValue({ title: value, id });
     setSearch(value);
     setDisplay(false);
+    // dispatch({ type: 'hideDropdown' });
     history.push('/card-page');
   };
 

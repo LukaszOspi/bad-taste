@@ -2,9 +2,6 @@ import { useReducer } from 'react';
 import CastMember from './CardMember';
 import './CastList.css';
 
-const INCREMENT = 'increment';
-const DECREMENT = 'decrement';
-
 const reducer = (state, action) => {
   // switch (action.type) {
   //   case 'increment':
@@ -29,7 +26,7 @@ const CastList = ({ mediaCredits }) => {
   return (
     <div className="cast">
       {index > 0 && (
-        <button onClick={() => dispatch({ type: DECREMENT })}>{`<`}</button>
+        <button onClick={() => dispatch({ type: 'decrement' })}>{`<`}</button>
       )}
       <div className="cast-list">
         {mediaCredits.cast.map((c, i) =>
@@ -43,7 +40,7 @@ const CastList = ({ mediaCredits }) => {
           ) : null
         )}
       </div>
-      <button onClick={() => dispatch({ type: INCREMENT })}>{`>`}</button>
+      <button onClick={() => dispatch({ type: 'increment' })}>{`>`}</button>
     </div>
   );
 };

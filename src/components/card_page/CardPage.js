@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import Header from './Header';
 import SwipeContainer from './SwipeContainer';
-import fetchRecommendationsTMDB from '../../services/fetchRecommendationsTMDB ';
+import fetchRecommendationsTMDB from '../../services/movieFetch/fetchRecommendationsTMDB ';
 
 const CardPage = ({
   mediaList,
