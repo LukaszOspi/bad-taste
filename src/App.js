@@ -1,12 +1,15 @@
 import { useState } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, useHistory } from 'react-router-dom';
 import React from 'react';
+import logo from './assets/logoPlaceholder.jpg';
 import './App.css';
+import ScrollToTop from './services/ScrollToTop';
 import Home from './components/home/Home';
 import CardPage from './components/card_page/CardPage';
 import CardDetails from './components/card-details/CardDetails';
 
 function App() {
+  const history = useHistory();
   const [mediaList, setMediaList] = useState([]);
   const [displayIndex, setDisplayIndex] = useState(0);
   const [streamingProvidersList, setStreamingProvidersList] = useState();
@@ -19,35 +22,46 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header"></header>
-      <Switch>
-        <Route exact path="/">
-          <Home
-            setMediaList={setMediaList}
-            dropdownSearchValue={dropdownSearchValue}
-            setDropdownSearchValue={setDropdownSearchValue}
-          />
-        </Route>
-        <Route path="/card-page">
-          <CardPage
-            dropdownSearchValue={dropdownSearchValue}
-            mediaList={mediaList}
-            setMediaList={setMediaList}
-            displayIndex={displayIndex}
-            setDisplayIndex={setDisplayIndex}
-            setStreamingProvidersList={setStreamingProvidersList}
-            setMediaDetails={setMediaDetails}
-            setMediaCredits={setMediaCredits}
-          />
-        </Route>
-        <Route path="/card-details">
-          <CardDetails
-            streamingProvidersList={streamingProvidersList}
-            mediaDetails={mediaDetails}
-            mediaCredits={mediaCredits}
-          />
-        </Route>
-      </Switch>
+      <ScrollToTop>
+        <header className="App-header">
+          <nav>
+            <img
+              id="logo"
+              alt="logo"
+              src={logo}
+              onClick={() => history.push('/')}
+            />
+          </nav>
+        </header>
+        <Switch>
+          <Route exact path="/">
+            <Home
+              setMediaList={setMediaList}
+              dropdownSearchValue={dropdownSearchValue}
+              setDropdownSearchValue={setDropdownSearchValue}
+            />
+          </Route>
+          <Route path="/card-page">
+            <CardPage
+              dropdownSearchValue={dropdownSearchValue}
+              mediaList={mediaList}
+              setMediaList={setMediaList}
+              displayIndex={displayIndex}
+              setDisplayIndex={setDisplayIndex}
+              setStreamingProvidersList={setStreamingProvidersList}
+              setMediaDetails={setMediaDetails}
+              setMediaCredits={setMediaCredits}
+            />
+          </Route>
+          <Route path="/card-details">
+            <CardDetails
+              streamingProvidersList={streamingProvidersList}
+              mediaDetails={mediaDetails}
+              mediaCredits={mediaCredits}
+            />
+          </Route>
+        </Switch>
+      </ScrollToTop>
     </div>
   );
 }
