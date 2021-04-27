@@ -24,6 +24,7 @@ const CardPage = ({
       <Header />
       <SwipeContainer
         mediaList={mediaList}
+        setMediaList={setMediaList}
         displayIndex={displayIndex}
         setDisplayIndex={setDisplayIndex}
         setStreamingProvidersList={setStreamingProvidersList}
