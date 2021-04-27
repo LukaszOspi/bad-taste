@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import Header from './Header';
 import SwipeContainer from './SwipeContainer';
-import fetchRecommendationsTMDB from '../../services/movieFetch/fetchRecommendationsTMDB ';
+import fetchRecommendationsTMDB from '../../services/movie-fetch/fetchRecommendationsTMDB';
 
 const CardPage = ({
   mediaList,
@@ -15,8 +15,10 @@ const CardPage = ({
   dispatchSwipedMedia,
 }) => {
   useEffect(() => {
-    fetchRecommendationsTMDB(dropdownSearchValue.id, setMediaList);
-  }, [dropdownSearchValue]);
+    if (mediaList.length === 0) {
+      fetchRecommendationsTMDB(dropdownSearchValue.id, setMediaList);
+    }
+  }, []);
 
   return (
     <div className="card-page">
@@ -24,6 +26,7 @@ const CardPage = ({
       <Header />
       <SwipeContainer
         mediaList={mediaList}
+        setMediaList={setMediaList}
         displayIndex={displayIndex}
         setDisplayIndex={setDisplayIndex}
         setStreamingProvidersList={setStreamingProvidersList}

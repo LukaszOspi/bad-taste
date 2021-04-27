@@ -4,7 +4,7 @@ import useDebounce from '../../services/useDebounce';
 import SearchOptionsList from './SearchOptionsList';
 import './SearchContainer.css';
 import loadingSpinner from '../../assets/loading.gif';
-import fetchTMDB from '../../services/movieFetch/fetchTMDB';
+import fetchTMDB from '../../services/movie-fetch/fetchTMDB';
 
 // const reducer = (state, action) => {
 //   const loadingOptions = {
