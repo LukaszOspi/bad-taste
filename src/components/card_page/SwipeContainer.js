@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import fetchStreamingProvidersTMDB from '../../services/movieFetch/fetchStreamingProvidersTMDB';
 import fetchDetailsTMDB from '../../services/movieFetch/fetchDetailsTMDB';
 import fetchCreditsTMDB from '../../services/movieFetch/fetchCreditsTMDB';
+import fetchRecommendationsTMDB from '../../services/movieFetch/fetchRecommendationsTMDB ';
+import { getUniqueListByKey } from '../../services/utilityFunctions';
 
 const SwipeContainer = ({
   mediaList,
@@ -11,9 +13,8 @@ const SwipeContainer = ({
   setStreamingProvidersList,
   setMediaDetails,
   setMediaCredits,
+  dispatchSwipedMedia,
 }) => {
-  const dislikedMedia = [];
-  const likedMedia = [];
   const history = useHistory();
 
   useEffect(() => {
@@ -27,17 +28,28 @@ const SwipeContainer = ({
     }
   }, [mediaList, displayIndex]);
 
-  const handleLike = (e) => {
-    if (e.target.value === 'Dislike') {
-      dislikedMedia.push(mediaList[displayIndex]);
-    }
-    likedMedia.push(mediaList[displayIndex]);
-    setDisplayIndex(displayIndex + 1);
-  };
-
   const showInfo = () => {
     history.push('/card-details');
   };
+
+  const fetchNewRecommendations = async (mediaID, currentList) => {
+    try {
+      const newList = await fetchRecommendationsTMDB(mediaID);
+      const filteredNewList = newList.filter((e) =>
+        currentList.some((m) => !m.id.includes(e.id))
+      );
+      console.log(newList);
+      console.log(filteredNewList);
+      console.log(...currentList, filteredNewList);
+      return filteredNewList;
+    } catch (err) {
+      console.errror(
+        `fetchRecommendationsTMDB() in fetchNewRecommendations failed with error ${err}`
+      );
+    }
+  };
+
+  // updater(...currentList, filteredNewList);
 
   return (
     <>
@@ -50,9 +62,36 @@ const SwipeContainer = ({
               src={`https://image.tmdb.org/t/p/w500${mediaList[displayIndex].poster_path}`}
             />
             <div className="action-buttons">
-              <button onClick={handleLike}>Dislike</button>
+              <button
+                onClick={() => {
+                  dispatchSwipedMedia({
+                    type: 'dislike',
+                    payload: mediaList[displayIndex],
+                  });
+                  setDisplayIndex(displayIndex + 1);
+                }}
+              >
+                Dislike
+              </button>
               <button onClick={showInfo}>More info</button>
-              <button onClick={handleLike}>Like</button>
+              <button
+                onClick={async () => {
+                  dispatchSwipedMedia({
+                    type: 'like',
+                    payload: mediaList[displayIndex],
+                  });
+                  // setMediaList([
+                  //   ...mediaList,
+                  //   await fetchNewRecommendations(
+                  //     mediaList[displayIndex],
+                  //     mediaList
+                  //   ),
+                  // ]);
+                  setDisplayIndex(displayIndex + 1);
+                }}
+              >
+                Like
+              </button>
             </div>
           </div>
         </div>
