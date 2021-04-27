@@ -6,7 +6,7 @@ import logo from './assets/logoPlaceholder.jpg';
 import './App.css';
 import ScrollToTop from './services/ScrollToTop';
 import Home from './components/home/Home';
-import CardPage from './components/card_page/CardPage';
+import CardPage from './components/card-page/CardPage';
 import CardDetails from './components/card-details/CardDetails';
 
 function App() {
@@ -20,14 +20,14 @@ function App() {
     title: '',
     id: '',
   });
-  const [swipedMedias, dispatchSwipedMedia] = useReducer(likeHandler, {
+  const [swipedMedia, dispatchSwipedMedia] = useReducer(likeHandler, {
     liked: [],
     disliked: [],
   });
 
   useEffect(() => {
-    console.log(swipedMedias);
-  }, [swipedMedias]);
+    console.log(swipedMedia);
+  }, [swipedMedia]);
 
   return (
     <div className="App">
