@@ -15,8 +15,10 @@ const CardPage = ({
   dispatchSwipedMedia,
 }) => {
   useEffect(() => {
-    fetchRecommendationsTMDB(dropdownSearchValue.id, setMediaList);
-  }, [dropdownSearchValue]);
+    if (mediaList.length === 0) {
+      fetchRecommendationsTMDB(dropdownSearchValue.id, setMediaList);
+    }
+  }, []);
 
   return (
     <div className="card-page">

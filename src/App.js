@@ -1,4 +1,4 @@
-import { useState, useReducer, useEffect } from 'react';
+import { useState, useReducer } from 'react';
 import { Switch, Route, useHistory } from 'react-router-dom';
 import { likeHandler } from './services/utilityFunctions';
 import React from 'react';
@@ -24,10 +24,6 @@ function App() {
     liked: [],
     disliked: [],
   });
-
-  useEffect(() => {
-    console.log(swipedMedia);
-  }, [swipedMedia]);
 
   return (
     <div className="App">
