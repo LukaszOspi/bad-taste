@@ -1,9 +1,9 @@
 import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
-import fetchStreamingProvidersTMDB from '../../services/movieFetch/fetchStreamingProvidersTMDB';
-import fetchDetailsTMDB from '../../services/movieFetch/fetchDetailsTMDB';
-import fetchCreditsTMDB from '../../services/movieFetch/fetchCreditsTMDB';
-import fetchRecommendationsTMDB from '../../services/movieFetch/fetchRecommendationsTMDB ';
+import fetchStreamingProvidersTMDB from '../../services/movie-fetch/fetchStreamingProvidersTMDB';
+import fetchDetailsTMDB from '../../services/movie-fetch/fetchDetailsTMDB';
+import fetchCreditsTMDB from '../../services/movie-fetch/fetchCreditsTMDB';
+import fetchRecommendationsTMDB from '../../services/movie-fetch/fetchRecommendationsTMDB';
 
 const SwipeContainer = ({
   mediaList,
