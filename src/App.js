@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useReducer, useEffect } from 'react';
 import { Switch, Route, useHistory } from 'react-router-dom';
+import { likeHandler } from './services/utilityFunctions';
 import React from 'react';
 import logo from './assets/logoPlaceholder.jpg';
 import './App.css';
@@ -19,6 +20,14 @@ function App() {
     title: '',
     id: '',
   });
+  const [swipedMedias, dispatchSwipedMedia] = useReducer(likeHandler, {
+    liked: [],
+    disliked: [],
+  });
+
+  useEffect(() => {
+    console.log(swipedMedias);
+  }, [swipedMedias]);
 
   return (
     <div className="App">
@@ -51,6 +60,7 @@ function App() {
               setStreamingProvidersList={setStreamingProvidersList}
               setMediaDetails={setMediaDetails}
               setMediaCredits={setMediaCredits}
+              dispatchSwipedMedia={dispatchSwipedMedia}
             />
           </Route>
           <Route path="/card-details">
