@@ -1,15 +1,18 @@
 import axios from 'axios';
 
-const fetchTMDB = async (searchQuery, updater) => {
+const fetchTMDB = async (searchQuery, updater, type) => {
   const source = axios.CancelToken.source();
   const apiKeyTMDB = process.env.REACT_APP_TMDB_API_KEY;
   const searchParams = { query: searchQuery, api_key: apiKeyTMDB };
 
   try {
-    const res = await axios.get(`https://api.themoviedb.org/3/search/movie?`, {
-      params: searchParams,
-      cancelToken: source.token,
-    });
+    const res = await axios.get(
+      `https://api.themoviedb.org/3/search/${type}?`,
+      {
+        params: searchParams,
+        cancelToken: source.token,
+      }
+    );
     const data = await res.data.results;
     // filter out movies without a poster image
     const filteredData = data.filter((media) => media.poster_path !== null);

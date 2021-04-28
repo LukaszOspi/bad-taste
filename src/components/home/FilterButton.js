@@ -1,13 +1,14 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { css, jsx } from '@emotion/react';
 import './FilterButton.css';
+import MediaContext from '../../context';
 
 const FilterButton = () => {
   const [background, setBackground] = useState('#fdfdfd');
   const [font, setFont] = useState('#424246');
-
+  const { mediaType, setMediaType } = useContext(MediaContext);
   const setStyle = (background, font) => {
     setBackground(background);
     setFont(font);
@@ -77,6 +78,9 @@ const FilterButton = () => {
           onMouseEnter={() => setStyle('#424246', '#fdfdfd')}
           onMouseOut={() => setStyle('#fdfdfd', '#424246')}
           css={blackButton}
+          onClick={() => {
+            setMediaType('movie');
+          }}
         >
           Movie
         </div>
@@ -84,13 +88,15 @@ const FilterButton = () => {
           onMouseEnter={() => setStyle('#1d499b', '#fdfdfd')}
           onMouseOut={() => setStyle('#fdfdfd', '#424246')}
           css={blueButton}
+          onClick={() => setMediaType('tv')}
         >
-          Book
+          Tv Shows
         </div>
         <div
           onMouseEnter={() => setStyle('#f9d648', '#424246')}
           onMouseOut={() => setStyle('#fdfdfd', '#424246')}
           css={yellowButton}
+          onClick={() => setMediaType('book')}
         >
           Music
         </div>
