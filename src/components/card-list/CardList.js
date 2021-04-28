@@ -9,6 +9,8 @@ const CardList = ({ swipedMedia }) => {
   const backCardPage = () => {
     history.push("/card-page");
   };
+  console.log(swipedMedia.liked.length);
+
   return (
     <>
       <div>

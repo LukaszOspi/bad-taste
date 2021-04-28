@@ -58,6 +58,7 @@ function App() {
               setMediaDetails={setMediaDetails}
               setMediaCredits={setMediaCredits}
               dispatchSwipedMedia={dispatchSwipedMedia}
+              swipedMedia={swipedMedia}
             />
           </Route>
           <Route path="/card-details">

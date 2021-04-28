@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
-import Header from './Header';
-import SwipeContainer from './SwipeContainer';
-import fetchRecommendationsTMDB from '../../services/movie-fetch/fetchRecommendationsTMDB';
+import { useEffect } from "react";
+import Header from "./Header";
+import SwipeContainer from "./SwipeContainer";
+import fetchRecommendationsTMDB from "../../services/movie-fetch/fetchRecommendationsTMDB";
 
 const CardPage = ({
   mediaList,
@@ -13,6 +13,7 @@ const CardPage = ({
   setMediaDetails,
   setMediaCredits,
   dispatchSwipedMedia,
+  swipedMedia,
 }) => {
   useEffect(() => {
     if (mediaList.length === 0) {
@@ -33,6 +34,7 @@ const CardPage = ({
         setMediaDetails={setMediaDetails}
         setMediaCredits={setMediaCredits}
         dispatchSwipedMedia={dispatchSwipedMedia}
+        swipedMedia={swipedMedia}
       />
     </div>
   );

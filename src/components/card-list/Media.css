@@ -1,22 +1,22 @@
-.media-list {
-  display: flex;
-  flex-direction: column;
-  border: black 10px;
-}
-.media-title {
-  width: 25%;
-  margin: 2px;
-  font-style: italic;
-  font-size: x-large;
-}
-
 .media-container {
   display: flex;
   flex-direction: row;
   width: 500px;
   height: 15%;
   margin: 10px;
-  box-shadow: 5px 5px 1px 1px lightgrey;
+  box-shadow: 5px 5px 2px 2px lightgrey;
+
+  .media-list {
+    display: flex;
+    flex-direction: column;
+    border: black 10px;
+  }
+  .media-title {
+    width: 25%;
+    margin: 2px;
+    font-style: italic;
+    font-size: x-large;
+  }
 }
 .media-list h1 {
   font: bold;
@@ -31,10 +31,26 @@
   flex-direction: column;
 }
 .return-button {
-  width: 30vw;
+  width: 500px;
   height: 5vw;
   color: grey;
   background-color: white;
   border: none;
   box-shadow: 5px 5px 2px 2px lightgrey;
+  font-weight: bold;
+  font-size: x-large;
+}
+.return-button:hover {
+  background-color: lightgrey;
+  opacity: 90%;
+}
+@media screen and (max-width: 800px) {
+  .return-button {
+    width: 100vw;
+    height: 10vh;
+  }
+
+  .media-container {
+    width: 100vw;
+  }
 }

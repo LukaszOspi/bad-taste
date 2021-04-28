@@ -14,6 +14,7 @@ const SwipeContainer = ({
   setMediaDetails,
   setMediaCredits,
   dispatchSwipedMedia,
+  swipedMedia,
 }) => {
   const history = useHistory();
 
@@ -45,6 +46,7 @@ const SwipeContainer = ({
       );
     }
   };
+  console.log(swipedMedia.liked.length);
 
   return (
     <>
@@ -52,7 +54,7 @@ const SwipeContainer = ({
         <div className="swipe-container">
           <div className="card-item">
             <button onClick={() => history.push("/card-list")}>
-              Show list
+              SHOW YOUR {swipedMedia.liked.length} LIKED TITLES
             </button>
             <h1>{mediaList[displayIndex].title}</h1>
             <img
