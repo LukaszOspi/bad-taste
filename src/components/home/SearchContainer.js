@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useEffect, useState, useReducer } from "react";
 import axios from "axios";
 import useDebounce from "../../services/useDebounce";
@@ -6,15 +5,8 @@ import SearchOptionsList from "./SearchOptionsList";
 import "../../css/home.css";
 import loadingSpinner from "../../assets/loading.gif";
 import fetchTMDB from "../../services/movieFetch/fetchTMDB";
-=======
-import { useEffect, useState, useReducer } from 'react';
-import axios from 'axios';
-import useDebounce from '../../services/useDebounce';
-import SearchOptionsList from './SearchOptionsList';
-import './SearchContainer.css';
-import loadingSpinner from '../../assets/loading.gif';
-import fetchTMDB from '../../services/movie-fetch/fetchTMDB';
->>>>>>> 9cbacdc238d172f5c15ecf1f9dfa8c13c11e37d1
+import MediaContext from '../../context';
+
 
 // const reducer = (state, action) => {
 //   const loadingOptions = {
@@ -32,6 +24,7 @@ const SearchBar = ({ dropdownSearchValue, setDropdownSearchValue }) => {
   const [options, setOptions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [display, setDisplay] = useState(false);
+  const { mediaType } = useContext(MediaContext);
   // const [loadingState, dispatch] = useReducer(reducer, {
   //   isLoading: false,
   //   display: false,
@@ -65,7 +58,7 @@ const SearchBar = ({ dropdownSearchValue, setDropdownSearchValue }) => {
     async () => {
       if (search && dropdownSearchValue.title !== search) {
         try {
-          await fetchTMDB(search, setOptions);
+          await fetchTMDB(search, setOptions, mediaType);
           // dispatch({ action: 'showDropdown' });
           setIsLoading(false);
           setDisplay(true);

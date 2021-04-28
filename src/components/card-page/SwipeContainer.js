@@ -1,9 +1,11 @@
-import { useHistory } from "react-router-dom";
-import { useEffect } from "react";
-import fetchStreamingProvidersTMDB from "../../services/movie-fetch/fetchStreamingProvidersTMDB";
-import fetchDetailsTMDB from "../../services/movie-fetch/fetchDetailsTMDB";
-import fetchCreditsTMDB from "../../services/movie-fetch/fetchCreditsTMDB";
-import fetchRecommendationsTMDB from "../../services/movie-fetch/fetchRecommendationsTMDB";
+import { useHistory } from 'react-router-dom';
+import { useEffect, useContext, useCallback } from 'react';
+import MediaContext from '../../context';
+import fetchStreamingProvidersTMDB from '../../services/movie-fetch/fetchStreamingProvidersTMDB';
+import fetchDetailsTMDB from '../../services/movie-fetch/fetchDetailsTMDB';
+import fetchCreditsTMDB from '../../services/movie-fetch/fetchCreditsTMDB';
+import fetchRecommendationsTMDB from '../../services/movie-fetch/fetchRecommendationsTMDB';
+import keyLegend from '../../services/keyLegend';
 
 const SwipeContainer = ({
   mediaList,
@@ -17,20 +19,31 @@ const SwipeContainer = ({
   swipedMedia,
 }) => {
   const history = useHistory();
+  const { mediaType } = useContext(MediaContext);
+
+  const handleFetching = useCallback(() => {
+    fetchStreamingProvidersTMDB(
+      mediaList[displayIndex].id,
+      setStreamingProvidersList
+    );
+    fetchDetailsTMDB(mediaList[displayIndex].id, setMediaDetails);
+    fetchCreditsTMDB(mediaList[displayIndex].id, setMediaCredits);
+  }, [
+    mediaList,
+    displayIndex,
+    setStreamingProvidersList,
+    setMediaDetails,
+    setMediaCredits,
+  ]);
 
   useEffect(() => {
     if (mediaList.length !== 0) {
-      fetchStreamingProvidersTMDB(
-        mediaList[displayIndex].id,
-        setStreamingProvidersList
-      );
-      fetchDetailsTMDB(mediaList[displayIndex].id, setMediaDetails);
-      fetchCreditsTMDB(mediaList[displayIndex].id, setMediaCredits);
+      handleFetching();
     }
-  }, [mediaList, displayIndex]);
+  }, [mediaList, displayIndex, handleFetching]);
 
   const showInfo = () => {
-    history.push("/card-details");
+    history.push('/card-details');
   };
 
   const fetchNewRecommendations = async (mediaID, currentList) => {
@@ -53,19 +66,21 @@ const SwipeContainer = ({
       {mediaList.length === 0 ? null : (
         <div className="swipe-container">
           <div className="card-item">
-            <button onClick={() => history.push("/card-list")}>
+            <button onClick={() => history.push('/card-list')}>
               SHOW YOUR {swipedMedia.liked.length} LIKED TITLES
             </button>
-            <h1>{mediaList[displayIndex].title}</h1>
+            <h1>{mediaList[displayIndex][keyLegend[mediaType]['title']]}</h1>
             <img
               alt="poster"
-              src={`https://image.tmdb.org/t/p/w500${mediaList[displayIndex].poster_path}`}
+              src={`https://image.tmdb.org/t/p/w500${
+                mediaList[displayIndex][keyLegend[mediaType]['poster']]
+              }`}
             />
             <div className="action-buttons">
               <button
                 onClick={() => {
                   dispatchSwipedMedia({
-                    type: "dislike",
+                    type: 'dislike',
                     payload: mediaList[displayIndex],
                   });
                   setDisplayIndex(displayIndex + 1);
@@ -77,7 +92,7 @@ const SwipeContainer = ({
               <button
                 onClick={async () => {
                   dispatchSwipedMedia({
-                    type: "like",
+                    type: 'like',
                     payload: mediaList[displayIndex],
                   });
                   setMediaList([
