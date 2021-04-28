@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import CastList from './CastList';
 import YoutubeModalPlayer from './YoutubeModalPlayer';
 
