@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useEffect, useState, useReducer } from "react";
 import axios from "axios";
 import useDebounce from "../../services/useDebounce";
@@ -5,6 +6,15 @@ import SearchOptionsList from "./SearchOptionsList";
 import "../../css/home.css";
 import loadingSpinner from "../../assets/loading.gif";
 import fetchTMDB from "../../services/movieFetch/fetchTMDB";
+=======
+import { useEffect, useState, useReducer } from 'react';
+import axios from 'axios';
+import useDebounce from '../../services/useDebounce';
+import SearchOptionsList from './SearchOptionsList';
+import './SearchContainer.css';
+import loadingSpinner from '../../assets/loading.gif';
+import fetchTMDB from '../../services/movie-fetch/fetchTMDB';
+>>>>>>> 9cbacdc238d172f5c15ecf1f9dfa8c13c11e37d1
 
 // const reducer = (state, action) => {
 //   const loadingOptions = {

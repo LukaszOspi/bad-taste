@@ -4,9 +4,9 @@ const getUniqueListByKey = (arr, key) => {
 
 const likeHandler = (state, action) => {
   switch (action.type) {
-    case 'like':
+    case "like":
       return { ...state, liked: [...state.liked, action.payload] };
-    case 'dislike':
+    case "dislike":
       return { ...state, disliked: [...state.disliked, action.payload] };
     default:
       return state;
@@ -14,3 +14,7 @@ const likeHandler = (state, action) => {
 };
 
 export { getUniqueListByKey, likeHandler };
+
+// const [state, dispatch] = useReducer(reducer, initialStatealue)
+
+// dispatch({type: 'like', payload: 'blablabla'})
