@@ -42,7 +42,9 @@ const SwipeContainer = ({
   }, [mediaList, displayIndex, handleFetching]);
 
   const showInfo = () => {
-    history.push('/card-details');
+    setTimeout(() => {
+      history.push('/card-details');
+    }, 150);
   };
 
   const fetchNewRecommendations = async (mediaID, currentList) => {
