@@ -1,15 +1,30 @@
-import React from 'react'
+import React from "react";
+import "./Media.css";
 
 const Media = (props) => {
-    return (
-        <div>
-            <div>
-                <img src={`https://image.tmdb.org/t/p/w92${props.img}`|| './src/assets/img-placeholder.png'} alt="poster-image"></img>
-            </div>
-            <div><h1>{props.title}</h1></div>
-            <div>{props.year}</div>
-        </div>
-    )
-}
+  return (
+    <div className="media-container">
+      <div>
+        <img
+          className="media-image"
+          src={
+            `https://image.tmdb.org/t/p/w92${props.img}` ||
+            "./src/assets/img-placeholder.png"
+          }
+          alt="poster-image"
+        ></img>
+      </div>
+      <div className="media-title">
+        {props.title}
 
-export default Media
+        <div className="media-year">
+          <h1>
+            Release date:<br></br> {props.year}
+          </h1>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Media;

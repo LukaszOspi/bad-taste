@@ -1,15 +1,26 @@
-import React from 'react'
-import MediaList from './MediaList'
+import React from "react";
+import MediaList from "./MediaList";
+import "./Media.css";
+import { useHistory } from "react-router-dom";
 
+const CardList = ({ swipedMedia }) => {
+  const history = useHistory();
 
-const CardList = ({swipedMedias}) => {
-    
-    return (
-        <div>
-            <MediaList swipedMedias={swipedMedias} />
-            </div>
-    )
-
-}
+  const backCardPage = () => {
+    history.push("/card-page");
+  };
+  return (
+    <>
+      <div>
+        <button className="return-button" onClick={backCardPage}>
+          RETURN
+        </button>
+      </div>
+      <div className="card-list">
+        <MediaList swipedMedia={swipedMedia} />
+      </div>
+    </>
+  );
+};
 
 export default CardList;

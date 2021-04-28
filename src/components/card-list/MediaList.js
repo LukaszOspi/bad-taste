@@ -1,11 +1,12 @@
 import React from "react";
 import Media from "./Media";
+import "./Media.css";
 
 const MediaList = (props) => {
-  const { swipedMedias } = props;
+  const { swipedMedia } = props;
   return (
-    <div>
-      {swipedMedias.liked.map((element, index) => {
+    <div className="media-list">
+      {swipedMedia.liked.map((element, index) => {
         return (
           <Media
             key={index}

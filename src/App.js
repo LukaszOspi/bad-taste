@@ -8,6 +8,7 @@ import ScrollToTop from "./services/ScrollToTop";
 import Home from "./components/home/Home";
 import CardPage from "./components/card-page/CardPage";
 import CardDetails from "./components/card-details/CardDetails";
+import CardList from "./components/card-list/CardList";
 
 function App() {
   const history = useHistory();
@@ -67,7 +68,7 @@ function App() {
             />
           </Route>
           <Route path="/card-list">
-            <CardList swipedMedias={swipedMedias} />
+            <CardList swipedMedia={swipedMedia} />
           </Route>
         </Switch>
       </ScrollToTop>
