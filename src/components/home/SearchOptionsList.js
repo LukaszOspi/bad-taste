@@ -1,7 +1,7 @@
-import SearchOptions from "./SearchOptions";
-import "../../css/home.css";
-import { useHistory } from "react-router-dom";
-import React from "react";
+import SearchOptions from './SearchOptions';
+import './SearchOptionsList.css';
+import { useHistory } from 'react-router-dom';
+import React from 'react';
 
 const SearchOptionsList = ({
   options,
@@ -16,7 +16,7 @@ const SearchOptionsList = ({
     setSearch(value);
     setDisplay(false);
     // dispatch({ type: 'hideDropdown' });
-    history.push("/card-page");
+    history.push('/card-page');
   };
 
   return (

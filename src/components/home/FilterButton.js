@@ -1,16 +1,14 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-
-import { useState } from "react";
-import { css, jsx } from "@emotion/react";
-import "../../css/home.css";
+import { useState, useContext } from 'react';
+import { css, jsx } from '@emotion/react';
+import './FilterButton.css';
 import MediaContext from '../../context';
 
 const FilterButton = () => {
-  const [background, setBackground] = useState("#fdfdfd");
-  const [font, setFont] = useState("#424246");
+  const [background, setBackground] = useState('#fdfdfd');
+  const [font, setFont] = useState('#424246');
   const { mediaType, setMediaType } = useContext(MediaContext);
-
   const setStyle = (background, font) => {
     setBackground(background);
     setFont(font);
@@ -21,14 +19,14 @@ const FilterButton = () => {
     padding: 40px 40px 20px 40px;
     background-color: ${background};
     h1 {
-      font-family: "Abril Fatface", cursive;
+      font-family: 'Abril Fatface', cursive;
       font-weight: 400;
       font-size: 36px;
       margin-bottom: 10px;
       color: ${font};
     }
     p {
-      font-family: "Poppins", sans-serif;
+      font-family: 'Poppins', sans-serif;
       font-weight: 300;
       font-size: 16px;
       margin-bottom: 20px;
@@ -41,7 +39,7 @@ const FilterButton = () => {
     flex-wrap: wrap;
 
     div {
-      font-family: "Poppins", sans-serif;
+      font-family: 'Poppins', sans-serif;
       font-weight: 500;
       font-size: 12px;
       padding: 10px 30px;
@@ -77,8 +75,8 @@ const FilterButton = () => {
       </p>
       <div css={cardButtons}>
         <div
-          onMouseEnter={() => setStyle("#424246", "#fdfdfd")}
-          onMouseOut={() => setStyle("#fdfdfd", "#424246")}
+          onMouseEnter={() => setStyle('#424246', '#fdfdfd')}
+          onMouseOut={() => setStyle('#fdfdfd', '#424246')}
           css={blackButton}
           onClick={() => {
             setMediaType('movie');
@@ -87,16 +85,16 @@ const FilterButton = () => {
           Movie
         </div>
         <div
-          onMouseEnter={() => setStyle("#1d499b", "#fdfdfd")}
-          onMouseOut={() => setStyle("#fdfdfd", "#424246")}
+          onMouseEnter={() => setStyle('#1d499b', '#fdfdfd')}
+          onMouseOut={() => setStyle('#fdfdfd', '#424246')}
           css={blueButton}
           onClick={() => setMediaType('tv')}
         >
           Tv Shows
         </div>
         <div
-          onMouseEnter={() => setStyle("#f9d648", "#424246")}
-          onMouseOut={() => setStyle("#fdfdfd", "#424246")}
+          onMouseEnter={() => setStyle('#f9d648', '#424246')}
+          onMouseOut={() => setStyle('#fdfdfd', '#424246')}
           css={yellowButton}
           onClick={() => setMediaType('book')}
         >

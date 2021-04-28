@@ -1,6 +1,6 @@
-import { useReducer } from "react";
-import CastMember from "./CastMember";
-import "../../css/card-details.css";
+import { useReducer } from 'react';
+import CastMember from './CastMember';
+// import './CastList.css';
 
 const reducer = (state, action) => {
   // switch (action.type) {
@@ -32,7 +32,7 @@ const CastList = ({ mediaCredits }) => {
         ) : (
           <button
             className="slide-show-button"
-            onClick={() => dispatch({ type: "decrement" })}
+            onClick={() => dispatch({ type: 'decrement' })}
           >{`<`}</button>
         )}
         <div className="cast-list">
@@ -49,7 +49,7 @@ const CastList = ({ mediaCredits }) => {
         </div>
         <button
           className="slide-show-button"
-          onClick={() => dispatch({ type: "increment" })}
+          onClick={() => dispatch({ type: 'increment' })}
         >{`>`}</button>
       </div>
     </div>
