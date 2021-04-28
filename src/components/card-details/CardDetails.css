@@ -123,10 +123,6 @@
     padding-right: 10%;
     padding-bottom: 5%;
   }
-
-  .selected {
-    background-color: blue;
-  }
 }
 
 @media only screen and (min-width: 480px) {
@@ -136,4 +132,8 @@
 }
 
 @media only screen and (min-width: 1024px) {
+}
+
+.selected {
+  background-color: blue;
 }
