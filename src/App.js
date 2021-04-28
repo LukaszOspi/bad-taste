@@ -1,13 +1,14 @@
-import { useState, useReducer } from 'react';
-import { Switch, Route, useHistory } from 'react-router-dom';
-import { likeHandler } from './services/utilityFunctions';
-import React from 'react';
-import logo from './assets/logoPlaceholder.jpg';
-import './App.css';
-import ScrollToTop from './services/ScrollToTop';
-import Home from './components/home/Home';
-import CardPage from './components/card-page/CardPage';
-import CardDetails from './components/card-details/CardDetails';
+import { useState, useReducer } from "react";
+import { Switch, Route, useHistory } from "react-router-dom";
+import { likeHandler } from "./services/utilityFunctions";
+import React from "react";
+import logo from "./assets/logoPlaceholder.jpg";
+import "./App.css";
+import ScrollToTop from "./services/ScrollToTop";
+import Home from "./components/home/Home";
+import CardPage from "./components/card-page/CardPage";
+import CardDetails from "./components/card-details/CardDetails";
+import CardList from "./components/card-list/CardList";
 
 function App() {
   const history = useHistory();
@@ -17,8 +18,8 @@ function App() {
   const [mediaDetails, setMediaDetails] = useState();
   const [mediaCredits, setMediaCredits] = useState();
   const [dropdownSearchValue, setDropdownSearchValue] = useState({
-    title: '',
-    id: '',
+    title: "",
+    id: "",
   });
   const [swipedMedia, dispatchSwipedMedia] = useReducer(likeHandler, {
     liked: [],
@@ -34,7 +35,7 @@ function App() {
               id="logo"
               alt="logo"
               src={logo}
-              onClick={() => history.push('/')}
+              onClick={() => history.push("/")}
             />
           </nav>
         </header>
@@ -57,6 +58,7 @@ function App() {
               setMediaDetails={setMediaDetails}
               setMediaCredits={setMediaCredits}
               dispatchSwipedMedia={dispatchSwipedMedia}
+              swipedMedia={swipedMedia}
             />
           </Route>
           <Route path="/card-details">
@@ -65,6 +67,9 @@ function App() {
               mediaDetails={mediaDetails}
               mediaCredits={mediaCredits}
             />
+          </Route>
+          <Route path="/card-list">
+            <CardList swipedMedia={swipedMedia} />
           </Route>
         </Switch>
       </ScrollToTop>

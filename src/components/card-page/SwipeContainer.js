@@ -1,9 +1,9 @@
-import { useHistory } from 'react-router-dom';
-import { useEffect } from 'react';
-import fetchStreamingProvidersTMDB from '../../services/movie-fetch/fetchStreamingProvidersTMDB';
-import fetchDetailsTMDB from '../../services/movie-fetch/fetchDetailsTMDB';
-import fetchCreditsTMDB from '../../services/movie-fetch/fetchCreditsTMDB';
-import fetchRecommendationsTMDB from '../../services/movie-fetch/fetchRecommendationsTMDB';
+import { useHistory } from "react-router-dom";
+import { useEffect } from "react";
+import fetchStreamingProvidersTMDB from "../../services/movie-fetch/fetchStreamingProvidersTMDB";
+import fetchDetailsTMDB from "../../services/movie-fetch/fetchDetailsTMDB";
+import fetchCreditsTMDB from "../../services/movie-fetch/fetchCreditsTMDB";
+import fetchRecommendationsTMDB from "../../services/movie-fetch/fetchRecommendationsTMDB";
 
 const SwipeContainer = ({
   mediaList,
@@ -14,6 +14,7 @@ const SwipeContainer = ({
   setMediaDetails,
   setMediaCredits,
   dispatchSwipedMedia,
+  swipedMedia,
 }) => {
   const history = useHistory();
 
@@ -29,7 +30,7 @@ const SwipeContainer = ({
   }, [mediaList, displayIndex]);
 
   const showInfo = () => {
-    history.push('/card-details');
+    history.push("/card-details");
   };
 
   const fetchNewRecommendations = async (mediaID, currentList) => {
@@ -45,12 +46,16 @@ const SwipeContainer = ({
       );
     }
   };
+  console.log(swipedMedia.liked.length);
 
   return (
     <>
       {mediaList.length === 0 ? null : (
         <div className="swipe-container">
           <div className="card-item">
+            <button onClick={() => history.push("/card-list")}>
+              SHOW YOUR {swipedMedia.liked.length} LIKED TITLES
+            </button>
             <h1>{mediaList[displayIndex].title}</h1>
             <img
               alt="poster"
@@ -60,7 +65,7 @@ const SwipeContainer = ({
               <button
                 onClick={() => {
                   dispatchSwipedMedia({
-                    type: 'dislike',
+                    type: "dislike",
                     payload: mediaList[displayIndex],
                   });
                   setDisplayIndex(displayIndex + 1);
@@ -72,7 +77,7 @@ const SwipeContainer = ({
               <button
                 onClick={async () => {
                   dispatchSwipedMedia({
-                    type: 'like',
+                    type: "like",
                     payload: mediaList[displayIndex],
                   });
                   setMediaList([
