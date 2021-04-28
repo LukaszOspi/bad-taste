@@ -1,7 +1,7 @@
-import { useHistory } from 'react-router-dom';
-import StreamingProvidersList from './StreamingProvidersList';
-import MediaInfo from './MediaInfo';
-import './CardDetails.css';
+import { useHistory } from "react-router-dom";
+import StreamingProvidersList from "./StreamingProvidersList";
+import MediaInfo from "./MediaInfo";
+import "../../css/card-details.css";
 
 const CardDetails = ({
   streamingProvidersList,
@@ -11,7 +11,7 @@ const CardDetails = ({
   const history = useHistory();
 
   const showList = () => {
-    history.push('/card-page');
+    history.push("/card-page");
   };
 
   return (

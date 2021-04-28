@@ -1,4 +1,4 @@
-import './SearchOptions.css';
+import "../../css/home.css";
 
 const SearchOptions = ({ poster, title, year }) => {
   return (
