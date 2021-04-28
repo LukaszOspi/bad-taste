@@ -1,9 +1,11 @@
 import { useState, useContext } from 'react';
 import CastList from './CastList';
 import YoutubeModalPlayer from './YoutubeModalPlayer';
+import MediaContext from '../../context';
 
-const MediaInfo = ({ mediaDetails, mediaCredits }) => {
+const MovieInfo = ({ mediaDetails, mediaCredits }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const { mediaType } = useContext(MediaContext);
 
   const mediaLength =
     mediaDetails.runtime % 60 === 0
@@ -61,4 +63,4 @@ const MediaInfo = ({ mediaDetails, mediaCredits }) => {
   );
 };
 
-export default MediaInfo;
+export default MovieInfo;

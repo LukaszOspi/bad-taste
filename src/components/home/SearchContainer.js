@@ -7,28 +7,12 @@ import loadingSpinner from '../../assets/loading.gif';
 import fetchTMDB from '../../services/movie-fetch/fetchTMDB';
 import MediaContext from '../../context';
 
-// const reducer = (state, action) => {
-//   const loadingOptions = {
-//     initial: () => ({ isLoading: false, display: false, options: [] }),
-//     loading: () => ({ isLoading: true, display: false, options: [] }),
-//     showDropdown: () => ({ ...state, isLoading: false, display: true }),
-//     hideDropdown: () => ({ ...state, isLoading: false, display: false }),
-//     default: () => state,
-//   };
-//   return (loadingOptions[action.type] || loadingOptions.default)();
-// };
-
 const SearchBar = ({ dropdownSearchValue, setDropdownSearchValue }) => {
   const [search, setSearch] = useState('');
   const [options, setOptions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [display, setDisplay] = useState(false);
   const { mediaType } = useContext(MediaContext);
-  // const [loadingState, dispatch] = useReducer(reducer, {
-  //   isLoading: false,
-  //   display: false,
-  //   options: [],
-  // });
 
   const handleLoading = () => {
     if (!isLoading) {
@@ -58,7 +42,6 @@ const SearchBar = ({ dropdownSearchValue, setDropdownSearchValue }) => {
       if (search && dropdownSearchValue.title !== search) {
         try {
           await fetchTMDB(search, setOptions, mediaType);
-          // dispatch({ action: 'showDropdown' });
           setIsLoading(false);
           setDisplay(true);
         } catch (err) {
@@ -72,7 +55,6 @@ const SearchBar = ({ dropdownSearchValue, setDropdownSearchValue }) => {
 
   useEffect(() => {
     if (!search) {
-      // dispatch({ type: 'initial' });
       resetOptions();
     }
     return () => {
@@ -88,7 +70,6 @@ const SearchBar = ({ dropdownSearchValue, setDropdownSearchValue }) => {
           placeholder="Type to search"
           value={search}
           onChange={(e) => {
-            // dispatch({ type: 'loading' });
             handleLoading();
             setSearch(e.target.value);
           }}
@@ -105,7 +86,6 @@ const SearchBar = ({ dropdownSearchValue, setDropdownSearchValue }) => {
               setDropdownSearchValue={setDropdownSearchValue}
               setSearch={setSearch}
               setDisplay={setDisplay}
-              // dispatch={dispatch}
             />
           </div>
         )}

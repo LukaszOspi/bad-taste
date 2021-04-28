@@ -1,6 +1,9 @@
 import { useHistory } from 'react-router-dom';
+import { useContext } from 'react';
+import MediaContext from '../../context';
 import StreamingProvidersList from './StreamingProvidersList';
-import MediaInfo from './MediaInfo';
+import MovieInfo from './MovieInfo';
+import TvShowInfo from './TvShowInfo';
 import './CardDetails.css';
 
 const CardDetails = ({
@@ -9,6 +12,7 @@ const CardDetails = ({
   mediaCredits,
 }) => {
   const history = useHistory();
+  const { mediaType } = useContext(MediaContext);
 
   const showList = () => {
     history.push('/card-page');
@@ -21,8 +25,10 @@ const CardDetails = ({
       <br />
       {!mediaDetails ? (
         <p>Error while trying to gather information about this content</p>
+      ) : mediaType === 'movie' ? (
+        <MovieInfo mediaDetails={mediaDetails} mediaCredits={mediaCredits} />
       ) : (
-        <MediaInfo mediaDetails={mediaDetails} mediaCredits={mediaCredits} />
+        <TvShowInfo mediaDetails={mediaDetails} mediaCredits={mediaCredits} />
       )}
       {streamingProvidersList === undefined ? (
         <p>This content is not availabe online in your region</p>

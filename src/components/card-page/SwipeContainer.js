@@ -24,16 +24,18 @@ const SwipeContainer = ({
   const handleFetching = useCallback(() => {
     fetchStreamingProvidersTMDB(
       mediaList[displayIndex].id,
-      setStreamingProvidersList
+      setStreamingProvidersList,
+      mediaType
     );
-    fetchDetailsTMDB(mediaList[displayIndex].id, setMediaDetails);
-    fetchCreditsTMDB(mediaList[displayIndex].id, setMediaCredits);
+    fetchDetailsTMDB(mediaList[displayIndex].id, setMediaDetails, mediaType);
+    fetchCreditsTMDB(mediaList[displayIndex].id, setMediaCredits, mediaType);
   }, [
     mediaList,
     displayIndex,
     setStreamingProvidersList,
     setMediaDetails,
     setMediaCredits,
+    mediaType,
   ]);
 
   useEffect(() => {
@@ -50,7 +52,11 @@ const SwipeContainer = ({
 
   const fetchNewRecommendations = async (mediaID, currentList) => {
     try {
-      const newList = await fetchRecommendationsTMDB(mediaID);
+      const newList = await fetchRecommendationsTMDB(
+        mediaID,
+        undefined,
+        mediaType
+      );
       const filteredNewList = newList.filter(
         (e) => !currentList.find((d) => e.id === d.id)
       );
@@ -61,7 +67,6 @@ const SwipeContainer = ({
       );
     }
   };
-  console.log(swipedMedia.liked.length);
 
   return (
     <>

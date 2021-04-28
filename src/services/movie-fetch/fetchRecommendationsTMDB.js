@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-const fetchRecommendationsTMDB = async (searchID, updater) => {
+const fetchRecommendationsTMDB = async (searchID, updater, type) => {
   const source = axios.CancelToken.source();
   const apiKeyTMDB = process.env.REACT_APP_TMDB_API_KEY;
   const searchParams = { api_key: apiKeyTMDB };
 
   try {
     const res = await axios.get(
-      `https://api.themoviedb.org/3/movie/${searchID}/recommendations?`,
+      `https://api.themoviedb.org/3/${type}/${searchID}/recommendations?`,
       {
         params: searchParams,
         cancelToken: source.token,
