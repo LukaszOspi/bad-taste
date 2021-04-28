@@ -4,7 +4,7 @@ import { Switch, Route, useHistory } from "react-router-dom";
 import { likeHandler } from "./services/utilityFunctions";
 import React from "react";
 import logo from "./assets/logoPlaceholder.jpg";
-import "./App.css";
+import "./css/app.css";
 import ScrollToTop from "./services/ScrollToTop";
 import Home from "./components/home/Home";
 import CardPage from "./components/card-page/CardPage";
