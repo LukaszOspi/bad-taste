@@ -1,0 +1,64 @@
+
+
+.footer {
+  background-color: #B2FFF1;
+  padding: 70px 30px;
+  text-align: center;
+  font-family:Verdana, Geneva, Tahoma, sans-serif
+  font-size:20px;
+  line-height:30px;
+  color: black;
+}
+
+.row1 {
+  display: flex;
+  justify-content: center;
+  background-color: lightblue;
+  column-width: 33%;
+}
+
+.about {
+  background-color: khaki;
+  font-size: 15px;
+  text-align: left;
+}
+
+.categories {
+  background-color: lightgreen;
+  font-size: 15px;
+  text-align: center;
+}
+
+.contact {
+  background-color: palevioletred;
+  font-size: 15px;
+  text-align: center;
+}
+
+
+h1 {
+  text-align: center;
+  font-size: 20px ;
+}
+
+ul {
+  padding: 70px 30px;
+  text-align: center;
+  font-size: 20px;
+}
+
+p {
+  text-align: center;
+  text-indent: 10px;
+  line-height: 20px;
+  font-size: 15px;
+}
+
+h3 {
+  text-align: center;
+  font-size: 15px;
+}
+
+.bottom {
+  background-color: lightblue;
+}
