@@ -1,9 +1,10 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { useState, useContext } from 'react';
-import { css, jsx } from '@emotion/react';
+import { injectGlobal, css, jsx } from '@emotion/react';
 import './FilterButton.css';
 import MediaContext from '../../context';
+import '../../index.css'
 
 const FilterButton = () => {
   const [background, setBackground] = useState('#fdfdfd');
@@ -19,15 +20,15 @@ const FilterButton = () => {
     padding: 40px 40px 20px 40px;
     background-color: ${background};
     h1 {
-      font-family: 'Abril Fatface', cursive;
-      font-weight: 400;
-      font-size: 36px;
+      font-family: 'Permanent Marker', sans-serif;
+      font-weight: 500;
+      font-size: 40px;
       margin-bottom: 10px;
       color: ${font};
     }
     p {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 300;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
       font-size: 16px;
       margin-bottom: 20px;
       color: ${font};
@@ -39,8 +40,8 @@ const FilterButton = () => {
     flex-wrap: wrap;
 
     div {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 500;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
       font-size: 12px;
       padding: 10px 30px;
       margin-right: 20px;
