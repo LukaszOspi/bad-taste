@@ -1,5 +1,6 @@
-import ModalVideo from 'react-modal-video';
-import 'react-modal-video/scss/modal-video.scss';
+import ModalVideo from "react-modal-video";
+import "react-modal-video/scss/modal-video.scss";
+import "../../index.css";
 
 const YoutubeModalPlayer = ({ modalIsOpen, setModalIsOpen, youtubeKey }) => {
   return (

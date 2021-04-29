@@ -1,3 +1,5 @@
+import "../../index.css";
+
 const StreamingProviders = ({ logo, name }) => {
   return (
     <div className="streaming-provider">
