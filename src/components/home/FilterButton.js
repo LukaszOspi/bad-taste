@@ -20,7 +20,7 @@ const FilterButton = () => {
     padding: 40px 40px 20px 40px;
     background-color: ${background};
     h1 {
-      font-family: "Abril Fatface", cursive;
+      font-family: "Permanent Marker", cursive;
       font-weight: 400;
       font-size: 36px;
       margin-bottom: 10px;
