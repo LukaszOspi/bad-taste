@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;700&family=Permanent+Marker&display=swap");
+
+.swipe-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.card-item {
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (max-width: 800px) {
+  .card-page-img {
+    width: 50%;
+  }
+
+  .like-button {
+    font-family: "Permanent Marker";
+    font-size: 16px;
+    word-wrap: break-word;
+    width: auto;
+    height: auto;
+  }
+}
+
+.like-button {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  padding: 10px 30px;
+  margin-right: 20px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  width: 12vw;
+}
