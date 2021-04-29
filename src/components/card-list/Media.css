@@ -5,23 +5,23 @@
   height: 15%;
   margin: 10px;
   box-shadow: 5px 5px 2px 2px lightgrey;
-
-  .media-list {
-    display: flex;
-    flex-direction: column;
-    border: black 10px;
-  }
-  .media-title {
-    width: 25%;
-    margin: 2px;
-    font-style: italic;
-    font-size: x-large;
-  }
 }
-.media-list h1 {
+.media-list {
+  display: flex;
+  flex-direction: column;
+  border: black 10px;
+}
+.media-title {
+  width: 25%;
+  margin: 2px;
+  font-style: italic;
+  font-size: x-large;
+}
+
+/* .media-list h1 {
   font: bold;
   font-size: small;
-}
+} */
 
 .media-image {
   width: 100px;
