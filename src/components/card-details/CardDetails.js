@@ -1,10 +1,11 @@
-import { useHistory } from 'react-router-dom';
-import { useContext } from 'react';
-import MediaContext from '../../context';
-import StreamingProvidersList from './StreamingProvidersList';
-import MovieInfo from './MovieInfo';
-import TvShowInfo from './TvShowInfo';
-import './CardDetails.css';
+import { useHistory } from "react-router-dom";
+import { useContext } from "react";
+import MediaContext from "../../context";
+import StreamingProvidersList from "./StreamingProvidersList";
+import MovieInfo from "./MovieInfo";
+import TvShowInfo from "./TvShowInfo";
+import "./CardDetails.css";
+import "../../index.css";
 
 const CardDetails = ({
   streamingProvidersList,
@@ -15,7 +16,7 @@ const CardDetails = ({
   const { mediaType } = useContext(MediaContext);
 
   const showList = () => {
-    history.push('/card-page');
+    history.push("/card-page");
   };
 
   return (
@@ -25,7 +26,7 @@ const CardDetails = ({
       <br />
       {!mediaDetails ? (
         <p>Error while trying to gather information about this content</p>
-      ) : mediaType === 'movie' ? (
+      ) : mediaType === "movie" ? (
         <MovieInfo mediaDetails={mediaDetails} mediaCredits={mediaCredits} />
       ) : (
         <TvShowInfo mediaDetails={mediaDetails} mediaCredits={mediaCredits} />

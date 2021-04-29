@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;700&family=Permanent+Marker&display=swap");
+
+/* font-family: 'Montserrat', sans-serif; */
+/* font-family: 'Permanent Marker', cursive; */
+
+h1 {
+  font-family: "Permanent Marker", cursive;
+  font-size: 64px;
+}
+
+h2 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 50px;
+}
+
+h3 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 45px;
+}
+
+h4 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 35px;
+}
+
+p {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 200;
+  font-size: 25px;
+}
+
+#button {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 200;
+}

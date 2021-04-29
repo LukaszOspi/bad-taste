@@ -1,5 +1,6 @@
-import StreamingProviders from './StreamingProviders';
-import './StreamingProvidersList.css';
+import StreamingProviders from "./StreamingProviders";
+import "./StreamingProvidersList.css";
+import "../../index.css";
 
 const StreamingProvidersList = ({ streamingProvidersList }) => {
   return (

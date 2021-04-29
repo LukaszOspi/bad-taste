@@ -1,5 +1,6 @@
-import FilterButton from './FilterButton';
-import SearchContainer from './SearchContainer';
+import FilterButton from "./FilterButton";
+import SearchContainer from "./SearchContainer";
+import "../../index.css";
 
 const Home = ({
   setMediaList,

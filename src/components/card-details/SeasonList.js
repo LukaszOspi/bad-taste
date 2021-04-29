@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState } from "react";
+import "../../index.css";
 
 const SeasonList = ({ mediaDetails }) => {
   const [selectedSeason, setSelectedSeason] = useState(1);
@@ -10,7 +11,7 @@ const SeasonList = ({ mediaDetails }) => {
           return s.season_number > 0 ? (
             <button
               className={`season-button ${
-                s.season_number === selectedSeason ? 'selected' : null
+                s.season_number === selectedSeason ? "selected" : null
               }`}
               onClick={(e) => setSelectedSeason(parseInt(e.target.innerText))}
               key={i}
