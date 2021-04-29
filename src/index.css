@@ -45,3 +45,27 @@ p {
   border-radius: 50px;
   cursor: pointer;
 }
+
+/* @media (min-width: 800px) {
+  html {
+    background-color: black;
+  }
+  .App {
+    background: black;
+    color: white;
+  }
+
+  .button {
+    background: grey;
+  }
+  .like-button {
+    background: grey;
+  }
+  h1 {
+    color: beige;
+  }
+
+  .auto-container {
+    background: black;
+  }
+} */

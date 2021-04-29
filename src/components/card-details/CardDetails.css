@@ -134,6 +134,32 @@
 @media only screen and (min-width: 1024px) {
 }
 
+@media (prefers-color-scheme: dark) {
+  .App {
+    background: black;
+    color: white;
+  }
+}
 .selected {
   background-color: blue;
+}
+
+.card-details {
+  display: flexbox;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  width: auto;
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.streaming-icon {
+  margin: 10px;
+}
+.streaming-options {
+  display: flex;
+  align-items: center;
 }

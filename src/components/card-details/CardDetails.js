@@ -20,27 +20,30 @@ const CardDetails = ({
   };
 
   return (
-    <div className="card-details">
+    <>
+      <br />
       <button className="button" onClick={showList}>
         Back to the list
       </button>
-      <br />
-      <br />
-      {!mediaDetails ? (
-        <p>Error while trying to gather information about this content</p>
-      ) : mediaType === "movie" ? (
-        <MovieInfo mediaDetails={mediaDetails} mediaCredits={mediaCredits} />
-      ) : (
-        <TvShowInfo mediaDetails={mediaDetails} mediaCredits={mediaCredits} />
-      )}
-      {streamingProvidersList === undefined ? (
-        <p>This content is not availabe online in your region</p>
-      ) : (
-        <StreamingProvidersList
-          streamingProvidersList={streamingProvidersList}
-        />
-      )}
-    </div>
+      <div className="card-details">
+        <br />
+        {!mediaDetails ? (
+          <p>Error while trying to gather information about this content</p>
+        ) : mediaType === "movie" ? (
+          <MovieInfo mediaDetails={mediaDetails} mediaCredits={mediaCredits} />
+        ) : (
+          <TvShowInfo mediaDetails={mediaDetails} mediaCredits={mediaCredits} />
+        )}
+
+        {streamingProvidersList === undefined ? (
+          <p>This content is not availabe online in your region</p>
+        ) : (
+          <StreamingProvidersList
+            streamingProvidersList={streamingProvidersList}
+          />
+        )}
+      </div>
+    </>
   );
 };
 

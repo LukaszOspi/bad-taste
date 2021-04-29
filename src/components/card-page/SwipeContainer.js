@@ -90,9 +90,8 @@ const SwipeContainer = ({
                   setDisplayIndex(displayIndex + 1);
                 }}
               >
-                DISLIKE{" ("}
-                {swipedMedia.disliked.length}
-                {")"}
+                DISLIKE
+                {" " + swipedMedia.disliked.length}
               </button>
               <img
                 className="card-page-img"
@@ -118,9 +117,8 @@ const SwipeContainer = ({
                   setDisplayIndex(displayIndex + 1);
                 }}
               >
-                LIKE {" ("}
-                {swipedMedia.liked.length}
-                {")"}
+                LIKE
+                {" " + swipedMedia.liked.length}
               </button>
             </div>
           </div>
