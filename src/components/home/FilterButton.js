@@ -17,12 +17,12 @@ const FilterButton = () => {
 
   const card = css`
     max-width: 600px;
-    padding: 40px 40px 20px 40px;
+    padding: 5px 40px 20px 40px;
     background-color: ${background};
     h1 {
       font-family: "Permanent Marker", cursive;
       font-weight: 400;
-      font-size: 36px;
+      font-size: 60px;
       margin-bottom: 10px;
       color: ${font};
     }
@@ -69,7 +69,7 @@ const FilterButton = () => {
 
   return (
     <div css={card}>
-      <h1>Medium you want to search</h1>
+      <h1>BAD TASTE</h1>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pulvinar sed
         elementum egestas blandit. Proin augue lacus, phasellus vel lorem risus.
@@ -79,9 +79,7 @@ const FilterButton = () => {
           onMouseEnter={() => setStyle("#424246", "#fdfdfd")}
           onMouseOut={() => setStyle("#fdfdfd", "#424246")}
           css={blackButton}
-          onClick={() => {
-            setMediaType("movie");
-          }}
+          onClick={() => {setMediaType("movie")}}
         >
           Movie
         </div>

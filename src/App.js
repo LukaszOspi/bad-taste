@@ -1,7 +1,7 @@
 import { useState, useReducer, useEffect } from 'react';
 import { Switch, Route, useHistory } from 'react-router-dom';
 import { likeHandler } from './services/utilityFunctions';
-import logo from './assets/logoPlaceholder.jpg';
+import logo from './assets/mouth-3.png';
 import './App.css';
 import ScrollToTop from './services/ScrollToTop';
 import Home from './components/home/Home';
