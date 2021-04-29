@@ -21,7 +21,9 @@ const CardDetails = ({
 
   return (
     <div className="card-details">
-      <button onClick={showList}>Back to the list</button>
+      <button className="button" onClick={showList}>
+        Back to the list
+      </button>
       <br />
       <br />
       {!mediaDetails ? (

@@ -10,6 +10,7 @@ const FilterButton = () => {
   const [background, setBackground] = useState("#fdfdfd");
   const [font, setFont] = useState("#424246");
   const { mediaType, setMediaType } = useContext(MediaContext);
+
   const setStyle = (background, font) => {
     setBackground(background);
     setFont(font);
@@ -19,20 +20,20 @@ const FilterButton = () => {
     max-width: 600px;
     padding: 40px 40px 20px 40px;
     background-color: ${background};
-    h1 {
-      font-family: "Abril Fatface", cursive;
-      font-weight: 400;
-      font-size: 36px;
-      margin-bottom: 10px;
-      color: ${font};
-    }
-    p {
-      font-family: "Poppins", sans-serif;
-      font-weight: 300;
-      font-size: 16px;
-      margin-bottom: 20px;
-      color: ${font};
-    }
+    // h1 {
+    //   font-family: "Abril Fatface", cursive;
+    //   font-weight: 400;
+    //   font-size: 36px;
+    //   margin-bottom: 10px;
+    //   color: ${font};
+    // }
+    // p {
+    //   font-family: "Poppins", sans-serif;
+    //   font-weight: 300;
+    //   font-size: 16px;
+    //   margin-bottom: 20px;
+    //   color: ${font};
+    // }
   `;
 
   const cardButtons = css`
@@ -76,11 +77,12 @@ const FilterButton = () => {
       </p>
       <div css={cardButtons}>
         <div
-          onMouseEnter={() => setStyle("#424246", "#fdfdfd")}
-          onMouseOut={() => setStyle("#fdfdfd", "#424246")}
+          // onClick={() => setStyle("#424246", "#fdfdfd")}
+          // onMouseOut={() => setStyle("#fdfdfd", "#424246")}
           css={blackButton}
           onClick={() => {
             setMediaType("movie");
+            setStyle("#424246", "#fdfdfd");
           }}
         >
           Movie

@@ -74,7 +74,10 @@ const SwipeContainer = ({
       {mediaList.length === 0 ? null : (
         <div className="swipe-container">
           <div className="card-item">
-            <button onClick={() => history.push("/card-list")}>
+            <button
+              className="button"
+              onClick={() => history.push("/card-list")}
+            >
               SHOW YOUR {swipedMedia.liked.length} LIKED TITLES
             </button>
             <h1>{mediaList[displayIndex][keyLegend[mediaType]["title"]]}</h1>
@@ -86,6 +89,7 @@ const SwipeContainer = ({
             />
             <div className="action-buttons">
               <button
+                className="button"
                 onClick={() => {
                   dispatchSwipedMedia({
                     type: "dislike",
@@ -96,8 +100,11 @@ const SwipeContainer = ({
               >
                 Dislike
               </button>
-              <button onClick={showInfo}>More info</button>
+              <button className="button" onClick={showInfo}>
+                More info
+              </button>
               <button
+                className="button"
                 onClick={async () => {
                   dispatchSwipedMedia({
                     type: "like",

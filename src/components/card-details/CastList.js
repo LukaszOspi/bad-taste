@@ -20,10 +20,10 @@ const CastList = ({ mediaCredits }) => {
       <h4 id="cast-title">Top Billed Cast: </h4>
       <div id="slide-show">
         {index === 0 ? (
-          <button className="slide-show-button" disabled>{`<`}</button>
+          <button className="button" disabled>{`<`}</button>
         ) : (
           <button
-            className="slide-show-button"
+            className="button"
             onClick={() => dispatch({ type: "decrement" })}
           >{`<`}</button>
         )}
@@ -40,7 +40,7 @@ const CastList = ({ mediaCredits }) => {
           )}
         </div>
         <button
-          className="slide-show-button"
+          className="button"
           onClick={() => dispatch({ type: "increment" })}
         >{`>`}</button>
       </div>

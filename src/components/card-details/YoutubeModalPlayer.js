@@ -12,7 +12,9 @@ const YoutubeModalPlayer = ({ modalIsOpen, setModalIsOpen, youtubeKey }) => {
           videoId={youtubeKey}
           onClose={() => setModalIsOpen(false)}
         />
-        <button onClick={() => setModalIsOpen(true)}>Play trailer</button>
+        <button className="button" onClick={() => setModalIsOpen(true)}>
+          Play trailer
+        </button>
       </div>
     </div>
   );
