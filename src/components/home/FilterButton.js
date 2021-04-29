@@ -7,8 +7,8 @@ import MediaContext from '../../context';
 import '../../index.css'
 
 const FilterButton = () => {
-  const [background, setBackground] = useState('#fdfdfd');
-  const [font, setFont] = useState('#424246');
+  const [background, setBackground] = useState("#fdfdfd");
+  const [font, setFont] = useState("#424246");
   const { mediaType, setMediaType } = useContext(MediaContext);
   const setStyle = (background, font) => {
     setBackground(background);
@@ -20,9 +20,9 @@ const FilterButton = () => {
     padding: 40px 40px 20px 40px;
     background-color: ${background};
     h1 {
-      font-family: 'Permanent Marker', sans-serif;
-      font-weight: 500;
-      font-size: 40px;
+      font-family: "Abril Fatface", cursive;
+      font-weight: 400;
+      font-size: 36px;
       margin-bottom: 10px;
       color: ${font};
     }
@@ -76,28 +76,28 @@ const FilterButton = () => {
       </p>
       <div css={cardButtons}>
         <div
-          onMouseEnter={() => setStyle('#424246', '#fdfdfd')}
-          onMouseOut={() => setStyle('#fdfdfd', '#424246')}
+          onMouseEnter={() => setStyle("#424246", "#fdfdfd")}
+          onMouseOut={() => setStyle("#fdfdfd", "#424246")}
           css={blackButton}
           onClick={() => {
-            setMediaType('movie');
+            setMediaType("movie");
           }}
         >
           Movie
         </div>
         <div
-          onMouseEnter={() => setStyle('#1d499b', '#fdfdfd')}
-          onMouseOut={() => setStyle('#fdfdfd', '#424246')}
+          onMouseEnter={() => setStyle("#1d499b", "#fdfdfd")}
+          onMouseOut={() => setStyle("#fdfdfd", "#424246")}
           css={blueButton}
-          onClick={() => setMediaType('tv')}
+          onClick={() => setMediaType("tv")}
         >
           Tv Shows
         </div>
         <div
-          onMouseEnter={() => setStyle('#f9d648', '#424246')}
-          onMouseOut={() => setStyle('#fdfdfd', '#424246')}
+          onMouseEnter={() => setStyle("#f9d648", "#424246")}
+          onMouseOut={() => setStyle("#fdfdfd", "#424246")}
           css={yellowButton}
-          onClick={() => setMediaType('book')}
+          onClick={() => setMediaType("book")}
         >
           Music
         </div>

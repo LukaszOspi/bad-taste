@@ -2,6 +2,7 @@ import React from "react";
 import MediaList from "./MediaList";
 import "./Media.css";
 import { useHistory } from "react-router-dom";
+import "../../index.css";
 
 const CardList = ({ swipedMedia }) => {
   const history = useHistory();

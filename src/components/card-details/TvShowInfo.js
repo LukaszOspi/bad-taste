@@ -1,13 +1,14 @@
-import { useState } from 'react';
-import CastList from './CastList';
-import SeasonList from './SeasonList';
-import YoutubeModalPlayer from './YoutubeModalPlayer';
+import { useState } from "react";
+import CastList from "./CastList";
+import SeasonList from "./SeasonList";
+import YoutubeModalPlayer from "./YoutubeModalPlayer";
+import "../../index.css";
 
 const MediaInfo = ({ mediaDetails, mediaCredits }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const mediaTrailerList = mediaDetails.videos.results.filter(
-    (m) => m.type === 'Trailer'
+    (m) => m.type === "Trailer"
   );
 
   return (
@@ -20,7 +21,7 @@ const MediaInfo = ({ mediaDetails, mediaCredits }) => {
       <div className="media-info">
         <div className="media-info-metadata">
           <h3 id="media-title">
-            {mediaDetails.original_name}{' '}
+            {mediaDetails.original_name}{" "}
             {`(${mediaDetails.first_air_date.slice(0, 4)})`}
           </h3>
           <div className="media-rating-trailer">
@@ -29,7 +30,7 @@ const MediaInfo = ({ mediaDetails, mediaCredits }) => {
             <YoutubeModalPlayer
               modalIsOpen={modalIsOpen}
               setModalIsOpen={setModalIsOpen}
-              youtubeKey={mediaTrailerList[0]['key']}
+              youtubeKey={mediaTrailerList[0]["key"]}
             />
           </div>
         </div>

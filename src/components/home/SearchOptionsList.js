@@ -1,9 +1,10 @@
-import SearchOptions from './SearchOptions';
-import './SearchOptionsList.css';
-import { useHistory } from 'react-router-dom';
-import { useContext } from 'react';
-import MediaContext from '../../context';
-import keyLegend from '../../services/keyLegend';
+import SearchOptions from "./SearchOptions";
+import "./SearchOptionsList.css";
+import { useHistory } from "react-router-dom";
+import { useContext } from "react";
+import MediaContext from "../../context";
+import keyLegend from "../../services/keyLegend";
+import "../../index.css";
 
 const SearchOptionsList = ({
   options,
@@ -17,7 +18,7 @@ const SearchOptionsList = ({
     setDropdownSearchValue({ title: value, id });
     setSearch(value);
     setDisplay(false);
-    history.push('/card-page');
+    history.push("/card-page");
   };
 
   return (
@@ -28,7 +29,7 @@ const SearchOptionsList = ({
             <div
               onClick={() =>
                 getTitleFromClick(
-                  option[keyLegend[mediaType]['title']],
+                  option[keyLegend[mediaType]["title"]],
                   option.id
                 )
               }
@@ -36,9 +37,9 @@ const SearchOptionsList = ({
               tabIndex="0"
             >
               <SearchOptions
-                poster={option[keyLegend[mediaType]['poster']]}
-                title={option[keyLegend[mediaType]['title']]}
-                year={option[keyLegend[mediaType]['date']]}
+                poster={option[keyLegend[mediaType]["poster"]]}
+                title={option[keyLegend[mediaType]["title"]]}
+                year={option[keyLegend[mediaType]["date"]]}
               />
             </div>
           );

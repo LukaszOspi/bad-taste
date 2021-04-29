@@ -1,6 +1,7 @@
 import React from "react";
 import Media from "./Media";
 import "./Media.css";
+import "../../index.css";
 
 const MediaList = (props) => {
   const { swipedMedia } = props;

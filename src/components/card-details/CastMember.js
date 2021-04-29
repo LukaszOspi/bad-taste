@@ -1,3 +1,5 @@
+import "../../index.css";
+
 const CastMember = ({ castPicture, name, character }) => {
   return (
     <div className="cast-member">

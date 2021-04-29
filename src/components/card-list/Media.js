@@ -1,5 +1,6 @@
 import React from "react";
 import "./Media.css";
+import "../../index.css";
 
 const Media = (props) => {
   return (
