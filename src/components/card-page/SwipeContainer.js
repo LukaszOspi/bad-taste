@@ -6,7 +6,8 @@ import fetchDetailsTMDB from "../../services/movie-fetch/fetchDetailsTMDB";
 import fetchCreditsTMDB from "../../services/movie-fetch/fetchCreditsTMDB";
 import fetchRecommendationsTMDB from "../../services/movie-fetch/fetchRecommendationsTMDB";
 import keyLegend from "../../services/keyLegend";
-import "../../index.css";
+// import "../../index.css";
+import "./SwipeContainer.css";
 
 const SwipeContainer = ({
   mediaList,
@@ -72,24 +73,15 @@ const SwipeContainer = ({
   return (
     <>
       {mediaList.length === 0 ? null : (
-        <div className="swipe-container">
-          <div className="card-item">
-            <button
-              className="button"
-              onClick={() => history.push("/card-list")}
-            >
-              SHOW YOUR {swipedMedia.liked.length} LIKED TITLES
-            </button>
-            <h1>{mediaList[displayIndex][keyLegend[mediaType]["title"]]}</h1>
-            <img
-              alt="poster"
-              src={`https://image.tmdb.org/t/p/w500${
-                mediaList[displayIndex][keyLegend[mediaType]["poster"]]
-              }`}
-            />
-            <div className="action-buttons">
+        <>
+          <button className="button" onClick={() => history.push("/card-list")}>
+            SHOW YOUR {swipedMedia.liked.length} LIKED TITLES
+          </button>
+          <h1>{mediaList[displayIndex][keyLegend[mediaType]["title"]]}</h1>
+          <div className="swipe-container">
+            <div className="card-item">
               <button
-                className="button"
+                className="like-button"
                 onClick={() => {
                   dispatchSwipedMedia({
                     type: "dislike",
@@ -98,13 +90,19 @@ const SwipeContainer = ({
                   setDisplayIndex(displayIndex + 1);
                 }}
               >
-                Dislike
+                DISLIKE{" ("}
+                {swipedMedia.disliked.length}
+                {")"}
               </button>
-              <button className="button" onClick={showInfo}>
-                More info
-              </button>
+              <img
+                className="card-page-img"
+                alt="poster"
+                src={`https://image.tmdb.org/t/p/w500${
+                  mediaList[displayIndex][keyLegend[mediaType]["poster"]]
+                }`}
+              />
               <button
-                className="button"
+                className="like-button"
                 onClick={async () => {
                   dispatchSwipedMedia({
                     type: "like",
@@ -120,11 +118,16 @@ const SwipeContainer = ({
                   setDisplayIndex(displayIndex + 1);
                 }}
               >
-                Like
+                LIKE {" ("}
+                {swipedMedia.liked.length}
+                {")"}
               </button>
             </div>
           </div>
-        </div>
+          <button className="button" onClick={showInfo}>
+            More info
+          </button>
+        </>
       )}
     </>
   );
