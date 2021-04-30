@@ -17,8 +17,7 @@ p {
   margin-bottom: 20px;
   color: font;
 }
-
-.cardButtons {
+*/ .cardButtons {
   display: flex;
   flex-wrap: wrap;
 

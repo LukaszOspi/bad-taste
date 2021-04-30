@@ -10,6 +10,7 @@ const FilterButton = () => {
   const [background, setBackground] = useState("#fdfdfd");
   const [font, setFont] = useState("#424246");
   const { mediaType, setMediaType } = useContext(MediaContext);
+
   const setStyle = (background, font) => {
     setBackground(background);
     setFont(font);
@@ -76,8 +77,8 @@ const FilterButton = () => {
       </p>
       <div css={cardButtons}>
         <div
-          onMouseEnter={() => setStyle("#424246", "#fdfdfd")}
-          onMouseOut={() => setStyle("#fdfdfd", "#424246")}
+          // onClick={() => setStyle("#424246", "#fdfdfd")}
+          // onMouseOut={() => setStyle("#fdfdfd", "#424246")}
           css={blackButton}
           onClick={() => {setMediaType("movie")}}
         >
