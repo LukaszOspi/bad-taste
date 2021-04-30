@@ -10,6 +10,11 @@
   flex-direction: column;
 }
 
+.App-header {
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+}
 .auto-container {
   display: flex;
   justify-content: center;
