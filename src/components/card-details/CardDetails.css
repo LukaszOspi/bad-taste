@@ -134,12 +134,17 @@
 @media only screen and (min-width: 1024px) {
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   .App {
     background: black;
     color: white;
   }
+} */
+
+.card-details {
+  width: 80%;
 }
+
 .selected {
   background-color: blue;
 }
@@ -167,4 +172,12 @@
 .streaming-options {
   display: flex;
   align-items: center;
+}
+
+#slide-show {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
 }

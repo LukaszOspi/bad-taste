@@ -1,6 +1,6 @@
-import { useReducer } from "react";
-import CastMember from "./CastMember";
-import "../../index.css";
+import { useReducer } from 'react';
+import CastMember from './CastMember';
+import '../../index.css';
 
 const reducer = (state, action) => {
   const indexAction = {
@@ -24,7 +24,7 @@ const CastList = ({ mediaCredits }) => {
         ) : (
           <button
             className="button"
-            onClick={() => dispatch({ type: "decrement" })}
+            onClick={() => dispatch({ type: 'decrement' })}
           >{`<`}</button>
         )}
         <div className="cast-list">
@@ -41,7 +41,7 @@ const CastList = ({ mediaCredits }) => {
         </div>
         <button
           className="button"
-          onClick={() => dispatch({ type: "increment" })}
+          onClick={() => dispatch({ type: 'increment' })}
         >{`>`}</button>
       </div>
     </div>
