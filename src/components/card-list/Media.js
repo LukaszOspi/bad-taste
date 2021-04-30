@@ -24,6 +24,9 @@ const Media = (props) => {
           </p>
         </div>
       </div>
+      <button className="button" onClick={props.remove}>
+        Remove
+      </button>
     </div>
   );
 };

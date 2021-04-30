@@ -75,7 +75,10 @@ function App() {
               />
             </Route>
             <Route path="/card-list">
-              <CardList swipedMedia={swipedMedia} />
+              <CardList
+                swipedMedia={swipedMedia}
+                dispatchSwipedMedia={dispatchSwipedMedia}
+              />
             </Route>
           </Switch>
         </ScrollToTop>

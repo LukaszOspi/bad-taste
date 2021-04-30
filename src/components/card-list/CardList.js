@@ -1,14 +1,14 @@
-import React from "react";
-import MediaList from "./MediaList";
-import "./Media.css";
-import { useHistory } from "react-router-dom";
-import "../../index.css";
+import React from 'react';
+import MediaList from './MediaList';
+import './Media.css';
+import { useHistory } from 'react-router-dom';
+import '../../index.css';
 
-const CardList = ({ swipedMedia }) => {
+const CardList = ({ swipedMedia, dispatchSwipedMedia }) => {
   const history = useHistory();
 
   const backCardPage = () => {
-    history.push("/card-page");
+    history.push('/card-page');
   };
   console.log(swipedMedia.liked.length);
 
@@ -24,7 +24,10 @@ const CardList = ({ swipedMedia }) => {
         </button>
       </div>
       <div className="card-list">
-        <MediaList swipedMedia={swipedMedia} />
+        <MediaList
+          swipedMedia={swipedMedia}
+          dispatchSwipedMedia={dispatchSwipedMedia}
+        />
       </div>
     </>
   );
