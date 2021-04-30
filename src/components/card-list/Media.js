@@ -19,9 +19,9 @@ const Media = (props) => {
         {props.title}
 
         <div className="media-year">
-          <h1>
+          <p>
             Release date:<br></br> {props.year}
-          </h1>
+          </p>
         </div>
       </div>
     </div>
