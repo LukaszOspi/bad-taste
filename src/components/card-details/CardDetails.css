@@ -30,13 +30,13 @@
     margin-bottom: 10%;
   }
 
-  h1,
+  /* h1,
   h2,
   h3,
   h4,
   p {
     margin: 0%;
-  }
+  } */
 
   #media-overview-section {
     text-align: start;
@@ -132,4 +132,52 @@
 }
 
 @media only screen and (min-width: 1024px) {
+}
+
+/* @media (prefers-color-scheme: dark) {
+  .App {
+    background: black;
+    color: white;
+  }
+} */
+
+.card-details {
+  width: 80%;
+}
+
+.selected {
+  background-color: blue;
+}
+
+.streaming-providers-list {
+  display: flex;
+  justify-content: center;
+}
+
+.card-details {
+  display: flexbox;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  width: auto;
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.streaming-icon {
+  margin: 10px;
+}
+.streaming-options {
+  display: flex;
+  align-items: center;
+}
+
+#slide-show {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
 }

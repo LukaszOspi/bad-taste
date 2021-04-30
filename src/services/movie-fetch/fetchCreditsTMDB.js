@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-const fetchCreditsTMDB = async (searchQuery, updater) => {
+const fetchCreditsTMDB = async (searchQuery, updater, type) => {
   const source = axios.CancelToken.source();
   const apiKeyTMDB = process.env.REACT_APP_TMDB_API_KEY;
   const searchParams = { query: searchQuery, api_key: apiKeyTMDB };
 
   try {
     const res = await axios.get(
-      `https://api.themoviedb.org/3/movie/${searchQuery}/credits?`,
+      `https://api.themoviedb.org/3/${type}/${searchQuery}/credits?`,
       {
         params: searchParams,
         cancelToken: source.token,

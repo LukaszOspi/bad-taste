@@ -1,18 +1,21 @@
-import { useState } from 'react';
-import CastList from './CastList';
-import YoutubeModalPlayer from './YoutubeModalPlayer';
+import { useState, useContext } from "react";
+import CastList from "./CastList";
+import YoutubeModalPlayer from "./YoutubeModalPlayer";
+import MediaContext from "../../context";
+import "../../index.css";
 
-const MediaInfo = ({ mediaDetails, mediaCredits }) => {
+const MovieInfo = ({ mediaDetails, mediaCredits }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const { mediaType } = useContext(MediaContext);
 
   const mediaLength =
     mediaDetails.runtime % 60 === 0
       ? `${mediaDetails.runtime / 60}h`
       : `${parseInt(mediaDetails.runtime / 60)}h ${mediaDetails.runtime % 60}m`;
 
-  const directorList = mediaCredits.crew.filter((c) => c.job === 'Director');
+  const directorList = mediaCredits.crew.filter((c) => c.job === "Director");
   const mediaTrailerList = mediaDetails.videos.results.filter(
-    (m) => m.type === 'Trailer'
+    (m) => m.type === "Trailer"
   );
 
   return (
@@ -32,7 +35,7 @@ const MediaInfo = ({ mediaDetails, mediaCredits }) => {
             <YoutubeModalPlayer
               modalIsOpen={modalIsOpen}
               setModalIsOpen={setModalIsOpen}
-              youtubeKey={mediaTrailerList[0]['key']}
+              youtubeKey={mediaTrailerList[0]["key"]}
             />
           </div>
         </div>
@@ -48,7 +51,7 @@ const MediaInfo = ({ mediaDetails, mediaCredits }) => {
           <p id="overview">{mediaDetails.overview}</p>
         </div>
         <div id="director">
-          <h4>{directorList.length > 1 ? 'Directors: ' : 'Director: '}</h4>
+          <h4>{directorList.length > 1 ? "Directors: " : "Director: "}</h4>
           <p id="director-name">
             {directorList.map((d, i) =>
               i === directorList.length - 1 ? `${d.name}.` : `${d.name}, `
@@ -61,4 +64,4 @@ const MediaInfo = ({ mediaDetails, mediaCredits }) => {
   );
 };
 
-export default MediaInfo;
+export default MovieInfo;

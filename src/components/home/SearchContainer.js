@@ -1,41 +1,28 @@
-import { useEffect, useState, useReducer } from 'react';
-import axios from 'axios';
-import useDebounce from '../../services/useDebounce';
-import SearchOptionsList from './SearchOptionsList';
-import './SearchContainer.css';
-import loadingSpinner from '../../assets/loading.gif';
-import fetchTMDB from '../../services/movie-fetch/fetchTMDB';
-
-// const reducer = (state, action) => {
-//   const loadingOptions = {
-//     initial: () => ({ isLoading: false, display: false, options: [] }),
-//     loading: () => ({ isLoading: true, display: false, options: [] }),
-//     showDropdown: () => ({ ...state, isLoading: false, display: true }),
-//     hideDropdown: () => ({ ...state, isLoading: false, display: false }),
-//     default: () => state,
-//   };
-//   return (loadingOptions[action.type] || loadingOptions.default)();
-// };
+import { useEffect, useState, useContext } from "react";
+import axios from "axios";
+import useDebounce from "../../services/useDebounce";
+import SearchOptionsList from "./SearchOptionsList";
+import "./SearchContainer.css";
+import loadingSpinner from "../../assets/loading.gif";
+import fetchTMDB from "../../services/movie-fetch/fetchTMDB";
+import MediaContext from "../../context";
+import "../../index.css";
 
 const SearchBar = ({ dropdownSearchValue, setDropdownSearchValue }) => {
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const [options, setOptions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [display, setDisplay] = useState(false);
-  // const [loadingState, dispatch] = useReducer(reducer, {
-  //   isLoading: false,
-  //   display: false,
-  //   options: [],
-  // });
+  const { mediaType } = useContext(MediaContext);
 
   const handleLoading = () => {
     if (!isLoading) {
       setIsLoading(true);
       setDisplay(false);
-      setSearch('');
+      setSearch("");
       setDropdownSearchValue({
-        title: '',
-        id: '',
+        title: "",
+        id: "",
       });
       setOptions([]);
     }
@@ -46,8 +33,8 @@ const SearchBar = ({ dropdownSearchValue, setDropdownSearchValue }) => {
     setIsLoading(false);
     setDisplay(false);
     setDropdownSearchValue({
-      title: '',
-      id: '',
+      title: "",
+      id: "",
     });
   };
 
@@ -55,8 +42,7 @@ const SearchBar = ({ dropdownSearchValue, setDropdownSearchValue }) => {
     async () => {
       if (search && dropdownSearchValue.title !== search) {
         try {
-          await fetchTMDB(search, setOptions);
-          // dispatch({ action: 'showDropdown' });
+          await fetchTMDB(search, setOptions, mediaType);
           setIsLoading(false);
           setDisplay(true);
         } catch (err) {
@@ -70,12 +56,11 @@ const SearchBar = ({ dropdownSearchValue, setDropdownSearchValue }) => {
 
   useEffect(() => {
     if (!search) {
-      // dispatch({ type: 'initial' });
       resetOptions();
     }
     return () => {
       const source = axios.CancelToken.source();
-      source.cancel('component got unmounted');
+      source.cancel("component got unmounted");
     };
   }, [search]);
 
@@ -86,7 +71,6 @@ const SearchBar = ({ dropdownSearchValue, setDropdownSearchValue }) => {
           placeholder="Type to search"
           value={search}
           onChange={(e) => {
-            // dispatch({ type: 'loading' });
             handleLoading();
             setSearch(e.target.value);
           }}
@@ -103,7 +87,6 @@ const SearchBar = ({ dropdownSearchValue, setDropdownSearchValue }) => {
               setDropdownSearchValue={setDropdownSearchValue}
               setSearch={setSearch}
               setDisplay={setDisplay}
-              // dispatch={dispatch}
             />
           </div>
         )}

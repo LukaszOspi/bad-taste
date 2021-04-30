@@ -1,16 +1,8 @@
 import { useReducer } from 'react';
 import CastMember from './CastMember';
-// import './CastList.css';
+import '../../index.css';
 
 const reducer = (state, action) => {
-  // switch (action.type) {
-  //   case 'increment':
-  //     return state + 1;
-  //   case 'decrement':
-  //     return state - 1;
-  //   default:
-  //     return state;
-  // }
   const indexAction = {
     increment: () => state + 1,
     decrement: () => state - 1,
@@ -28,10 +20,10 @@ const CastList = ({ mediaCredits }) => {
       <h4 id="cast-title">Top Billed Cast: </h4>
       <div id="slide-show">
         {index === 0 ? (
-          <button className="slide-show-button" disabled>{`<`}</button>
+          <button className="button" disabled>{`<`}</button>
         ) : (
           <button
-            className="slide-show-button"
+            className="button"
             onClick={() => dispatch({ type: 'decrement' })}
           >{`<`}</button>
         )}
@@ -48,7 +40,7 @@ const CastList = ({ mediaCredits }) => {
           )}
         </div>
         <button
-          className="slide-show-button"
+          className="button"
           onClick={() => dispatch({ type: 'increment' })}
         >{`>`}</button>
       </div>

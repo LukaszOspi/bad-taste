@@ -44,3 +44,7 @@ span {
 .flex-column {
   flex-direction: column;
 }
+
+.loading-indicator {
+  width: 10%;
+}

@@ -1,7 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import Header from './Header';
 import SwipeContainer from './SwipeContainer';
 import fetchRecommendationsTMDB from '../../services/movie-fetch/fetchRecommendationsTMDB';
+import MediaContext from '../../context';
+import '../../index.css';
 
 const CardPage = ({
   mediaList,
@@ -13,10 +15,13 @@ const CardPage = ({
   setMediaDetails,
   setMediaCredits,
   dispatchSwipedMedia,
+  swipedMedia,
 }) => {
+  const { mediaType } = useContext(MediaContext);
+
   useEffect(() => {
     if (mediaList.length === 0) {
-      fetchRecommendationsTMDB(dropdownSearchValue.id, setMediaList);
+      fetchRecommendationsTMDB(dropdownSearchValue.id, setMediaList, mediaType);
     }
   }, []);
 
@@ -33,6 +38,7 @@ const CardPage = ({
         setMediaDetails={setMediaDetails}
         setMediaCredits={setMediaCredits}
         dispatchSwipedMedia={dispatchSwipedMedia}
+        swipedMedia={swipedMedia}
       />
     </div>
   );
