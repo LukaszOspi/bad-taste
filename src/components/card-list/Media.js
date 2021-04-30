@@ -1,6 +1,6 @@
-import React from "react";
-import "./Media.css";
-import "../../index.css";
+import React from 'react';
+import './Media.css';
+import '../../index.css';
 
 const Media = (props) => {
   return (
@@ -10,9 +10,9 @@ const Media = (props) => {
           className="media-image"
           src={
             `https://image.tmdb.org/t/p/w92${props.img}` ||
-            "./src/assets/img-placeholder.png"
+            './src/assets/img-placeholder.png'
           }
-          alt="poster-image"
+          alt="poster"
         ></img>
       </div>
       <div className="media-title">

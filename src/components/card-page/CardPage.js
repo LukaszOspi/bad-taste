@@ -1,9 +1,9 @@
-import { useEffect, useContext } from "react";
-import Header from "./Header";
-import SwipeContainer from "./SwipeContainer";
-import fetchRecommendationsTMDB from "../../services/movie-fetch/fetchRecommendationsTMDB";
-import MediaContext from "../../context";
-import "../../index.css";
+import { useEffect, useContext } from 'react';
+import Header from './Header';
+import SwipeContainer from './SwipeContainer';
+import fetchRecommendationsTMDB from '../../services/movie-fetch/fetchRecommendationsTMDB';
+import MediaContext from '../../context';
+import '../../index.css';
 
 const CardPage = ({
   mediaList,
