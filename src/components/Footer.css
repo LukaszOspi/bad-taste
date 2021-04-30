@@ -4,7 +4,7 @@
   background-color: #B2FFF1;
   padding: 70px 30px;
   text-align: center;
-  font-family:Verdana, Geneva, Tahoma, sans-serif
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
   font-size:20px;
   line-height:30px;
   color: black;
@@ -18,19 +18,19 @@
 }
 
 .about {
-  background-color: khaki;
+  background-color:lightblue;
   font-size: 15px;
   text-align: left;
 }
 
 .categories {
-  background-color: lightgreen;
+  background-color: lightblue;
   font-size: 15px;
   text-align: center;
 }
 
 .contact {
-  background-color: palevioletred;
+  background-color: lightblue;
   font-size: 15px;
   text-align: center;
 }

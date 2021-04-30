@@ -8,6 +8,8 @@ import ScrollToTop from './services/ScrollToTop';
 import Home from './components/home/Home';
 import CardPage from './components/card-page/CardPage';
 import CardDetails from './components/card-details/CardDetails';
+import Footer from './components/Footer.js';
+
 
 function App() {
   const history = useHistory();
@@ -69,6 +71,7 @@ function App() {
         </Switch>
       </ScrollToTop>
     </div>
+
   );
 }
 
