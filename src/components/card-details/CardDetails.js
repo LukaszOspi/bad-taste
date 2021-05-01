@@ -1,22 +1,18 @@
-import { useHistory } from "react-router-dom";
-import { useContext } from "react";
-import MediaContext from "../../context";
-import StreamingProvidersList from "./StreamingProvidersList";
-import MovieInfo from "./MovieInfo";
-import TvShowInfo from "./TvShowInfo";
-import "./CardDetails.css";
-import "../../index.css";
+import { useHistory } from 'react-router-dom';
+import { useContext } from 'react';
+import MediaContext from '../../context';
+import StreamingProvidersList from './StreamingProvidersList';
+import MovieInfo from './MovieInfo';
+import TvShowInfo from './TvShowInfo';
+import './CardDetails.css';
+import '../../index.css';
 
-const CardDetails = ({
-  streamingProvidersList,
-  mediaDetails,
-  mediaCredits,
-}) => {
+const CardDetails = () => {
   const history = useHistory();
-  const { mediaType } = useContext(MediaContext);
+  const { appState } = useContext(MediaContext);
 
   const showList = () => {
-    history.push("/card-page");
+    history.push('/card-page');
   };
 
   return (
@@ -27,20 +23,18 @@ const CardDetails = ({
       </button>
       <div className="card-details">
         <br />
-        {!mediaDetails ? (
+        {!appState.mediaDetails ? (
           <p>Error while trying to gather information about this content</p>
-        ) : mediaType === "movie" ? (
-          <MovieInfo mediaDetails={mediaDetails} mediaCredits={mediaCredits} />
+        ) : appState.mediaType === 'movie' ? (
+          <MovieInfo />
         ) : (
-          <TvShowInfo mediaDetails={mediaDetails} mediaCredits={mediaCredits} />
+          <TvShowInfo />
         )}
 
-        {streamingProvidersList === undefined ? (
+        {appState.streamingProvidersList === undefined ? (
           <p>This content is not availabe online in your region</p>
         ) : (
-          <StreamingProvidersList
-            streamingProvidersList={streamingProvidersList}
-          />
+          <StreamingProvidersList />
         )}
       </div>
     </>

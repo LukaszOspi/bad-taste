@@ -1,7 +1,8 @@
-import { useReducer, useMemo } from 'react';
+import { useReducer, useMemo, useContext } from 'react';
 import CastMember from './CastMember';
 import '../../index.css';
 import './CastList.css';
+import MediaContext from '../../context';
 
 const reducer = (state, action) => {
   const indexAction = {
@@ -14,11 +15,12 @@ const reducer = (state, action) => {
 };
 
 const CastList = ({ mediaCredits }) => {
+  const { appState } = useContext(MediaContext);
   const [index, dispatch] = useReducer(reducer, 0);
 
   const filteredCastList = useMemo(
-    () => mediaCredits.cast.filter((a) => a.profile_path),
-    [mediaCredits]
+    () => appState.mediaCredits.cast.filter((a) => a.profile_path),
+    [appState.mediaCredits]
   );
 
   return (
@@ -35,9 +37,8 @@ const CastList = ({ mediaCredits }) => {
         )}
         <div className="cast-list">
           {filteredCastList.map((c, i) => (
-            <div className={i === index ? 'visible' : 'not-visible'}>
+            <div key={c.id} className={i === index ? 'visible' : 'not-visible'}>
               <CastMember
-                key={c.id}
                 castPicture={c.profile_path}
                 name={c.name}
                 character={c.character}

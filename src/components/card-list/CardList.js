@@ -1,16 +1,19 @@
-import React from 'react';
+import { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import MediaList from './MediaList';
 import './Media.css';
-import { useHistory } from 'react-router-dom';
 import '../../index.css';
+import MediaContext from '../../context';
 
 const CardList = ({ swipedMedia, dispatchSwipedMedia }) => {
+  const { appState } = useContext(MediaContext);
   const history = useHistory();
 
   const backCardPage = () => {
-    history.push('/card-page');
+    appState.mediaList.length === 0
+      ? history.push('/')
+      : history.push('/card-page');
   };
-  console.log(swipedMedia.liked.length);
 
   return (
     <>

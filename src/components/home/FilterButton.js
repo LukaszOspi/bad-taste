@@ -1,19 +1,20 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
-import { useState, useContext } from 'react';
-import { injectGlobal, css, jsx } from '@emotion/react';
+import { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+import { css, jsx } from '@emotion/react';
 import './FilterButton.css';
 import MediaContext from '../../context';
 import '../../index.css';
 
-const FilterButton = () => {
-  const [background, setBackground] = useState('#fdfdfd');
-  const [font, setFont] = useState('#424246');
-  const { setMediaType } = useContext(MediaContext);
-  const setStyle = (background, font) => {
-    setBackground(background);
-    setFont(font);
-  };
+const FilterButton = ({ search, swipedMedia }) => {
+  // const [background, setBackground] = useState('#fdfdfd');
+  // const [font, setFont] = useState('#424246');
+  const { dispatchAppState } = useContext(MediaContext);
+  const history = useHistory();
+
+  const background = '#fdfdfd';
+  const font = '#424246';
 
   const card = css`
     display: flex;
@@ -67,10 +68,10 @@ const FilterButton = () => {
     background-color: #1d499b;
   `;
 
-  // const yellowButton = css`
-  //   color: #424246;
-  //   background-color: #f9d648;
-  // `;
+  const yellowButton = css`
+    color: #424246;
+    background-color: #f9d648;
+  `;
 
   return (
     <div className="filter-bar" css={card}>
@@ -84,9 +85,13 @@ const FilterButton = () => {
           // onClick={() => setStyle("#424246", "#fdfdfd")}
           // onMouseOut={() => setStyle("#fdfdfd", "#424246")}
           css={blackButton}
-          onClick={() => {
-            setMediaType('movie');
-          }}
+          onClick={() =>
+            dispatchAppState({
+              type: 'change-media-type',
+              payload: 'movie',
+              loading: search ? true : false,
+            })
+          }
         >
           Movie
         </div>
@@ -94,10 +99,26 @@ const FilterButton = () => {
           /* onMouseEnter={() => setStyle('#1d499b', '#fdfdfd')}
           onMouseOut={() => setStyle('#fdfdfd', '#424246')} */
           css={blueButton}
-          onClick={() => setMediaType('tv')}
+          onClick={() =>
+            dispatchAppState({
+              type: 'change-media-type',
+              payload: 'tv',
+              loading: search ? true : false,
+            })
+          }
         >
           Tv Shows
         </div>
+        {swipedMedia.liked.length > 0 && (
+          <div
+            /* onMouseEnter={() => setStyle('#1d499b', '#fdfdfd')}
+          onMouseOut={() => setStyle('#fdfdfd', '#424246')} */
+            css={yellowButton}
+            onClick={() => history.push('/card-list')}
+          >
+            Your List
+          </div>
+        )}
         {/* <div
           onMouseEnter={() => setStyle('#f9d648', '#424246')}
           onMouseOut={() => setStyle('#fdfdfd', '#424246')}

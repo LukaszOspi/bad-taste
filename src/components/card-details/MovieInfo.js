@@ -1,18 +1,24 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import CastList from './CastList';
 import YoutubeModalPlayer from './YoutubeModalPlayer';
 import '../../index.css';
+import MediaContext from '../../context';
 
-const MovieInfo = ({ mediaDetails, mediaCredits }) => {
+const MovieInfo = () => {
+  const { appState } = useContext(MediaContext);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const mediaLength =
-    mediaDetails.runtime % 60 === 0
-      ? `${mediaDetails.runtime / 60}h`
-      : `${parseInt(mediaDetails.runtime / 60)}h ${mediaDetails.runtime % 60}m`;
+    appState.mediaDetails.runtime % 60 === 0
+      ? `${appState.mediaDetails.runtime / 60}h`
+      : `${parseInt(appState.mediaDetails.runtime / 60)}h ${
+          appState.mediaDetails.runtime % 60
+        }m`;
 
-  const directorList = mediaCredits.crew.filter((c) => c.job === 'Director');
-  const mediaTrailerList = mediaDetails.videos.results.filter(
+  const directorList = appState.mediaCredits.crew.filter(
+    (c) => c.job === 'Director'
+  );
+  const mediaTrailerList = appState.mediaDetails.videos.results.filter(
     (m) => m.type === 'Trailer'
   );
 
@@ -21,15 +27,16 @@ const MovieInfo = ({ mediaDetails, mediaCredits }) => {
       <img
         className="media-info-image"
         alt="backdrop"
-        src={`https://image.tmdb.org/t/p/w780${mediaDetails.backdrop_path}`}
+        src={`https://image.tmdb.org/t/p/w780${appState.mediaDetails.backdrop_path}`}
       />
       <div className="media-info">
         <div className="media-info-metadata">
           <h3 id="media-title">
-            {mediaDetails.title} {`(${mediaDetails.release_date.slice(0, 4)})`}
+            {appState.mediaDetails.title}{' '}
+            {`(${appState.mediaDetails.release_date.slice(0, 4)})`}
           </h3>
           <div className="media-rating-trailer">
-            <h4>{`Rating: ${mediaDetails.vote_average} / 10`}</h4>
+            <h4>{`Rating: ${appState.mediaDetails.vote_average} / 10`}</h4>
             <YoutubeModalPlayer
               modalIsOpen={modalIsOpen}
               setModalIsOpen={setModalIsOpen}
@@ -37,16 +44,18 @@ const MovieInfo = ({ mediaDetails, mediaCredits }) => {
             />
           </div>
         </div>
-        <p className="genres">{`${mediaDetails.release_date} - ${mediaLength}`}</p>
+        <p className="genres">{`${appState.mediaDetails.release_date} - ${mediaLength}`}</p>
         <p className="genres">
-          {mediaDetails.genres.map((g, i) =>
-            i === mediaDetails.genres.length - 1 ? `${g.name}.` : `${g.name}, `
+          {appState.mediaDetails.genres.map((g, i) =>
+            i === appState.mediaDetails.genres.length - 1
+              ? `${g.name}.`
+              : `${g.name}, `
           )}
         </p>
         <div id="media-overview-section">
-          <p className="tagline">{mediaDetails.tagline}</p>
+          <p className="tagline">{appState.mediaDetails.tagline}</p>
           <h4>Overview: </h4>
-          <p id="overview">{mediaDetails.overview}</p>
+          <p id="overview">{appState.mediaDetails.overview}</p>
         </div>
         <div id="director">
           <h4>{directorList.length > 1 ? 'Directors: ' : 'Director: '}</h4>
@@ -56,7 +65,7 @@ const MovieInfo = ({ mediaDetails, mediaCredits }) => {
             )}
           </p>
         </div>
-        <CastList mediaCredits={mediaCredits} />
+        <CastList />
       </div>
     </>
   );
