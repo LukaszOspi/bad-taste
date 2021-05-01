@@ -4,7 +4,7 @@ import useDebounce from '../../services/useDebounce';
 import SearchOptionsList from './SearchOptionsList';
 import './SearchContainer.css';
 import loadingSpinner from '../../assets/loading.gif';
-import fetchTMDB from '../../services/movie-fetch/fetchTMDB';
+import fetchTMDB from '../../services/fetch/fetchTMDB';
 import MediaContext from '../../context';
 import '../../index.css';
 
@@ -17,7 +17,7 @@ const SearchBar = ({ search, setSearch }) => {
         try {
           await dispatchAppState({
             type: 'fetch-dropdown-options',
-            payload: await fetchTMDB(search, undefined, appState.mediaType),
+            payload: await fetchTMDB(search, appState.mediaType),
           });
         } catch (err) {
           console.error(`fetchTMDB() in useDebounce failed with error ${err}`);

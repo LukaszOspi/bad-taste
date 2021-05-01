@@ -1,7 +1,7 @@
 import { useEffect, useContext, useCallback } from 'react';
 import Header from './Header';
 import SwipeContainer from './SwipeContainer';
-import fetchRecommendationsTMDB from '../../services/movie-fetch/fetchRecommendationsTMDB';
+import fetchRecommendationsTMDB from '../../services/fetch/fetchRecommendationsTMDB';
 import MediaContext from '../../context';
 import '../../index.css';
 
@@ -13,7 +13,6 @@ const CardPage = ({ dispatchSwipedMedia, swipedMedia }) => {
       type: 'fetch-media-list',
       payload: await fetchRecommendationsTMDB(
         appState.dropdownSearchValue.id,
-        undefined,
         appState.mediaType
       ),
     });

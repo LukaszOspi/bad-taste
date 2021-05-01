@@ -1,10 +1,10 @@
 import { useHistory } from 'react-router-dom';
 import { useEffect, useContext, useCallback } from 'react';
 import MediaContext from '../../context';
-import fetchStreamingProvidersTMDB from '../../services/movie-fetch/fetchStreamingProvidersTMDB';
-import fetchDetailsTMDB from '../../services/movie-fetch/fetchDetailsTMDB';
-import fetchCreditsTMDB from '../../services/movie-fetch/fetchCreditsTMDB';
-import fetchRecommendationsTMDB from '../../services/movie-fetch/fetchRecommendationsTMDB';
+import fetchStreamingProvidersTMDB from '../../services/fetch/fetchStreamingProvidersTMDB';
+import fetchDetailsTMDB from '../../services/fetch/fetchDetailsTMDB';
+import fetchCreditsTMDB from '../../services/fetch/fetchCreditsTMDB';
+import fetchRecommendationsTMDB from '../../services/fetch/fetchRecommendationsTMDB';
 import keyLegend from '../../services/keyLegend';
 import './SwipeContainer.css';
 
@@ -13,17 +13,13 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
   const { appState, dispatchAppState } = useContext(MediaContext);
 
   const handleFetching = useCallback(
-    async (mediaId, updater, mediaType) => {
+    async (mediaId, mediaType) => {
       dispatchAppState({
         type: 'fetch-details',
         payload: {
-          credits: await fetchCreditsTMDB(mediaId, updater, mediaType),
-          details: await fetchDetailsTMDB(mediaId, updater, mediaType),
-          streaming: await fetchStreamingProvidersTMDB(
-            mediaId,
-            updater,
-            mediaType
-          ),
+          credits: await fetchCreditsTMDB(mediaId, mediaType),
+          details: await fetchDetailsTMDB(mediaId, mediaType),
+          streaming: await fetchStreamingProvidersTMDB(mediaId, mediaType),
         },
       });
     },
@@ -34,7 +30,6 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
     if (appState.mediaList.length !== 0) {
       handleFetching(
         appState.mediaList[appState.displayIndex].id,
-        undefined,
         appState.mediaType
       );
     }
@@ -47,11 +42,7 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
 
   const fetchNewRecommendations = async (mediaID, mediaType, currentList) => {
     try {
-      const newList = await fetchRecommendationsTMDB(
-        mediaID,
-        undefined,
-        mediaType
-      );
+      const newList = await fetchRecommendationsTMDB(mediaID, mediaType);
       const filteredNewList = newList.filter(
         (e) => !currentList.find((d) => e.id === d.id)
       );
