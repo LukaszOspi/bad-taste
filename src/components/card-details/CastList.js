@@ -1,6 +1,7 @@
 import { useReducer } from 'react';
 import CastMember from './CastMember';
 import '../../index.css';
+import './CastList.css';
 
 const reducer = (state, action) => {
   const indexAction = {
@@ -28,16 +29,18 @@ const CastList = ({ mediaCredits }) => {
           >{`<`}</button>
         )}
         <div className="cast-list">
-          {mediaCredits.cast.map((c, i) =>
-            i === index ? (
-              <CastMember
-                key={c.id}
-                castPicture={c.profile_path}
-                name={c.name}
-                character={c.character}
-              />
-            ) : null
-          )}
+          {mediaCredits.cast.map((c, i) => {
+            return c.profile_path ? (
+              <div className={i === index ? 'visible' : 'not-visible'}>
+                <CastMember
+                  key={c.id}
+                  castPicture={c.profile_path}
+                  name={c.name}
+                  character={c.character}
+                />
+              </div>
+            ) : null;
+          })}
         </div>
         <button
           className="button"

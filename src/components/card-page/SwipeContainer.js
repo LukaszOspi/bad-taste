@@ -1,13 +1,13 @@
-import { useHistory } from "react-router-dom";
-import { useEffect, useContext, useCallback } from "react";
-import MediaContext from "../../context";
-import fetchStreamingProvidersTMDB from "../../services/movie-fetch/fetchStreamingProvidersTMDB";
-import fetchDetailsTMDB from "../../services/movie-fetch/fetchDetailsTMDB";
-import fetchCreditsTMDB from "../../services/movie-fetch/fetchCreditsTMDB";
-import fetchRecommendationsTMDB from "../../services/movie-fetch/fetchRecommendationsTMDB";
-import keyLegend from "../../services/keyLegend";
+import { useHistory } from 'react-router-dom';
+import { useEffect, useContext, useCallback } from 'react';
+import MediaContext from '../../context';
+import fetchStreamingProvidersTMDB from '../../services/movie-fetch/fetchStreamingProvidersTMDB';
+import fetchDetailsTMDB from '../../services/movie-fetch/fetchDetailsTMDB';
+import fetchCreditsTMDB from '../../services/movie-fetch/fetchCreditsTMDB';
+import fetchRecommendationsTMDB from '../../services/movie-fetch/fetchRecommendationsTMDB';
+import keyLegend from '../../services/keyLegend';
 // import "../../index.css";
-import "./SwipeContainer.css";
+import './SwipeContainer.css';
 
 const SwipeContainer = ({
   mediaList,
@@ -48,7 +48,7 @@ const SwipeContainer = ({
 
   const showInfo = () => {
     setTimeout(() => {
-      history.push("/card-details");
+      history.push('/card-details');
     }, 150);
   };
 
@@ -74,37 +74,37 @@ const SwipeContainer = ({
     <>
       {mediaList.length === 0 ? null : (
         <>
-          <button className="button" onClick={() => history.push("/card-list")}>
+          <button className="button" onClick={() => history.push('/card-list')}>
             SHOW YOUR {swipedMedia.liked.length} LIKED TITLES
           </button>
-          <h1>{mediaList[displayIndex][keyLegend[mediaType]["title"]]}</h1>
+          <h1>{mediaList[displayIndex][keyLegend[mediaType]['title']]}</h1>
           <div className="swipe-container">
             <div className="card-item">
               <button
                 className="like-button"
                 onClick={() => {
                   dispatchSwipedMedia({
-                    type: "dislike",
+                    type: 'dislike',
                     payload: mediaList[displayIndex],
                   });
                   setDisplayIndex(displayIndex + 1);
                 }}
               >
                 DISLIKE
-                {" " + swipedMedia.disliked.length}
+                {' ' + swipedMedia.disliked.length}
               </button>
               <img
                 className="card-page-img"
                 alt="poster"
                 src={`https://image.tmdb.org/t/p/w500${
-                  mediaList[displayIndex][keyLegend[mediaType]["poster"]]
+                  mediaList[displayIndex][keyLegend[mediaType]['poster']]
                 }`}
               />
               <button
                 className="like-button"
                 onClick={async () => {
                   dispatchSwipedMedia({
-                    type: "like",
+                    type: 'like',
                     payload: mediaList[displayIndex],
                   });
                   setMediaList([
@@ -118,7 +118,7 @@ const SwipeContainer = ({
                 }}
               >
                 LIKE
-                {" " + swipedMedia.liked.length}
+                {' ' + swipedMedia.liked.length}
               </button>
             </div>
           </div>

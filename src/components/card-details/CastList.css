@@ -1,8 +1,15 @@
-.cast,
-.cast-list {
+.cast {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
 }
 
-.cast {
-  width: 90%;
+.cast-list {
+  display: flex;
+  justify-content: center;
+}
+
+.not-visible {
+  display: none;
 }

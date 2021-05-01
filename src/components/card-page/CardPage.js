@@ -4,6 +4,7 @@ import SwipeContainer from './SwipeContainer';
 import fetchRecommendationsTMDB from '../../services/movie-fetch/fetchRecommendationsTMDB';
 import MediaContext from '../../context';
 import '../../index.css';
+import { useCallback } from 'react';
 
 const CardPage = ({
   mediaList,
@@ -19,11 +20,15 @@ const CardPage = ({
 }) => {
   const { mediaType } = useContext(MediaContext);
 
+  const handleFetch = useCallback(() => {
+    fetchRecommendationsTMDB(dropdownSearchValue.id, setMediaList, mediaType);
+  }, [dropdownSearchValue, mediaType, setMediaList]);
+
   useEffect(() => {
     if (mediaList.length === 0) {
-      fetchRecommendationsTMDB(dropdownSearchValue.id, setMediaList, mediaType);
+      handleFetch();
     }
-  }, []);
+  }, [handleFetch, mediaList]);
 
   return (
     <div className="card-page">
