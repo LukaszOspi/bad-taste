@@ -48,6 +48,7 @@ const appStateReducer = (state, action) => {
       return {
         ...state,
         display: false,
+        displayIndex: action.displayIndex,
         dropdownSearchValue: action.payload,
         swipedListIndex: action.index,
       };
@@ -100,28 +101,22 @@ const likeHandler = (state, action) => {
         mediaTitle: action.title,
         id: action.id,
         type: action.mediaType,
+        displayIndex: 0,
         liked: [],
         disliked: [],
-      };
-      return currentState;
-    case 'update':
-      currentState[action.arrIndex] = {
-        mediaTitle: action.title,
-        id: action.id,
-        type: action.mediaType,
-        liked: [...currentState[action.arrIndex].liked],
-        disliked: [...currentState[action.arrIndex].disliked],
       };
       return currentState;
     case 'like':
       currentState[action.arrIndex] = {
         ...currentState[action.arrIndex],
+        displayIndex: currentState[action.arrIndex].displayIndex + 1,
         liked: [...currentState[action.arrIndex].liked, action.payload],
       };
       return currentState;
     case 'dislike':
       currentState[action.arrIndex] = {
         ...currentState[action.arrIndex],
+        displayIndex: currentState[action.arrIndex].displayIndex + 1,
         disliked: [...currentState[action.arrIndex].disliked, action.payload],
       };
       return currentState;
@@ -137,7 +132,3 @@ const likeHandler = (state, action) => {
 };
 
 export { getUniqueListByKey, appStateReducer, likeHandler };
-
-// const [state, dispatch] = useReducer(reducer, initialStatealue)
-
-// dispatch({type: 'like', payload: 'blablabla'})

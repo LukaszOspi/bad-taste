@@ -33,6 +33,7 @@ const swipedMediaInitializer = [
     mediaTitle: '',
     id: '',
     type: '',
+    displayIndex: 0,
     liked: [],
     disliked: [],
   },

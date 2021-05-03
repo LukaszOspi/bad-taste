@@ -18,11 +18,21 @@ const SearchOptionsList = ({ swipedMedia, dispatchSwipedMedia }) => {
     return index === -1 ? array.length : index;
   };
 
+  const findMedia = (array, id, type) => {
+    const index = array.findIndex((e) => e.id === id && e.type === type);
+    return index === -1 ? false : true;
+  };
+
   const handleClick = (element, array) => {
     const index = findIndex(array, element.id, appState.mediaType);
     dispatchAppState({
       type: 'get-title',
       index: index,
+      displayIndex:
+        array[index]?.id === '' ||
+        !findMedia(array, element.id, appState.mediaType)
+          ? 0
+          : array[index].displayIndex,
       payload: {
         title: element[keyLegend[appState.mediaType]['title']],
         id: element.id,
