@@ -35,7 +35,7 @@ const MediaList = ({
       {likedMedia.liked.map((element, index) => {
         return (
           <Media
-            key={index}
+            key={`${element.id}-${index}`}
             img={element[keyLegend[mediaType].poster]}
             title={element[keyLegend[mediaType].title]}
             year={element[keyLegend[mediaType].date]}
@@ -43,7 +43,7 @@ const MediaList = ({
             remove={() =>
               dispatchSwipedMedia({
                 type: 'remove-item',
-                index: index,
+                id: element.id,
                 arrIndex: arrIndex,
               })
             }
