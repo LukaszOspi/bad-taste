@@ -20,6 +20,7 @@ const appStateReducer = (state, action) => {
         mediaDetails: undefined,
         mediaCredits: undefined,
         mediaType: 'movie',
+        swipedListIndex: '',
       };
     case 'loading':
       return {
@@ -44,7 +45,12 @@ const appStateReducer = (state, action) => {
         options: [],
       };
     case 'get-title':
-      return { ...state, display: false, dropdownSearchValue: action.payload };
+      return {
+        ...state,
+        display: false,
+        dropdownSearchValue: action.payload,
+        swipedListIndex: action.index,
+      };
     case 'fetch-dropdown-options':
       return {
         ...state,
@@ -87,19 +93,37 @@ const appStateReducer = (state, action) => {
 };
 
 const likeHandler = (state, action) => {
+  const currentState = [...state];
   switch (action.type) {
-    case 'like':
-      return { ...state, liked: [...state.liked, action.payload] };
-    case 'dislike':
-      return { ...state, disliked: [...state.disliked, action.payload] };
-    case 'remove':
-      return {
-        ...state,
-        liked: [
-          ...state.liked.slice(0, action.index),
-          ...state.liked.slice(action.index + 1),
-        ],
+    case 'new':
+      currentState[action.index] = {
+        mediaTitle: action.title,
+        id: action.id,
+        type: action.mediaType,
+        liked: [],
+        disliked: [],
       };
+      return currentState;
+    case 'like':
+      currentState[action.arrIndex] = {
+        ...currentState[action.arrIndex],
+        liked: [...currentState[action.arrIndex].liked, action.payload],
+        disliked: [...currentState[action.arrIndex].disliked],
+      };
+      return currentState;
+    case 'dislike':
+      currentState[action.arrIndex] = {
+        ...currentState[action.arrIndex],
+        liked: [...currentState[action.arrIndex].liked],
+        disliked: [...currentState[action.arrIndex].disliked, action.payload],
+      };
+      return currentState;
+    case 'remove':
+      currentState[action.arrIndex].liked = [
+        ...currentState[action.arrIndex].liked.slice(0, action.index),
+        ...currentState[action.arrIndex].liked.slice(action.index + 1),
+      ];
+      return currentState;
     default:
       return state;
   }

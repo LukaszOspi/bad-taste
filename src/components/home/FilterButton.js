@@ -109,7 +109,7 @@ const FilterButton = ({ search, swipedMedia }) => {
         >
           Tv Shows
         </div>
-        {swipedMedia.liked.length > 0 && (
+        {swipedMedia[0].liked.length > 0 && (
           <div
             /* onMouseEnter={() => setStyle('#1d499b', '#fdfdfd')}
           onMouseOut={() => setStyle('#fdfdfd', '#424246')} */

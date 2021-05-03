@@ -59,7 +59,8 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
       {appState.mediaList.length === 0 ? null : (
         <>
           <button className="button" onClick={() => history.push('/card-list')}>
-            SHOW YOUR {swipedMedia.liked.length} LIKED TITLES
+            SHOW YOUR {swipedMedia[appState.swipedListIndex].liked.length} LIKED
+            TITLES
           </button>
           <h1>
             {
@@ -76,12 +77,16 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
                   dispatchSwipedMedia({
                     type: 'dislike',
                     payload: appState.mediaList[appState.displayIndex],
+                    arrIndex: appState.swipedListIndex,
+                    id: appState.dropdownSearchValue.id,
+                    mediaType: appState.mediaType,
+                    title: appState.dropdownSearchValue.title,
                   });
                   dispatchAppState({ type: 'increase-display-index' });
                 }}
               >
                 DISLIKE
-                {' ' + swipedMedia.disliked.length}
+                {' ' + swipedMedia[appState.swipedListIndex].disliked.length}
               </button>
               <img
                 className="card-page-img"
@@ -98,6 +103,10 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
                   dispatchSwipedMedia({
                     type: 'like',
                     payload: appState.mediaList[appState.displayIndex],
+                    arrIndex: appState.swipedListIndex,
+                    id: appState.dropdownSearchValue.id,
+                    mediaType: appState.mediaType,
+                    title: appState.dropdownSearchValue.title,
                   });
                   dispatchAppState({
                     type: 'update-media-list',
@@ -110,7 +119,7 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
                 }}
               >
                 LIKE
-                {' ' + swipedMedia.liked.length}
+                {' ' + swipedMedia[appState.swipedListIndex].liked.length}
               </button>
             </div>
           </div>
