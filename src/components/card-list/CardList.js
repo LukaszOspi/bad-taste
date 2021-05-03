@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import MediaList from './MediaList';
 import './Media.css';
@@ -15,21 +15,19 @@ const CardList = ({ swipedMedia, dispatchSwipedMedia }) => {
       : history.push('/card-page');
   };
 
-  useEffect(() => {}, [swipedMedia]);
-
   return (
     <>
       <div>
         <button
           className="return-button"
-          idName="button"
+          // idName="button"
           onClick={backCardPage}
         >
           RETURN
         </button>
         <button
           className="return-button"
-          idName="button"
+          // idName="button"
           onClick={() => {
             localStorage.removeItem('swipedMedia');
             window.location.reload();
@@ -42,7 +40,7 @@ const CardList = ({ swipedMedia, dispatchSwipedMedia }) => {
         <div className="card-list">
           {swipedMedia.map((e, i) => {
             return (
-              <div>
+              <div key={e.id}>
                 <h4>{e.mediaTitle}</h4>
                 <button
                   className="button"

@@ -42,7 +42,7 @@ const MediaList = ({
             info={() => handleInfo(element.id, mediaType)}
             remove={() =>
               dispatchSwipedMedia({
-                type: 'remove',
+                type: 'remove-item',
                 index: index,
                 arrIndex: arrIndex,
               })

@@ -135,10 +135,7 @@ const likeHandler = (state, action) => {
       currentState.splice(action.arrIndex, 1);
       return currentState;
     case 'remove-item':
-      currentState[action.arrIndex].liked = [
-        ...currentState[action.arrIndex].liked.slice(0, action.index),
-        ...currentState[action.arrIndex].liked.slice(action.index + 1),
-      ];
+      currentState[action.arrIndex].liked.splice(action.index, 1);
       return currentState;
     default:
       return state;
