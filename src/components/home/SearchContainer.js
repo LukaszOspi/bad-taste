@@ -8,7 +8,7 @@ import fetchTMDB from '../../services/fetch/fetchTMDB';
 import MediaContext from '../../context';
 import '../../index.css';
 
-const SearchBar = ({ search, setSearch }) => {
+const SearchBar = ({ search, setSearch, swipedMedia, dispatchSwipedMedia }) => {
   const { appState, dispatchAppState } = useContext(MediaContext);
 
   useDebounce(
@@ -56,7 +56,10 @@ const SearchBar = ({ search, setSearch }) => {
         )}
         {appState.display && (
           <div className="autoContainer">
-            <SearchOptionsList />
+            <SearchOptionsList
+              swipedMedia={swipedMedia}
+              dispatchSwipedMedia={dispatchSwipedMedia}
+            />
           </div>
         )}
       </div>

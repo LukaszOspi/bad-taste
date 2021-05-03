@@ -19,7 +19,6 @@ const CardPage = ({ dispatchSwipedMedia, swipedMedia }) => {
   }, [appState, dispatchAppState]);
 
   useEffect(() => {
-    console.log(appState);
     if (appState.mediaList.length === 0) {
       handleFetch();
     }

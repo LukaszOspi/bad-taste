@@ -20,6 +20,7 @@ const appStateReducer = (state, action) => {
         mediaDetails: undefined,
         mediaCredits: undefined,
         mediaType: 'movie',
+        swipedListIndex: '',
       };
     case 'loading':
       return {
@@ -44,7 +45,13 @@ const appStateReducer = (state, action) => {
         options: [],
       };
     case 'get-title':
-      return { ...state, display: false, dropdownSearchValue: action.payload };
+      return {
+        ...state,
+        display: false,
+        displayIndex: action.displayIndex,
+        dropdownSearchValue: action.payload,
+        swipedListIndex: action.index,
+      };
     case 'fetch-dropdown-options':
       return {
         ...state,
@@ -87,26 +94,52 @@ const appStateReducer = (state, action) => {
 };
 
 const likeHandler = (state, action) => {
+  const currentState = [...state];
   switch (action.type) {
-    case 'like':
-      return { ...state, liked: [...state.liked, action.payload] };
-    case 'dislike':
-      return { ...state, disliked: [...state.disliked, action.payload] };
-    case 'remove':
-      return {
-        ...state,
-        liked: [
-          ...state.liked.slice(0, action.index),
-          ...state.liked.slice(action.index + 1),
-        ],
+    case 'initialize':
+      return [
+        {
+          mediaTitle: '',
+          id: '',
+          type: '',
+          displayIndex: 0,
+          liked: [],
+          disliked: [],
+        },
+      ];
+    case 'new':
+      currentState[action.arrIndex] = {
+        mediaTitle: action.title,
+        id: action.id,
+        type: action.mediaType,
+        displayIndex: 0,
+        liked: [],
+        disliked: [],
       };
+      return currentState;
+    case 'like':
+      currentState[action.arrIndex] = {
+        ...currentState[action.arrIndex],
+        displayIndex: currentState[action.arrIndex].displayIndex + 1,
+        liked: [...currentState[action.arrIndex].liked, action.payload],
+      };
+      return currentState;
+    case 'dislike':
+      currentState[action.arrIndex] = {
+        ...currentState[action.arrIndex],
+        displayIndex: currentState[action.arrIndex].displayIndex + 1,
+        disliked: [...currentState[action.arrIndex].disliked, action.payload],
+      };
+      return currentState;
+    case 'remove-list':
+      currentState.splice(action.arrIndex, 1);
+      return currentState;
+    case 'remove-item':
+      currentState[action.arrIndex].liked.splice(action.index, 1);
+      return currentState;
     default:
       return state;
   }
 };
 
 export { getUniqueListByKey, appStateReducer, likeHandler };
-
-// const [state, dispatch] = useReducer(reducer, initialStatealue)
-
-// dispatch({type: 'like', payload: 'blablabla'})

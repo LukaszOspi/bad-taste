@@ -25,12 +25,19 @@ const appStateInitializer = {
   mediaDetails: undefined,
   mediaCredits: undefined,
   mediaType: 'movie',
+  swipedListIndex: '',
 };
 
-const swipedMediaInitializer = {
-  liked: [],
-  disliked: [],
-};
+const swipedMediaInitializer = [
+  {
+    mediaTitle: '',
+    id: '',
+    type: '',
+    displayIndex: 0,
+    liked: [],
+    disliked: [],
+  },
+];
 
 function App() {
   const history = useHistory();
@@ -47,6 +54,7 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem('swipedMedia', JSON.stringify(swipedMedia));
+    console.log(swipedMedia);
   }, [swipedMedia]);
 
   return (
@@ -68,7 +76,10 @@ function App() {
           </header>
           <Switch>
             <Route exact path="/">
-              <Home swipedMedia={swipedMedia} />
+              <Home
+                swipedMedia={swipedMedia}
+                dispatchSwipedMedia={dispatchSwipedMedia}
+              />
             </Route>
             <Route path="/card-page">
               <CardPage
