@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import MediaList from './MediaList';
 import './Media.css';
@@ -15,6 +15,8 @@ const CardList = ({ swipedMedia, dispatchSwipedMedia }) => {
       : history.push('/card-page');
   };
 
+  useEffect(() => {}, [swipedMedia]);
+
   return (
     <>
       <div>
@@ -25,22 +27,47 @@ const CardList = ({ swipedMedia, dispatchSwipedMedia }) => {
         >
           RETURN
         </button>
+        <button
+          className="return-button"
+          idName="button"
+          onClick={() => {
+            localStorage.removeItem('swipedMedia');
+            window.location.reload();
+          }}
+        >
+          NUKE EVERYTHING
+        </button>
       </div>
-      <div className="card-list">
-        {swipedMedia.map((e, i) => {
-          return (
-            <div>
-              <h4>{e.mediaTitle}</h4>
-              <MediaList
-                likedMedia={e}
-                dispatchSwipedMedia={dispatchSwipedMedia}
-                arrIndex={i}
-                mediaType={e.type}
-              />
-            </div>
-          );
-        })}
-      </div>
+      {swipedMedia[0].id !== '' && (
+        <div className="card-list">
+          {swipedMedia.map((e, i) => {
+            return (
+              <div>
+                <h4>{e.mediaTitle}</h4>
+                <button
+                  className="button"
+                  onClick={() =>
+                    swipedMedia.length === 1
+                      ? dispatchSwipedMedia({ type: 'initialize' })
+                      : dispatchSwipedMedia({
+                          type: 'remove-list',
+                          arrIndex: i,
+                        })
+                  }
+                >
+                  DELETE LIST
+                </button>
+                <MediaList
+                  likedMedia={e}
+                  dispatchSwipedMedia={dispatchSwipedMedia}
+                  arrIndex={i}
+                  mediaType={e.type}
+                />
+              </div>
+            );
+          })}
+        </div>
+      )}
     </>
   );
 };

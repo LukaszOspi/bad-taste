@@ -96,6 +96,17 @@ const appStateReducer = (state, action) => {
 const likeHandler = (state, action) => {
   const currentState = [...state];
   switch (action.type) {
+    case 'initialize':
+      return [
+        {
+          mediaTitle: '',
+          id: '',
+          type: '',
+          displayIndex: 0,
+          liked: [],
+          disliked: [],
+        },
+      ];
     case 'new':
       currentState[action.arrIndex] = {
         mediaTitle: action.title,
@@ -120,7 +131,10 @@ const likeHandler = (state, action) => {
         disliked: [...currentState[action.arrIndex].disliked, action.payload],
       };
       return currentState;
-    case 'remove':
+    case 'remove-list':
+      currentState.splice(action.arrIndex, 1);
+      return currentState;
+    case 'remove-item':
       currentState[action.arrIndex].liked = [
         ...currentState[action.arrIndex].liked.slice(0, action.index),
         ...currentState[action.arrIndex].liked.slice(action.index + 1),
