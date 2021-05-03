@@ -56,7 +56,7 @@ function App() {
   }, [appState]);
 
   useEffect(() => {
-    // localStorage.setItem('swipedMedia', JSON.stringify(swipedMedia));
+    localStorage.setItem('swipedMedia', JSON.stringify(swipedMedia));
     console.log(swipedMedia);
   }, [swipedMedia]);
 

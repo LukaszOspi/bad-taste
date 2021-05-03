@@ -27,10 +27,19 @@ const CardList = ({ swipedMedia, dispatchSwipedMedia }) => {
         </button>
       </div>
       <div className="card-list">
-        <MediaList
-          swipedMedia={swipedMedia}
-          dispatchSwipedMedia={dispatchSwipedMedia}
-        />
+        {swipedMedia.map((e, i) => {
+          return (
+            <div>
+              <h4>{e.mediaTitle}</h4>
+              <MediaList
+                likedMedia={e}
+                dispatchSwipedMedia={dispatchSwipedMedia}
+                arrIndex={i}
+                mediaType={e.type}
+              />
+            </div>
+          );
+        })}
       </div>
     </>
   );

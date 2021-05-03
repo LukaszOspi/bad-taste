@@ -7,8 +7,14 @@ import fetchDetailsTMDB from '../../services/fetch/fetchDetailsTMDB';
 import fetchCreditsTMDB from '../../services/fetch/fetchCreditsTMDB';
 import fetchStreamingProvidersTMDB from '../../services/fetch/fetchStreamingProvidersTMDB';
 import MediaContext from '../../context';
+import keyLegend from '../../services/keyLegend';
 
-const MediaList = ({ swipedMedia, dispatchSwipedMedia }) => {
+const MediaList = ({
+  likedMedia,
+  dispatchSwipedMedia,
+  arrIndex,
+  mediaType,
+}) => {
   const { dispatchAppState } = useContext(MediaContext);
   const history = useHistory();
 
@@ -26,17 +32,21 @@ const MediaList = ({ swipedMedia, dispatchSwipedMedia }) => {
 
   return (
     <div className="media-list">
-      {swipedMedia.liked.map((element, index) => {
+      {likedMedia.liked.map((element, index) => {
         return (
           <Media
             key={index}
-            img={element.poster_path}
-            title={element.original_title}
-            year={element.release_date}
-            info={() =>
-              handleInfo(element.id, element.original_title ? 'movie' : 'tv')
+            img={element[keyLegend[mediaType].poster]}
+            title={element[keyLegend[mediaType].title]}
+            year={element[keyLegend[mediaType].date]}
+            info={() => handleInfo(element.id, mediaType)}
+            remove={() =>
+              dispatchSwipedMedia({
+                type: 'remove',
+                index: index,
+                arrIndex: arrIndex,
+              })
             }
-            remove={() => dispatchSwipedMedia({ type: 'remove', index: index })}
           />
         );
       })}

@@ -108,13 +108,11 @@ const likeHandler = (state, action) => {
       currentState[action.arrIndex] = {
         ...currentState[action.arrIndex],
         liked: [...currentState[action.arrIndex].liked, action.payload],
-        disliked: [...currentState[action.arrIndex].disliked],
       };
       return currentState;
     case 'dislike':
       currentState[action.arrIndex] = {
         ...currentState[action.arrIndex],
-        liked: [...currentState[action.arrIndex].liked],
         disliked: [...currentState[action.arrIndex].disliked, action.payload],
       };
       return currentState;
