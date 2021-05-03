@@ -19,23 +19,24 @@ const SearchOptionsList = ({ swipedMedia, dispatchSwipedMedia }) => {
   };
 
   const handleClick = (element, array) => {
+    const index = findIndex(array, element.id, appState.mediaType);
     dispatchAppState({
       type: 'get-title',
-      index: findIndex(array, element.id, appState.mediaType),
+      index: index,
       payload: {
         title: element[keyLegend[appState.mediaType]['title']],
         id: element.id,
       },
     });
-    dispatchSwipedMedia({
-      type: 'new',
-      title: element[keyLegend[appState.mediaType]['title']],
-      id: element.id,
-      mediaType: appState.mediaType,
-      index: findIndex(array, element.id, appState.mediaType),
-    });
-    console.log(findIndex(array, element.id, appState.mediaType));
-    console.log(appState);
+    if (array[index]?.id === '' || index === array.length) {
+      dispatchSwipedMedia({
+        type: 'new',
+        title: element[keyLegend[appState.mediaType]['title']],
+        id: element.id,
+        mediaType: appState.mediaType,
+        arrIndex: index,
+      });
+    }
     history.push('/card-page');
   };
 

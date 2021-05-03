@@ -96,12 +96,21 @@ const likeHandler = (state, action) => {
   const currentState = [...state];
   switch (action.type) {
     case 'new':
-      currentState[action.index] = {
+      currentState[action.arrIndex] = {
         mediaTitle: action.title,
         id: action.id,
         type: action.mediaType,
         liked: [],
         disliked: [],
+      };
+      return currentState;
+    case 'update':
+      currentState[action.arrIndex] = {
+        mediaTitle: action.title,
+        id: action.id,
+        type: action.mediaType,
+        liked: [...currentState[action.arrIndex].liked],
+        disliked: [...currentState[action.arrIndex].disliked],
       };
       return currentState;
     case 'like':
