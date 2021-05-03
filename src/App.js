@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useReducer, useEffect } from 'react';
 import { Switch, Route, useHistory } from 'react-router-dom';
 import { appStateReducer, likeHandler } from './services/utilityFunctions';
 import logo from './assets/mouth-3.png';
@@ -27,16 +27,27 @@ const appStateInitializer = {
   mediaType: 'movie',
 };
 
+const swipedMediaInitializer = {
+  liked: [],
+  disliked: [],
+};
+
 function App() {
   const history = useHistory();
   const [appState, dispatchAppState] = useReducer(
     appStateReducer,
     appStateInitializer
   );
-  const [swipedMedia, dispatchSwipedMedia] = useReducer(likeHandler, {
-    liked: [],
-    disliked: [],
-  });
+  const [swipedMedia, dispatchSwipedMedia] = useReducer(
+    likeHandler,
+    localStorage.getItem('swipedMedia')
+      ? JSON.parse(localStorage.getItem('swipedMedia'))
+      : swipedMediaInitializer
+  );
+
+  useEffect(() => {
+    localStorage.setItem('swipedMedia', JSON.stringify(swipedMedia));
+  }, [swipedMedia]);
 
   return (
     <div className="App">

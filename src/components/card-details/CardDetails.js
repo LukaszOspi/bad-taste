@@ -12,7 +12,9 @@ const CardDetails = () => {
   const { appState } = useContext(MediaContext);
 
   const showList = () => {
-    history.push('/card-page');
+    appState.mediaList.length === 0
+      ? history.push('./card-list')
+      : history.push('/card-page');
   };
 
   return (
