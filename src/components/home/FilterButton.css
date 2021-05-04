@@ -8,13 +8,13 @@
   flex-direction: column;
 }
 
-h1 {
+.filter-bar h1 {
   font-size: 70px;
   margin-top: 25px;
   margin-bottom: 0px;
 }
 
-p {
+.filter-bar p {
   margin-top: 5px;
 }
 

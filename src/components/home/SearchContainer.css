@@ -7,6 +7,7 @@ input {
   margin: 10px;
   font-size: 18px;
   text-transform: capitalize;
+  text-align: center;
 }
 
 input:focus {
@@ -25,6 +26,7 @@ input:focus {
   border-width: 0px 1px 1px 1px;
   border-style: solid;
   border-color: rgb(0, 0, 0);
+  /*  border-color: #ff299d; */
   background-color: rgba(255, 255, 255, 0.3);
   right: 30px;
   top: 52px;
