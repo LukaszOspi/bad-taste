@@ -43,16 +43,3 @@ function Footer () {
 }
 
 export default Footer
-
-
-
-/**
-* html (structurer le site): tags (<h1>, <html>)
-  * css (colorer): class, id, @media
-  * js (animer): script.js, DOM
-  * 
-  * 
-  * 
-  * 
-  */
-  
