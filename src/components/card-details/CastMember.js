@@ -12,10 +12,10 @@ const CastMember = ({
     <div className="cast-member">
       <div className="cast-header">
         {index === 0 ? (
-          <button className="button" disabled>{`<`}</button>
+          <button className="arrow-button" disabled>{`<`}</button>
         ) : (
           <button
-            className="button"
+            className="arrow-button"
             onClick={() => dispatch({ type: 'decrement' })}
           >{`<`}</button>
         )}
@@ -28,7 +28,7 @@ const CastMember = ({
           <button className="button" disabled>{`>`}</button>
         ) : (
           <button
-            className="button"
+            className="arrow-button"
             onClick={() => dispatch({ type: 'increment' })}
           >{`>`}</button>
         )}

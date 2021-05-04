@@ -12,8 +12,10 @@ const FilterButton = ({ search, swipedMedia }) => {
     <div className="filter-bar">
       <h1>BAD TASTE</h1>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pulvinar sed
-        elementum egestas blandit. Proin augue lacus, phasellus vel lorem risus.
+        Tell me what you like and I'll tell you what to watch...<br/>
+        Pick your flavor first.
+
+        
       </p>
       <div className="buttons-div">
         <button
@@ -26,7 +28,7 @@ const FilterButton = ({ search, swipedMedia }) => {
             })
           }
         >
-          Movie
+          Movies
         </button>
         <button
           className="button blueButton"
@@ -45,7 +47,7 @@ const FilterButton = ({ search, swipedMedia }) => {
             className="button yellowButton"
             onClick={() => history.push('/card-list')}
           >
-            Your List
+            A la carte 
           </button>
         )}
       </div>
