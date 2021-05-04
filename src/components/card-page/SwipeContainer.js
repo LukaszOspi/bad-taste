@@ -132,7 +132,8 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
         </div>
       )}
       <div className="button-div">
-        <button className="round-button">-</button>
+        <img className="like-button" alt="dislike" src="" />
+        <img className="like-button" alt="like" src="" />
         <button className="round-button">i</button>
         <button className="round-button">L</button>
         <button className="round-button">+</button>

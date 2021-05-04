@@ -4,6 +4,7 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  justify-content: center;
 }
 
 /* .card-item {
@@ -11,6 +12,12 @@
   flex-direction: row;
 
 } */
+
+@media only screen and (min-width: 768px) {
+}
+
+@media only screen and (min-width: 1024px) {
+}
 
 @media screen and (max-width: 800px) {
   /* .card-page-img {
