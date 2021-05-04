@@ -12,10 +12,10 @@ const CastMember = ({
     <div className="cast-member">
       <div className="cast-header">
         {index === 0 ? (
-          <button className="button" disabled>{`<`}</button>
+          <button className="arrow-button" disabled>{`<`}</button>
         ) : (
           <button
-            className="button"
+            className="arrow-button"
             onClick={() => dispatch({ type: 'decrement' })}
           >{`<`}</button>
         )}
@@ -25,10 +25,10 @@ const CastMember = ({
           src={`https://image.tmdb.org/t/p/w185${castPicture}`}
         />
         {index === filteredCastList.length - 1 ? (
-          <button className="button" disabled>{`<`}</button>
+          <button className="arrow-button" disabled>{`<`}</button>
         ) : (
           <button
-            className="button"
+            className="arrow-button"
             onClick={() => dispatch({ type: 'increment' })}
           >{`>`}</button>
         )}

@@ -44,7 +44,7 @@ p {
   font-size: 1.25em;
 }
 
-#button,
+.button,
 .button {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
@@ -54,6 +54,16 @@ p {
   border: none;
   border-radius: 50px;
   cursor: pointer;
+}
+.button,
+.arrow-button {
+  font-family: "Permanent Marker", cursive;
+  font-size: 25px;
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  cursor: pointer;
+  display: inline-block;
 }
 
 /* @media (min-width: 800px) {
