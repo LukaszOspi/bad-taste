@@ -147,8 +147,18 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
                 }}
               />
             </div>
-            <button className="round-button">i</button>
-            <button className="round-button">L</button>
+            <button
+              className="arrow-button"
+              onClick={() => history.push('/card-details')}
+            >
+              i
+            </button>
+            <button
+              className="arrow-button"
+              onClick={() => history.push('/card-list')}
+            >
+              L
+            </button>
             <div className="mobile-button">
               <img
                 className="mobile-like-button"

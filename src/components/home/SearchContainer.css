@@ -2,11 +2,15 @@ input {
   padding: 10px;
   height: 20px;
   width: 500px;
-  border: 1px solid rgb(0, 0, 0);
+  border: 1px solid #ff299d;
   border-radius: 50px;
   margin: 10px;
   font-size: 18px;
   text-transform: capitalize;
+}
+
+input:focus {
+  outline: none;
 }
 
 .pos-rel {
@@ -14,10 +18,13 @@ input {
 }
 
 .autoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   border-width: 0px 1px 1px 1px;
   border-style: solid;
-  border-color: rgb(0, 0, 0);
+  border-color: goldenrod;
   background-color: whitesmoke;
   right: 10px;
   top: 52px;
