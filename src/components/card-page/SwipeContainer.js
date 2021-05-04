@@ -7,6 +7,8 @@ import fetchCreditsTMDB from '../../services/fetch/fetchCreditsTMDB';
 import fetchRecommendationsTMDB from '../../services/fetch/fetchRecommendationsTMDB';
 import keyLegend from '../../services/keyLegend';
 import './SwipeContainer.css';
+import thumbDown from '../../assets/thumb-down.png';
+import thumbUp from '../../assets/thumb-up.png';
 
 const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
   const history = useHistory();
@@ -59,20 +61,79 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
       {appState.mediaList.length === 0 ? null : (
         <div className="card-page">
           {/* <button className="button" onClick={() => history.push('/card-list')}>
-            SHOW YOUR {swipedMedia[appState.swipedListIndex].liked.length} LIKED
-            TITLES
+            GO TO THE LIST
           </button> */}
-          <h1 className="swipe-media-title">
-            {
-              appState.mediaList[appState.displayIndex][
-                keyLegend[appState.mediaType]['title']
-              ]
-            }
-          </h1>
+
           <div className="swipe-container">
             <div className="card-item">
-              {/* <button
-                className="like-button"
+              <div className="desktop-button">
+                <img
+                  className="desktop-like-button"
+                  alt="dislike"
+                  src={thumbDown}
+                  onClick={() => {
+                    dispatchSwipedMedia({
+                      type: 'dislike',
+                      payload: appState.mediaList[appState.displayIndex],
+                      arrIndex: appState.swipedListIndex,
+                      id: appState.dropdownSearchValue.id,
+                      mediaType: appState.mediaType,
+                      title: appState.dropdownSearchValue.title,
+                    });
+                    dispatchAppState({ type: 'increase-display-index' });
+                  }}
+                />
+              </div>
+              <div className="card-page-img">
+                <img
+                  alt="poster"
+                  src={`https://image.tmdb.org/t/p/w500${
+                    appState.mediaList[appState.displayIndex][
+                      keyLegend[appState.mediaType]['poster']
+                    ]
+                  }`}
+                />
+              </div>
+              <div className="desktop-button">
+                <img
+                  className="desktop-like-button"
+                  alt="like"
+                  src={thumbUp}
+                  onClick={async () => {
+                    dispatchSwipedMedia({
+                      type: 'like',
+                      payload: appState.mediaList[appState.displayIndex],
+                      arrIndex: appState.swipedListIndex,
+                      id: appState.dropdownSearchValue.id,
+                      mediaType: appState.mediaType,
+                      title: appState.dropdownSearchValue.title,
+                    });
+                    dispatchAppState({
+                      type: 'update-media-list',
+                      payload: await fetchNewRecommendations(
+                        appState.mediaList[appState.displayIndex].id,
+                        appState.mediaType,
+                        appState.mediaList
+                      ),
+                    });
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+          {/* <button
+            className="button"
+            onClick={() => history.push('/card-details')}
+          >
+            More info
+          </button> */}
+
+          <div className="button-div">
+            <div className="mobile-button">
+              <img
+                className="mobile-like-button"
+                alt="dislike"
+                src={thumbDown}
                 onClick={() => {
                   dispatchSwipedMedia({
                     type: 'dislike',
@@ -84,21 +145,15 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
                   });
                   dispatchAppState({ type: 'increase-display-index' });
                 }}
-              >
-                DISLIKE
-                {' ' + swipedMedia[appState.swipedListIndex].disliked.length}
-              </button> */}
-              <img
-                className="card-page-img"
-                alt="poster"
-                src={`https://image.tmdb.org/t/p/w500${
-                  appState.mediaList[appState.displayIndex][
-                    keyLegend[appState.mediaType]['poster']
-                  ]
-                }`}
               />
-              {/*  <button
-                className="like-button"
+            </div>
+            <button className="round-button">i</button>
+            <button className="round-button">L</button>
+            <div className="mobile-button">
+              <img
+                className="mobile-like-button"
+                alt="like"
+                src={thumbUp}
                 onClick={async () => {
                   dispatchSwipedMedia({
                     type: 'like',
@@ -117,27 +172,19 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
                     ),
                   });
                 }}
-              >
-                LIKE
-                {' ' + swipedMedia[appState.swipedListIndex].liked.length}
-              </button> */}
+              />
             </div>
           </div>
-          {/* <button
-            className="button"
-            onClick={() => history.push('/card-details')}
-          >
-            More info
-          </button> */}
+
+          <h1 className="swipe-media-title">
+            {
+              appState.mediaList[appState.displayIndex][
+                keyLegend[appState.mediaType]['title']
+              ]
+            }
+          </h1>
         </div>
       )}
-      <div className="button-div">
-        <img className="like-button" alt="dislike" src="" />
-        <img className="like-button" alt="like" src="" />
-        <button className="round-button">i</button>
-        <button className="round-button">L</button>
-        <button className="round-button">+</button>
-      </div>
     </>
   );
 };
