@@ -20,10 +20,10 @@ p {
 
 .buttons-div {
   display: flex;
-  justify-content: space-around;
-  margin-top: 70px;
-  margin-bottom: 20px;
-  width: 100%;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 15%;
   font-weight: 700;
 }
 
@@ -44,19 +44,22 @@ p {
 }*/
 
 .blackButton {
-  color: black;
-  background-color: #03f7eb;
+  color: #03f7eb;
+  background-color: rgba(0, 0, 0, 0);
   font-weight: 700;
+  border: 2px solid #03f7eb;
 }
 
 .blueButton {
-  color: black;
-  background-color: #faff7f;
+  color: #faff7f;
+  background-color: rgba(0, 0, 0, 0);
   font-weight: 700;
+  border: 2px solid #faff7f;
 }
 
 .yellowButton {
-  color: black;
-  background-color: #e43f6f;
+  color: #e43f6f;
+  background-color: rgba(0, 0, 0, 0);
   font-weight: 700;
+  border: 2px solid #e43f6f;
 }

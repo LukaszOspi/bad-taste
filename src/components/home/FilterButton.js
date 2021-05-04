@@ -46,7 +46,7 @@ const FilterButton = ({ search, swipedMedia }) => {
             className="button yellowButton"
             onClick={() => history.push('/card-list')}
           >
-            A la carte 
+            Your List 
           </button>
         )}
       </div>

@@ -9,7 +9,8 @@ import keyLegend from '../../services/keyLegend';
 import './SwipeContainer.css';
 import thumbDown from '../../assets/thumb-down.png';
 import thumbUp from '../../assets/thumb-up.png';
-
+import bubble from '../../assets/yellow-bubble.png';
+import list from '../../assets/list-1.png';
 const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
   const history = useHistory();
   const { appState, dispatchAppState } = useContext(MediaContext);
@@ -147,8 +148,20 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
                 }}
               />
             </div>
-            <button className="round-button">i</button>
-            <button className="round-button">L</button>
+            <div className="buttons-div">
+            <img 
+            className="mobile-like-button"
+            alt="info"
+            src={bubble}
+            onClick={() => history.push('/card-details')}
+            />
+            <img 
+            className="mobile-like-button"
+            alt="list"
+            src={list}
+            onClick={() => history.push('/card-list')}
+            />
+            </div>
             <div className="mobile-button">
               <img
                 className="mobile-like-button"
