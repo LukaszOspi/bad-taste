@@ -1,64 +1,48 @@
-import { useHistory } from "react-router-dom";
-import { useEffect, useContext, useCallback } from "react";
-import MediaContext from "../../context";
-import fetchStreamingProvidersTMDB from "../../services/movie-fetch/fetchStreamingProvidersTMDB";
-import fetchDetailsTMDB from "../../services/movie-fetch/fetchDetailsTMDB";
-import fetchCreditsTMDB from "../../services/movie-fetch/fetchCreditsTMDB";
-import fetchRecommendationsTMDB from "../../services/movie-fetch/fetchRecommendationsTMDB";
-import keyLegend from "../../services/keyLegend";
-// import "../../index.css";
-import "./SwipeContainer.css";
+import { useHistory } from 'react-router-dom';
+import { useEffect, useContext, useCallback } from 'react';
+import MediaContext from '../../context';
+import fetchStreamingProvidersTMDB from '../../services/fetch/fetchStreamingProvidersTMDB';
+import fetchDetailsTMDB from '../../services/fetch/fetchDetailsTMDB';
+import fetchCreditsTMDB from '../../services/fetch/fetchCreditsTMDB';
+import fetchRecommendationsTMDB from '../../services/fetch/fetchRecommendationsTMDB';
+import keyLegend from '../../services/keyLegend';
+import './SwipeContainer.css';
 
-const SwipeContainer = ({
-  mediaList,
-  setMediaList,
-  displayIndex,
-  setDisplayIndex,
-  setStreamingProvidersList,
-  setMediaDetails,
-  setMediaCredits,
-  dispatchSwipedMedia,
-  swipedMedia,
-}) => {
+const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
   const history = useHistory();
-  const { mediaType } = useContext(MediaContext);
+  const { appState, dispatchAppState } = useContext(MediaContext);
 
-  const handleFetching = useCallback(() => {
-    fetchStreamingProvidersTMDB(
-      mediaList[displayIndex].id,
-      setStreamingProvidersList,
-      mediaType
-    );
-    fetchDetailsTMDB(mediaList[displayIndex].id, setMediaDetails, mediaType);
-    fetchCreditsTMDB(mediaList[displayIndex].id, setMediaCredits, mediaType);
-  }, [
-    mediaList,
-    displayIndex,
-    setStreamingProvidersList,
-    setMediaDetails,
-    setMediaCredits,
-    mediaType,
-  ]);
+  const handleFetching = useCallback(
+    async (mediaId, mediaType) => {
+      dispatchAppState({
+        type: 'fetch-details',
+        payload: {
+          credits: await fetchCreditsTMDB(mediaId, mediaType),
+          details: await fetchDetailsTMDB(mediaId, mediaType),
+          streaming: await fetchStreamingProvidersTMDB(mediaId, mediaType),
+        },
+      });
+    },
+    [dispatchAppState]
+  );
 
   useEffect(() => {
-    if (mediaList.length !== 0) {
-      handleFetching();
-    }
-  }, [mediaList, displayIndex, handleFetching]);
-
-  const showInfo = () => {
-    setTimeout(() => {
-      history.push("/card-details");
-    }, 150);
-  };
-
-  const fetchNewRecommendations = async (mediaID, currentList) => {
-    try {
-      const newList = await fetchRecommendationsTMDB(
-        mediaID,
-        undefined,
-        mediaType
+    if (appState.mediaList.length !== 0) {
+      handleFetching(
+        appState.mediaList[appState.displayIndex].id,
+        appState.mediaType
       );
+    }
+  }, [
+    appState.displayIndex,
+    appState.mediaList,
+    appState.mediaType,
+    handleFetching,
+  ]);
+
+  const fetchNewRecommendations = async (mediaID, mediaType, currentList) => {
+    try {
+      const newList = await fetchRecommendationsTMDB(mediaID, mediaType);
       const filteredNewList = newList.filter(
         (e) => !currentList.find((d) => e.id === d.id)
       );
@@ -72,57 +56,77 @@ const SwipeContainer = ({
 
   return (
     <>
-      {mediaList.length === 0 ? null : (
+      {appState.mediaList.length === 0 ? null : (
         <>
-          <button className="button" onClick={() => history.push("/card-list")}>
-            SHOW YOUR {swipedMedia.liked.length} LIKED TITLES
+          <button className="button" onClick={() => history.push('/card-list')}>
+            SHOW YOUR {swipedMedia[appState.swipedListIndex].liked.length} LIKED
+            TITLES
           </button>
-          <h1>{mediaList[displayIndex][keyLegend[mediaType]["title"]]}</h1>
+          <h1>
+            {
+              appState.mediaList[appState.displayIndex][
+                keyLegend[appState.mediaType]['title']
+              ]
+            }
+          </h1>
           <div className="swipe-container">
             <div className="card-item">
               <button
                 className="like-button"
                 onClick={() => {
                   dispatchSwipedMedia({
-                    type: "dislike",
-                    payload: mediaList[displayIndex],
+                    type: 'dislike',
+                    payload: appState.mediaList[appState.displayIndex],
+                    arrIndex: appState.swipedListIndex,
+                    id: appState.dropdownSearchValue.id,
+                    mediaType: appState.mediaType,
+                    title: appState.dropdownSearchValue.title,
                   });
-                  setDisplayIndex(displayIndex + 1);
+                  dispatchAppState({ type: 'increase-display-index' });
                 }}
               >
                 DISLIKE
-                {" " + swipedMedia.disliked.length}
+                {' ' + swipedMedia[appState.swipedListIndex].disliked.length}
               </button>
               <img
                 className="card-page-img"
                 alt="poster"
                 src={`https://image.tmdb.org/t/p/w500${
-                  mediaList[displayIndex][keyLegend[mediaType]["poster"]]
+                  appState.mediaList[appState.displayIndex][
+                    keyLegend[appState.mediaType]['poster']
+                  ]
                 }`}
               />
               <button
                 className="like-button"
                 onClick={async () => {
                   dispatchSwipedMedia({
-                    type: "like",
-                    payload: mediaList[displayIndex],
+                    type: 'like',
+                    payload: appState.mediaList[appState.displayIndex],
+                    arrIndex: appState.swipedListIndex,
+                    id: appState.dropdownSearchValue.id,
+                    mediaType: appState.mediaType,
+                    title: appState.dropdownSearchValue.title,
                   });
-                  setMediaList([
-                    ...mediaList,
-                    ...(await fetchNewRecommendations(
-                      mediaList[displayIndex].id,
-                      mediaList
-                    )),
-                  ]);
-                  setDisplayIndex(displayIndex + 1);
+                  dispatchAppState({
+                    type: 'update-media-list',
+                    payload: await fetchNewRecommendations(
+                      appState.mediaList[appState.displayIndex].id,
+                      appState.mediaType,
+                      appState.mediaList
+                    ),
+                  });
                 }}
               >
                 LIKE
-                {" " + swipedMedia.liked.length}
+                {' ' + swipedMedia[appState.swipedListIndex].liked.length}
               </button>
             </div>
           </div>
-          <button className="button" onClick={showInfo}>
+          <button
+            className="button"
+            onClick={() => history.push('/card-details')}
+          >
             More info
           </button>
         </>

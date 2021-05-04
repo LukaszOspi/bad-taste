@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const fetchCreditsTMDB = async (searchQuery, updater, type) => {
+const fetchCreditsTMDB = async (searchQuery, type) => {
   const source = axios.CancelToken.source();
   const apiKeyTMDB = process.env.REACT_APP_TMDB_API_KEY;
   const searchParams = { query: searchQuery, api_key: apiKeyTMDB };
@@ -15,7 +15,7 @@ const fetchCreditsTMDB = async (searchQuery, updater, type) => {
     );
 
     const data = await res.data;
-    return updater === undefined ? await data : await updater(data);
+    return await data;
   } catch (err) {
     console.error(`fetchCreditsTMDB() failed with error ${err}`);
   }

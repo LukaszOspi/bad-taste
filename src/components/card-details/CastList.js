@@ -1,6 +1,8 @@
-import { useReducer } from 'react';
+import { useReducer, useMemo, useContext } from 'react';
 import CastMember from './CastMember';
 import '../../index.css';
+import './CastList.css';
+import MediaContext from '../../context';
 
 const reducer = (state, action) => {
   const indexAction = {
@@ -13,7 +15,13 @@ const reducer = (state, action) => {
 };
 
 const CastList = ({ mediaCredits }) => {
+  const { appState } = useContext(MediaContext);
   const [index, dispatch] = useReducer(reducer, 0);
+
+  const filteredCastList = useMemo(
+    () => appState.mediaCredits.cast.filter((a) => a.profile_path),
+    [appState.mediaCredits]
+  );
 
   return (
     <div className="cast">
@@ -28,21 +36,24 @@ const CastList = ({ mediaCredits }) => {
           >{`<`}</button>
         )}
         <div className="cast-list">
-          {mediaCredits.cast.map((c, i) =>
-            i === index ? (
+          {filteredCastList.map((c, i) => (
+            <div key={c.id} className={i === index ? 'visible' : 'not-visible'}>
               <CastMember
-                key={c.id}
                 castPicture={c.profile_path}
                 name={c.name}
                 character={c.character}
               />
-            ) : null
-          )}
+            </div>
+          ))}
         </div>
-        <button
-          className="button"
-          onClick={() => dispatch({ type: 'increment' })}
-        >{`>`}</button>
+        {index === filteredCastList.length - 1 ? (
+          <button className="button" disabled>{`<`}</button>
+        ) : (
+          <button
+            className="button"
+            onClick={() => dispatch({ type: 'increment' })}
+          >{`>`}</button>
+        )}
       </div>
     </div>
   );

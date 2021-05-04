@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const fetchStreamingProvidersTMDB = async (searchID, updater, type) => {
+const fetchStreamingProvidersTMDB = async (searchID, type) => {
   const source = axios.CancelToken.source();
   const apiKeyTMDB = process.env.REACT_APP_TMDB_API_KEY;
   const searchParams = { api_key: apiKeyTMDB };
@@ -15,7 +15,7 @@ const fetchStreamingProvidersTMDB = async (searchID, updater, type) => {
     );
     const data = await res.data.results.DE;
 
-    return updater === undefined ? await data : await updater(data);
+    return await data;
   } catch (err) {
     console.error(`fetchStreamingProvidersTMDB() failed with error ${err}`);
   }

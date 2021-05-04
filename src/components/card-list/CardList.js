@@ -1,34 +1,71 @@
-import React from 'react';
+import { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import MediaList from './MediaList';
 import './Media.css';
-import { useHistory } from 'react-router-dom';
 import '../../index.css';
+import MediaContext from '../../context';
 
 const CardList = ({ swipedMedia, dispatchSwipedMedia }) => {
+  const { appState } = useContext(MediaContext);
   const history = useHistory();
 
   const backCardPage = () => {
-    history.push('/card-page');
+    appState.mediaList.length === 0
+      ? history.push('/')
+      : history.push('/card-page');
   };
-  console.log(swipedMedia.liked.length);
 
   return (
     <>
       <div>
         <button
           className="return-button"
-          idName="button"
+          // idName="button"
           onClick={backCardPage}
         >
           RETURN
         </button>
+        <button
+          className="return-button"
+          // idName="button"
+          onClick={() => {
+            localStorage.removeItem('swipedMedia');
+            window.location.reload();
+          }}
+        >
+          NUKE EVERYTHING
+        </button>
       </div>
-      <div className="card-list">
-        <MediaList
-          swipedMedia={swipedMedia}
-          dispatchSwipedMedia={dispatchSwipedMedia}
-        />
-      </div>
+      {swipedMedia[0].id !== '' && (
+        <div className="card-list">
+          {swipedMedia.map((e, i) => {
+            return (
+              <div key={e.id}>
+                <h4>{e.mediaTitle}</h4>
+                <button
+                  className="button"
+                  onClick={() =>
+                    swipedMedia.length === 1
+                      ? dispatchSwipedMedia({ type: 'initialize' })
+                      : dispatchSwipedMedia({
+                          type: 'remove-list',
+                          arrIndex: i,
+                        })
+                  }
+                >
+                  DELETE LIST
+                </button>
+                <MediaList
+                  likedMedia={e}
+                  dispatchSwipedMedia={dispatchSwipedMedia}
+                  arrIndex={i}
+                  mediaType={e.type}
+                />
+              </div>
+            );
+          })}
+        </div>
+      )}
     </>
   );
 };
