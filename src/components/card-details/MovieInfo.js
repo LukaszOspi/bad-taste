@@ -30,30 +30,38 @@ const MovieInfo = () => {
         src={`https://image.tmdb.org/t/p/w780${appState.mediaDetails.backdrop_path}`}
       />
       <div className="media-info">
-        <div className="media-info-metadata">
-          <h3 id="media-title">
-            {appState.mediaDetails.title}{' '}
-            {`(${appState.mediaDetails.release_date.slice(0, 4)})`}
-          </h3>
-          <div className="media-rating-trailer">
-            <h4>{`Rating: ${appState.mediaDetails.vote_average} / 10`}</h4>
-            <YoutubeModalPlayer
-              modalIsOpen={modalIsOpen}
-              setModalIsOpen={setModalIsOpen}
-              youtubeKey={mediaTrailerList[0]['key']}
+        <h3 id="media-title">
+          {appState.mediaDetails.title}{' '}
+          {`(${appState.mediaDetails.release_date.slice(0, 4)})`}
+        </h3>
+        <div className="media-info-header">
+          <div className="media-detail-poster">
+            <img
+              alt="poster"
+              src={`https://image.tmdb.org/t/p/w300${appState.mediaDetails.poster_path}`}
             />
           </div>
+          <div className="media-info-metadata">
+            <div className="media-rating-trailer">
+              <h4>{`Rating: ${appState.mediaDetails.vote_average} / 10`}</h4>
+              <YoutubeModalPlayer
+                modalIsOpen={modalIsOpen}
+                setModalIsOpen={setModalIsOpen}
+                youtubeKey={mediaTrailerList[0]['key']}
+              />
+            </div>
+            <p className="genres">{`${appState.mediaDetails.release_date} - ${mediaLength}`}</p>
+            <p className="genres">
+              {appState.mediaDetails.genres.map((g, i) =>
+                i === appState.mediaDetails.genres.length - 1
+                  ? `${g.name}.`
+                  : `${g.name}, `
+              )}
+            </p>
+            <p className="tagline">{appState.mediaDetails.tagline}</p>
+          </div>
         </div>
-        <p className="genres">{`${appState.mediaDetails.release_date} - ${mediaLength}`}</p>
-        <p className="genres">
-          {appState.mediaDetails.genres.map((g, i) =>
-            i === appState.mediaDetails.genres.length - 1
-              ? `${g.name}.`
-              : `${g.name}, `
-          )}
-        </p>
         <div id="media-overview-section">
-          <p className="tagline">{appState.mediaDetails.tagline}</p>
           <h4>Overview: </h4>
           <p id="overview">{appState.mediaDetails.overview}</p>
         </div>
