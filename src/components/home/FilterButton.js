@@ -14,9 +14,8 @@ const FilterButton = ({ search, swipedMedia }) => {
       <p>
         Tell me what you like and I'll tell you what to watch...<br/>
         Pick your flavor first.
-
-        
       </p>
+
       <div className="buttons-div">
         <button
           className="button blackButton"

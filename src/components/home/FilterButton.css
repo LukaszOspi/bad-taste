@@ -3,6 +3,11 @@
   padding: 40px 40px 20px 40px;
 }
 
+.filter-bar {
+  display: flex;
+  flex-direction: column;
+}
+
 h1 {
   font-size: 70px;
   margin-top: 25px;
@@ -18,14 +23,15 @@ p {
   justify-content: space-around;
   margin-top: 70px;
   margin-bottom: 20px;
-  width: 50%;
+  width: 100%;
+  font-weight: 700;
 }
 
-.cardButtons {
+/*.cardButtons {
   display: flex;
   flex-wrap: wrap;
 
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 12px;
   padding: 10px 30px;
@@ -35,19 +41,22 @@ p {
   border-radius: 50px;
   cursor: pointer;
   background-color: #424246;
-}
+}*/
 
 .blackButton {
   color: black;
   background-color: #03f7eb;
+  font-weight: 700;
 }
 
 .blueButton {
   color: black;
   background-color: #faff7f;
+  font-weight: 700;
 }
 
 .yellowButton {
   color: black;
   background-color: #e43f6f;
+  font-weight: 700;
 }
