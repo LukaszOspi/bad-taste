@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import FilterButton from './FilterButton';
 import SearchContainer from './SearchContainer';
-import '../../index.css';
+import './Home.css';
+
 
 const Home = ({ swipedMedia, dispatchSwipedMedia }) => {
   const [search, setSearch] = useState('');
