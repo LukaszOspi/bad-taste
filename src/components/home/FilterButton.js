@@ -26,7 +26,7 @@ const FilterButton = ({ search, swipedMedia }) => {
     h1 {
       font-family: 'Permanent Marker', cursive;
       font-weight: 400;
-      font-size: 60px;
+      font-size: 80px;
       margin-bottom: 10px;
       color: ${font};
     }
@@ -46,9 +46,10 @@ const FilterButton = ({ search, swipedMedia }) => {
     div {
       width: 80px;
       height: 25px;
+      line-height: 25px;
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
-      font-size: 12px;
+      font-size: 16px;
       padding: 10px 30px;
       margin-right: 20px;
       margin-top: 20px;
