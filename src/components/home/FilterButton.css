@@ -2,9 +2,21 @@
   max-width: 600px;
   padding: 40px 40px 20px 40px;
 }
+
+h1 {
+  font-size: 70px;
+  margin-top: 25px;
+  margin-bottom: 0px;
+}
+
+p {
+  margin-top: 5px;
+}
+
 .buttons-div {
   display: flex;
   justify-content: space-around;
+  margin-top: 70px;
   margin-bottom: 20px;
 }
 
@@ -12,7 +24,7 @@
   display: flex;
   flex-wrap: wrap;
 
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 12px;
   padding: 10px 30px;
@@ -25,16 +37,16 @@
 }
 
 .blackButton {
-  color: #fdfdfd;
-  background-color: #424246;
+  color: black;
+  background-color: #03f7eb;
 }
 
 .blueButton {
-  color: #fdfdfd;
-  background-color: #1d499b;
+  color: black;
+  background-color: #faff7f;
 }
 
 .yellowButton {
-  color: #424246;
-  background-color: #f9d648;
+  color: black;
+  background-color: #e43f6f;
 }
