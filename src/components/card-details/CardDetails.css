@@ -12,6 +12,10 @@
   width: 100vw;
 }
 
+.media-detail-poster {
+  display: none;
+}
+
 .media-info-metadata {
   width: 100%;
   display: flex;
@@ -117,9 +121,23 @@
 }
 
 @media only screen and (min-width: 768px) {
+  .media-info-header {
+    display: flex;
+  }
+
+  .media-detail-poster {
+    display: inline-block;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
+  .media-info-header {
+    display: flex;
+  }
+
+  .media-detail-poster {
+    display: inline-block;
+  }
 }
 
 /* @media (prefers-color-scheme: dark) {
