@@ -24,11 +24,11 @@ input:focus {
   position: absolute;
   border-width: 0px 1px 1px 1px;
   border-style: solid;
-  border-color: goldenrod;
-  background-color: whitesmoke;
-  right: 10px;
+  border-color: rgb(0, 0, 0);
+  background-color: rgba(255, 255, 255, 0.3);
+  right: 30px;
   top: 52px;
-  width: 520px;
+  width: 480px;
 }
 
 .option {

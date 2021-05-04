@@ -16,6 +16,7 @@ const FilterButton = ({ search, swipedMedia }) => {
         <br />
         Pick your flavor first.
       </p>
+
       <div className="buttons-div">
         <button
           className="button black-button"

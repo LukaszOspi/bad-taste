@@ -24,19 +24,39 @@ p {
   margin-top: 70px;
   margin-bottom: 20px;
   width: 100%;
+  font-weight: 700;
 }
+
+/*.cardButtons {
+  display: flex;
+  flex-wrap: wrap;
+
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  padding: 10px 30px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  background-color: #424246;
+}*/
 
 .black-button {
   color: black;
   background-color: #03f7eb;
+  font-weight: 700;
 }
 
 .blue-button {
   color: black;
   background-color: #faff7f;
+  font-weight: 700;
 }
 
 .yellow-button {
   color: black;
   background-color: #e43f6f;
+  font-weight: 700;
 }
