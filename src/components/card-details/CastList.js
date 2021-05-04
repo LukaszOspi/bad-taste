@@ -14,7 +14,7 @@ const reducer = (state, action) => {
   return (indexAction[action.type] || indexAction.default)();
 };
 
-const CastList = ({ mediaCredits }) => {
+const CastList = () => {
   const { appState } = useContext(MediaContext);
   const [index, dispatch] = useReducer(reducer, 0);
 
@@ -27,14 +27,6 @@ const CastList = ({ mediaCredits }) => {
     <div className="cast">
       <h4 id="cast-title">Top Billed Cast: </h4>
       <div id="slide-show">
-        {index === 0 ? (
-          <button className="button" disabled>{`<`}</button>
-        ) : (
-          <button
-            className="button"
-            onClick={() => dispatch({ type: 'decrement' })}
-          >{`<`}</button>
-        )}
         <div className="cast-list">
           {filteredCastList.map((c, i) => (
             <div key={c.id} className={i === index ? 'visible' : 'not-visible'}>
@@ -42,18 +34,13 @@ const CastList = ({ mediaCredits }) => {
                 castPicture={c.profile_path}
                 name={c.name}
                 character={c.character}
+                index={index}
+                dispatch={dispatch}
+                filteredCastList={filteredCastList}
               />
             </div>
           ))}
         </div>
-        {index === filteredCastList.length - 1 ? (
-          <button className="button" disabled>{`<`}</button>
-        ) : (
-          <button
-            className="button"
-            onClick={() => dispatch({ type: 'increment' })}
-          >{`>`}</button>
-        )}
       </div>
     </div>
   );
