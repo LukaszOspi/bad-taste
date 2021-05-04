@@ -26,7 +26,7 @@ const CardPage = ({ dispatchSwipedMedia, swipedMedia }) => {
 
   return (
     <div className="card-page">
-      <h3>You should give this a look</h3>
+      {/* <h3>You should give this a look</h3> */}
       <Header />
       <SwipeContainer
         dispatchSwipedMedia={dispatchSwipedMedia}

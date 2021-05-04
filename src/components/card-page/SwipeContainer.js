@@ -57,12 +57,12 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
   return (
     <>
       {appState.mediaList.length === 0 ? null : (
-        <>
-          <button className="button" onClick={() => history.push('/card-list')}>
+        <div className="card-page">
+          {/* <button className="button" onClick={() => history.push('/card-list')}>
             SHOW YOUR {swipedMedia[appState.swipedListIndex].liked.length} LIKED
             TITLES
-          </button>
-          <h1>
+          </button> */}
+          <h1 className="swipe-media-title">
             {
               appState.mediaList[appState.displayIndex][
                 keyLegend[appState.mediaType]['title']
@@ -71,7 +71,7 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
           </h1>
           <div className="swipe-container">
             <div className="card-item">
-              <button
+              {/* <button
                 className="like-button"
                 onClick={() => {
                   dispatchSwipedMedia({
@@ -87,7 +87,7 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
               >
                 DISLIKE
                 {' ' + swipedMedia[appState.swipedListIndex].disliked.length}
-              </button>
+              </button> */}
               <img
                 className="card-page-img"
                 alt="poster"
@@ -97,7 +97,7 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
                   ]
                 }`}
               />
-              <button
+              {/*  <button
                 className="like-button"
                 onClick={async () => {
                   dispatchSwipedMedia({
@@ -120,17 +120,23 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
               >
                 LIKE
                 {' ' + swipedMedia[appState.swipedListIndex].liked.length}
-              </button>
+              </button> */}
             </div>
           </div>
-          <button
+          {/* <button
             className="button"
             onClick={() => history.push('/card-details')}
           >
             More info
-          </button>
-        </>
+          </button> */}
+        </div>
       )}
+      <div className="button-div">
+        <button className="round-button">-</button>
+        <button className="round-button">i</button>
+        <button className="round-button">L</button>
+        <button className="round-button">+</button>
+      </div>
     </>
   );
 };
