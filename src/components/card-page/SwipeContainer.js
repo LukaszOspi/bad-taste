@@ -6,6 +6,7 @@ import fetchDetailsTMDB from '../../services/fetch/fetchDetailsTMDB';
 import fetchCreditsTMDB from '../../services/fetch/fetchCreditsTMDB';
 import fetchRecommendationsTMDB from '../../services/fetch/fetchRecommendationsTMDB';
 import keyLegend from '../../services/keyLegend';
+import LikeButton from './LikeButton';
 import './SwipeContainer.css';
 import thumbDown from '../../assets/thumb-down.png';
 import thumbUp from '../../assets/thumb-up.png';
@@ -66,24 +67,13 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
 
           <div className="swipe-container">
             <div className="card-item">
-              <div className="desktop-button">
-                <img
-                  className="desktop-like-button"
-                  alt="dislike"
-                  src={thumbDown}
-                  onClick={() => {
-                    dispatchSwipedMedia({
-                      type: 'dislike',
-                      payload: appState.mediaList[appState.displayIndex],
-                      arrIndex: appState.swipedListIndex,
-                      id: appState.dropdownSearchValue.id,
-                      mediaType: appState.mediaType,
-                      title: appState.dropdownSearchValue.title,
-                    });
-                    dispatchAppState({ type: 'increase-display-index' });
-                  }}
-                />
-              </div>
+              <LikeButton
+                action="dislike"
+                type="desktop"
+                image={thumbDown}
+                dispatchSwipedMedia={dispatchSwipedMedia}
+                fetchNewRecommendations={fetchNewRecommendations}
+              />
               <div className="card-page-img">
                 <img
                   alt="poster"
@@ -94,59 +84,23 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
                   }`}
                 />
               </div>
-              <div className="desktop-button">
-                <img
-                  className="desktop-like-button"
-                  alt="like"
-                  src={thumbUp}
-                  onClick={async () => {
-                    dispatchSwipedMedia({
-                      type: 'like',
-                      payload: appState.mediaList[appState.displayIndex],
-                      arrIndex: appState.swipedListIndex,
-                      id: appState.dropdownSearchValue.id,
-                      mediaType: appState.mediaType,
-                      title: appState.dropdownSearchValue.title,
-                    });
-                    dispatchAppState({
-                      type: 'update-media-list',
-                      payload: await fetchNewRecommendations(
-                        appState.mediaList[appState.displayIndex].id,
-                        appState.mediaType,
-                        appState.mediaList
-                      ),
-                    });
-                  }}
-                />
-              </div>
-            </div>
-          </div>
-          {/* <button
-            className="button"
-            onClick={() => history.push('/card-details')}
-          >
-            More info
-          </button> */}
-
-          <div className="button-div">
-            <div className="mobile-button">
-              <img
-                className="mobile-like-button"
-                alt="dislike"
-                src={thumbDown}
-                onClick={() => {
-                  dispatchSwipedMedia({
-                    type: 'dislike',
-                    payload: appState.mediaList[appState.displayIndex],
-                    arrIndex: appState.swipedListIndex,
-                    id: appState.dropdownSearchValue.id,
-                    mediaType: appState.mediaType,
-                    title: appState.dropdownSearchValue.title,
-                  });
-                  dispatchAppState({ type: 'increase-display-index' });
-                }}
+              <LikeButton
+                action="like"
+                type="desktop"
+                image={thumbUp}
+                dispatchSwipedMedia={dispatchSwipedMedia}
+                fetchNewRecommendations={fetchNewRecommendations}
               />
             </div>
+          </div>
+          <div className="button-div">
+            <LikeButton
+              action="dislike"
+              type="mobile"
+              image={thumbDown}
+              dispatchSwipedMedia={dispatchSwipedMedia}
+              fetchNewRecommendations={fetchNewRecommendations}
+            />
             <button
               className="arrow-button"
               onClick={() => history.push('/card-details')}
@@ -159,40 +113,23 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
             >
               L
             </button>
-            <div className="mobile-button">
-              <img
-                className="mobile-like-button"
-                alt="like"
-                src={thumbUp}
-                onClick={async () => {
-                  dispatchSwipedMedia({
-                    type: 'like',
-                    payload: appState.mediaList[appState.displayIndex],
-                    arrIndex: appState.swipedListIndex,
-                    id: appState.dropdownSearchValue.id,
-                    mediaType: appState.mediaType,
-                    title: appState.dropdownSearchValue.title,
-                  });
-                  dispatchAppState({
-                    type: 'update-media-list',
-                    payload: await fetchNewRecommendations(
-                      appState.mediaList[appState.displayIndex].id,
-                      appState.mediaType,
-                      appState.mediaList
-                    ),
-                  });
-                }}
-              />
-            </div>
+            <LikeButton
+              action="like"
+              type="mobile"
+              image={thumbUp}
+              dispatchSwipedMedia={dispatchSwipedMedia}
+              fetchNewRecommendations={fetchNewRecommendations}
+            />
           </div>
-
-          <h1 className="swipe-media-title">
-            {
-              appState.mediaList[appState.displayIndex][
-                keyLegend[appState.mediaType]['title']
-              ]
-            }
-          </h1>
+          <div className="swipe-media-title-div">
+            <h1 className="swipe-media-title">
+              {
+                appState.mediaList[appState.displayIndex][
+                  keyLegend[appState.mediaType]['title']
+                ]
+              }
+            </h1>
+          </div>
         </div>
       )}
     </>
