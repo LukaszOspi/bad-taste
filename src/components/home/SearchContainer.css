@@ -1,7 +1,7 @@
 input {
   padding: 10px;
   height: 20px;
-  width: 500px;
+  width: 85vw;
   border: 1px solid #ff299d;
   border-radius: 50px;
   margin: 10px;
@@ -29,7 +29,8 @@ input:focus {
   background-color: rgba(255, 255, 255, 0.3);
   right: 30px;
   top: 52px;
-  width: 480px;
+  width: 80vw;
+  margin-top: 0.5vh;
 }
 
 .option {
@@ -52,4 +53,72 @@ span {
 
 .flex-column {
   flex-direction: column;
+}
+
+.loading-indicator-div {
+  margin-top: 10vh;
+}
+
+@media only screen and (min-width: 768px) {
+  input {
+    padding: 10px;
+    height: 20px;
+    width: 500px;
+    border: 1px solid #ff299d;
+    border-radius: 50px;
+    margin: 10px;
+    font-size: 18px;
+    text-transform: capitalize;
+    text-align: center;
+    margin-top: 5vh;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  .pos-rel {
+    position: relative;
+  }
+
+  .autoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    border-width: 0px 1px 1px 1px;
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+    background-color: rgba(255, 255, 255, 0.3);
+    right: 30px;
+    top: 52px;
+    width: 480px;
+    margin-top: 4.5vh;
+  }
+
+  .option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 500px;
+    padding: 5px;
+  }
+
+  .option,
+  span {
+    font-size: 28px;
+    text-transform: capitalize;
+  }
+
+  .flex-container {
+    display: flex;
+  }
+
+  .flex-column {
+    flex-direction: column;
+  }
+
+  .loading-indicator-div {
+    margin-top: 10vh;
+  }
 }

@@ -1,8 +1,3 @@
-.card {
-  max-width: 600px;
-  padding: 40px 40px 20px 40px;
-}
-
 .filter-bar {
   display: flex;
   flex-direction: column;
@@ -10,7 +5,7 @@
 }
 
 .filter-bar h1 {
-  font-size: 70px;
+  font-size: 54px;
   margin-top: 25px;
   margin-bottom: 0px;
 }
@@ -28,39 +23,86 @@
   font-weight: 700;
 }
 
-/*.cardButtons {
-  display: flex;
-  flex-wrap: wrap;
-
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-size: 12px;
-  padding: 10px 30px;
-  margin-right: 20px;
-  margin-bottom: 20px;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  background-color: #424246;
-}*/
-
-.black-button {
+.movie-button {
   color: #03f7eb;
   background-color: rgba(0, 0, 0, 0);
   font-weight: 700;
   border: 2px solid #03f7eb;
+  width: 25vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.blue-button {
+.tv-button {
   color: #faff7f;
   background-color: rgba(0, 0, 0, 0);
   font-weight: 700;
   border: 2px solid #faff7f;
+  width: 25vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.yellow-button {
+.list-button {
   color: #e43f6f;
   background-color: rgba(0, 0, 0, 0);
   font-weight: 700;
   border: 2px solid #e43f6f;
+  width: 25vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .filter-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filter-bar h1 {
+    font-size: 70px;
+    margin-top: 25px;
+    margin-bottom: 0px;
+  }
+
+  .filter-bar p {
+    margin-top: 5px;
+  }
+
+  .buttons-div {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5vh;
+    margin-bottom: 10px;
+    width: 100%;
+    font-weight: 700;
+  }
+
+  .movie-button {
+    color: #03f7eb;
+    background-color: rgba(0, 0, 0, 0);
+    font-weight: 700;
+    border: 2px solid #03f7eb;
+    width: auto;
+  }
+
+  .tv-button {
+    color: #faff7f;
+    background-color: rgba(0, 0, 0, 0);
+    font-weight: 700;
+    border: 2px solid #faff7f;
+    width: auto;
+  }
+
+  .list-button {
+    color: #e43f6f;
+    background-color: rgba(0, 0, 0, 0);
+    font-weight: 700;
+    border: 2px solid #e43f6f;
+    width: auto;
+  }
 }

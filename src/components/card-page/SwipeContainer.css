@@ -102,6 +102,7 @@
   .swipe-media-desktop-title-div {
     display: inline-block;
     width: 60vw;
+    max-width: 600px;
   }
 
   .swipe-media-desktop-title {
