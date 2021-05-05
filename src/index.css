@@ -10,7 +10,7 @@ html {
   background-image: url(./assets/leopard-background-1980.jpg);
   position: fixed;
   min-width: 100%;
-  min-height: 110%;
+  min-height: 125%;
   background-size: cover;
   background-position: center;
 }

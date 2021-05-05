@@ -11,7 +11,7 @@
 .delete-list-button {
   background-color: rgba(0, 0, 0, 0);
   font-weight: 700;
-  width: 25vw;
+  width: 15vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,7 +24,6 @@
 
 .delete-list-button {
   color: #faff7f;
-  border: 2px solid #faff7f;
 }
 
 .list-header {

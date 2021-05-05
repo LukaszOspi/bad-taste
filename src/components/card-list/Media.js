@@ -2,7 +2,7 @@ import React from 'react';
 import './Media.css';
 import '../../index.css';
 import bubble from '../../assets/yellow-bubble.png';
-
+import cross from '../../assets/bold-marker-cross.png'
 const Media = (props) => {
   return (
     <div className="media-container">
@@ -33,7 +33,7 @@ const Media = (props) => {
             <img
               className="mobile-like-button"
               alt="info"
-              src={bubble}
+              src={cross}
               onClick={props.remove}
             />
           </div>
