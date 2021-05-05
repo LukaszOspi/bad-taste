@@ -1,0 +1,67 @@
+.nav-button-div {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  font-weight: 700;
+}
+
+.nav-button,
+.delete-list-button {
+  background-color: rgba(0, 0, 0, 0);
+  font-weight: 700;
+  width: 25vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-button {
+  color: #03f7eb;
+  border: 2px solid #03f7eb;
+}
+
+.delete-list-button {
+  color: #faff7f;
+  border: 2px solid #faff7f;
+}
+
+.list-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 5%;
+}
+
+.list-header h4 {
+  margin-bottom: 2%;
+}
+
+.media-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+}
+
+@media only screen and (min-width: 768px) {
+  .media-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 75vw;
+    max-width: 1024px;
+  }
+
+  .card-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
