@@ -1,15 +1,40 @@
-import "../../index.css";
+import '../../index.css';
 
-const CastMember = ({ castPicture, name, character }) => {
+const CastMember = ({
+  castPicture,
+  name,
+  character,
+  index,
+  dispatch,
+  filteredCastList,
+}) => {
   return (
     <div className="cast-member">
-      <img
-        className="cast-picture"
-        alt="actor"
-        src={`https://image.tmdb.org/t/p/w185${castPicture}`}
-      />
+      <div className="cast-header">
+        {index === 0 ? (
+          <button className="button" disabled>{`<`}</button>
+        ) : (
+          <button
+            className="button"
+            onClick={() => dispatch({ type: 'decrement' })}
+          >{`<`}</button>
+        )}
+        <img
+          className="cast-picture"
+          alt="actor"
+          src={`https://image.tmdb.org/t/p/w185${castPicture}`}
+        />
+        {index === filteredCastList.length - 1 ? (
+          <button className="button" disabled>{`<`}</button>
+        ) : (
+          <button
+            className="button"
+            onClick={() => dispatch({ type: 'increment' })}
+          >{`>`}</button>
+        )}
+      </div>
       <div className="cast-details">
-        <h3 className="cast-name">{name}</h3>
+        <h4 className="cast-name">{name}</h4>
         <p className="cast-character">{character}</p>
       </div>
     </div>

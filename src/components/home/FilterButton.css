@@ -1,27 +1,18 @@
 .card {
   max-width: 600px;
   padding: 40px 40px 20px 40px;
-  background-color: background;
 }
-h1 {
-  font-family: "Abril Fatface", cursive;
-  font-weight: 400;
-  font-size: 36px;
-  margin-bottom: 10px;
-  color: font;
-}
-p {
-  font-family: "Poppins", sans-serif;
-  font-weight: 300;
-  font-size: 16px;
+.buttons-div {
+  display: flex;
+  justify-content: space-around;
   margin-bottom: 20px;
-  color: font;
 }
-*/ .cardButtons {
+
+.cardButtons {
   display: flex;
   flex-wrap: wrap;
 
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 500;
   font-size: 12px;
   padding: 10px 30px;
