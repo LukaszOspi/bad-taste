@@ -50,8 +50,14 @@ const SearchBar = ({ search, setSearch, swipedMedia, dispatchSwipedMedia }) => {
           }}
         />
         {appState.isLoading && (
-          <div>
-            <img className="loading-indicator" src={loadingSpinner} alt="loading" height="auto" width="150"/>
+          <div className="loading-indicator-div">
+            <img
+              className="loading-indicator"
+              src={loadingSpinner}
+              alt="loading"
+              height="auto"
+              width="150"
+            />
           </div>
         )}
         {appState.display && (
