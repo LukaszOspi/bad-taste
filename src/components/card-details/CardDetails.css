@@ -3,13 +3,18 @@
   margin-right: 5%;
 }
 
+.card-details {
+  width: 100%;
+  max-width: 1024px;
+}
+
 #media-title {
   margin-top: 5%;
   margin-bottom: 5%;
 }
 
 .media-info-image {
-  width: 100vw;
+  width: 100%;
 }
 
 .media-detail-poster {
@@ -120,66 +125,117 @@
   padding: 0% 7%;
 }
 
+.season-list {
+  display: none;
+}
+
+.cast-list-desktop {
+  display: none;
+}
+
+.back-button,
+.yt-button {
+  background-color: rgba(0, 0, 0, 0);
+  font-weight: 700;
+  width: 35vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #03f7eb;
+  border: 2px solid #03f7eb;
+}
+
 @media only screen and (min-width: 768px) {
   .media-info-header {
     display: flex;
+    align-items: center;
   }
 
   .media-detail-poster {
     display: inline-block;
   }
-}
 
-@media only screen and (min-width: 1024px) {
-  .media-info-header {
+  .season-list {
+    display: inline-block;
+    width: 100%;
+  }
+
+  .card-details {
+    width: 80%;
+  }
+
+  .season-info-div {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .season-info {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    justify-content: space-around;
+  }
+
+  .selected {
+    border: solid 2px #03f7eb;
+  }
+
+  .season-number {
+    margin-top: 5%;
+    margin-bottom: 2%;
+  }
+
+  .streaming-providers-list {
+    display: flex;
+    justify-content: center;
+  }
+
+  .card-details {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    width: auto;
+  }
+
+  .icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .streaming-icon {
+    margin: 10px;
+  }
+  .streaming-options {
     display: flex;
   }
 
-  .media-detail-poster {
-    display: inline-block;
+  #slide-show {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
   }
-}
 
-.card-details {
-  width: 80%;
-}
+  .cast-name {
+    word-break: break-all;
+  }
 
-.selected {
-  background-color: #81f7fb;
-}
+  .season-info p {
+    text-align: start;
+  }
 
-.streaming-providers-list {
-  display: flex;
-  justify-content: center;
-}
+  .cast-list-mobile {
+    display: none;
+  }
 
-.card-details {
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: column;
-  width: auto;
-}
+  .cast-list-desktop {
+    display: flex;
+    justify-content: space-between;
+  }
 
-.icons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.streaming-icon {
-  margin: 10px;
-}
-.streaming-options {
-  display: flex;
-}
-
-#slide-show {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin-top: 5%;
-}
-
-.cast-name {
-  word-break: break-all;
+  .back-button,
+  .yt-button {
+    width: auto;
+  }
 }

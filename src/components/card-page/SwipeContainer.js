@@ -94,7 +94,7 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
               />
             </div>
           </div>
-          <div className="button-div">
+          <div className="swipe-button-div">
             <LikeButton
               action="dislike"
               type="mobile"
