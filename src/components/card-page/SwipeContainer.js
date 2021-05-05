@@ -10,7 +10,8 @@ import LikeButton from './LikeButton';
 import './SwipeContainer.css';
 import thumbDown from '../../assets/thumb-down.png';
 import thumbUp from '../../assets/thumb-up.png';
-
+import bubble from '../../assets/yellow-bubble.png';
+import list from '../../assets/list-1.png';
 const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
   const history = useHistory();
   const { appState, dispatchAppState } = useContext(MediaContext);
@@ -101,18 +102,31 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
               dispatchSwipedMedia={dispatchSwipedMedia}
               fetchNewRecommendations={fetchNewRecommendations}
             />
-            <button
-              className="arrow-button"
-              onClick={() => history.push('/card-details')}
-            >
-              i
-            </button>
-            <button
-              className="arrow-button"
-              onClick={() => history.push('/card-list')}
-            >
-              L
-            </button>
+            <div className="info-button-div">
+              <img
+                className="mobile-like-button"
+                alt="info"
+                src={bubble}
+                onClick={() => history.push('/card-details')}
+              />
+            </div>
+            <div className="swipe-media-desktop-title-div">
+              <h1 className="swipe-media-desktop-title">
+                {
+                  appState.mediaList[appState.displayIndex][
+                    keyLegend[appState.mediaType]['title']
+                  ]
+                }
+              </h1>
+            </div>
+            <div className="info-button-div">
+              <img
+                className="mobile-like-button"
+                alt="list"
+                src={list}
+                onClick={() => history.push('/card-list')}
+              />
+            </div>
             <LikeButton
               action="like"
               type="mobile"
@@ -121,8 +135,8 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
               fetchNewRecommendations={fetchNewRecommendations}
             />
           </div>
-          <div className="swipe-media-title-div">
-            <h1 className="swipe-media-title">
+          <div className="swipe-media-mobile-title-div">
+            <h1 className="swipe-media-mobile-title">
               {
                 appState.mediaList[appState.displayIndex][
                   keyLegend[appState.mediaType]['title']
