@@ -19,6 +19,7 @@ input:focus {
 }
 
 .autoContainer {
+  color: black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,7 +27,7 @@ input:focus {
   border-width: 0px 1px 1px 1px;
   border-style: solid;
   border-color: rgb(0, 0, 0);
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.7);
   right: 30px;
   top: 52px;
   width: 80vw;
