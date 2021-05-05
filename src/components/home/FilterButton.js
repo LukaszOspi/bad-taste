@@ -12,12 +12,14 @@ const FilterButton = ({ search, swipedMedia }) => {
     <div className="filter-bar">
       <h1>BAD TASTE</h1>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pulvinar sed
-        elementum egestas blandit. Proin augue lacus, phasellus vel lorem risus.
+        Tell me what you like and I'll tell you what to watch...
+        <br />
+        Pick your flavor first.
       </p>
+
       <div className="buttons-div">
         <button
-          className="button blackButton"
+          className="button black-button"
           onClick={() =>
             dispatchAppState({
               type: 'change-media-type',
@@ -26,10 +28,10 @@ const FilterButton = ({ search, swipedMedia }) => {
             })
           }
         >
-          Movie
+          Movies
         </button>
         <button
-          className="button blueButton"
+          className="button blue-button"
           onClick={() =>
             dispatchAppState({
               type: 'change-media-type',
@@ -42,7 +44,7 @@ const FilterButton = ({ search, swipedMedia }) => {
         </button>
         {swipedMedia[0].id !== '' && (
           <button
-            className="button yellowButton"
+            className="button yellow-button"
             onClick={() => history.push('/card-list')}
           >
             Your List

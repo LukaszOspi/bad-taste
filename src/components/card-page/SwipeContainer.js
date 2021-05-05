@@ -6,8 +6,12 @@ import fetchDetailsTMDB from '../../services/fetch/fetchDetailsTMDB';
 import fetchCreditsTMDB from '../../services/fetch/fetchCreditsTMDB';
 import fetchRecommendationsTMDB from '../../services/fetch/fetchRecommendationsTMDB';
 import keyLegend from '../../services/keyLegend';
+import LikeButton from './LikeButton';
 import './SwipeContainer.css';
-
+import thumbDown from '../../assets/thumb-down.png';
+import thumbUp from '../../assets/thumb-up.png';
+import bubble from '../../assets/yellow-bubble.png';
+import list from '../../assets/list-1.png';
 const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
   const history = useHistory();
   const { appState, dispatchAppState } = useContext(MediaContext);
@@ -57,79 +61,90 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
   return (
     <>
       {appState.mediaList.length === 0 ? null : (
-        <>
-          <button className="button" onClick={() => history.push('/card-list')}>
-            SHOW YOUR {swipedMedia[appState.swipedListIndex].liked.length} LIKED
-            TITLES
-          </button>
-          <h1>
-            {
-              appState.mediaList[appState.displayIndex][
-                keyLegend[appState.mediaType]['title']
-              ]
-            }
-          </h1>
+        <div className="card-page">
+          {/* <button className="button" onClick={() => history.push('/card-list')}>
+            GO TO THE LIST
+          </button> */}
+
           <div className="swipe-container">
             <div className="card-item">
-              <button
-                className="like-button"
-                onClick={() => {
-                  dispatchSwipedMedia({
-                    type: 'dislike',
-                    payload: appState.mediaList[appState.displayIndex],
-                    arrIndex: appState.swipedListIndex,
-                    id: appState.dropdownSearchValue.id,
-                    mediaType: appState.mediaType,
-                    title: appState.dropdownSearchValue.title,
-                  });
-                  dispatchAppState({ type: 'increase-display-index' });
-                }}
-              >
-                DISLIKE
-                {' ' + swipedMedia[appState.swipedListIndex].disliked.length}
-              </button>
-              <img
-                className="card-page-img"
-                alt="poster"
-                src={`https://image.tmdb.org/t/p/w500${
-                  appState.mediaList[appState.displayIndex][
-                    keyLegend[appState.mediaType]['poster']
-                  ]
-                }`}
+              <LikeButton
+                action="dislike"
+                type="desktop"
+                image={thumbDown}
+                dispatchSwipedMedia={dispatchSwipedMedia}
+                fetchNewRecommendations={fetchNewRecommendations}
               />
-              <button
-                className="like-button"
-                onClick={async () => {
-                  dispatchSwipedMedia({
-                    type: 'like',
-                    payload: appState.mediaList[appState.displayIndex],
-                    arrIndex: appState.swipedListIndex,
-                    id: appState.dropdownSearchValue.id,
-                    mediaType: appState.mediaType,
-                    title: appState.dropdownSearchValue.title,
-                  });
-                  dispatchAppState({
-                    type: 'update-media-list',
-                    payload: await fetchNewRecommendations(
-                      appState.mediaList[appState.displayIndex].id,
-                      appState.mediaType,
-                      appState.mediaList
-                    ),
-                  });
-                }}
-              >
-                LIKE
-                {' ' + swipedMedia[appState.swipedListIndex].liked.length}
-              </button>
+              <div className="card-page-img">
+                <img
+                  alt="poster"
+                  src={`https://image.tmdb.org/t/p/w500${
+                    appState.mediaList[appState.displayIndex][
+                      keyLegend[appState.mediaType]['poster']
+                    ]
+                  }`}
+                />
+              </div>
+              <LikeButton
+                action="like"
+                type="desktop"
+                image={thumbUp}
+                dispatchSwipedMedia={dispatchSwipedMedia}
+                fetchNewRecommendations={fetchNewRecommendations}
+              />
             </div>
           </div>
-          <button
-            className="button"
-            onClick={() => history.push('/card-details')}
-          >
-            More info
-          </button>
-        </>
+          <div className="button-div">
+            <LikeButton
+              action="dislike"
+              type="mobile"
+              image={thumbDown}
+              dispatchSwipedMedia={dispatchSwipedMedia}
+              fetchNewRecommendations={fetchNewRecommendations}
+            />
+            <div className="info-button-div">
+              <img
+                className="mobile-like-button"
+                alt="info"
+                src={bubble}
+                onClick={() => history.push('/card-details')}
+              />
+            </div>
+            <div className="swipe-media-desktop-title-div">
+              <h1 className="swipe-media-desktop-title">
+                {
+                  appState.mediaList[appState.displayIndex][
+                    keyLegend[appState.mediaType]['title']
+                  ]
+                }
+              </h1>
+            </div>
+            <div className="info-button-div">
+              <img
+                className="mobile-like-button"
+                alt="list"
+                src={list}
+                onClick={() => history.push('/card-list')}
+              />
+            </div>
+            <LikeButton
+              action="like"
+              type="mobile"
+              image={thumbUp}
+              dispatchSwipedMedia={dispatchSwipedMedia}
+              fetchNewRecommendations={fetchNewRecommendations}
+            />
+          </div>
+          <div className="swipe-media-mobile-title-div">
+            <h1 className="swipe-media-mobile-title">
+              {
+                appState.mediaList[appState.displayIndex][
+                  keyLegend[appState.mediaType]['title']
+                ]
+              }
+            </h1>
+          </div>
+        </div>
       )}
     </>
   );

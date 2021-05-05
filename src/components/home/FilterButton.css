@@ -2,17 +2,37 @@
   max-width: 600px;
   padding: 40px 40px 20px 40px;
 }
+
+.filter-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.filter-bar h1 {
+  font-size: 70px;
+  margin-top: 25px;
+  margin-bottom: 0px;
+}
+
+.filter-bar p {
+  margin-top: 5px;
+}
+
 .buttons-div {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  font-weight: 700;
 }
 
-.cardButtons {
+/*.cardButtons {
   display: flex;
   flex-wrap: wrap;
 
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: 12px;
   padding: 10px 30px;
@@ -22,19 +42,25 @@
   border-radius: 50px;
   cursor: pointer;
   background-color: #424246;
+}*/
+
+.black-button {
+  color: #03f7eb;
+  background-color: rgba(0, 0, 0, 0);
+  font-weight: 700;
+  border: 2px solid #03f7eb;
 }
 
-.blackButton {
-  color: #fdfdfd;
-  background-color: #424246;
+.blue-button {
+  color: #faff7f;
+  background-color: rgba(0, 0, 0, 0);
+  font-weight: 700;
+  border: 2px solid #faff7f;
 }
 
-.blueButton {
-  color: #fdfdfd;
-  background-color: #1d499b;
-}
-
-.yellowButton {
-  color: #424246;
-  background-color: #f9d648;
+.yellow-button {
+  color: #e43f6f;
+  background-color: rgba(0, 0, 0, 0);
+  font-weight: 700;
+  border: 2px solid #e43f6f;
 }

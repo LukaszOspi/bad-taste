@@ -140,19 +140,12 @@
   }
 }
 
-/* @media (prefers-color-scheme: dark) {
-  .App {
-    background: black;
-    color: white;
-  }
-} */
-
 .card-details {
   width: 80%;
 }
 
 .selected {
-  background-color: blue;
+  background-color: #81f7fb;
 }
 
 .streaming-providers-list {

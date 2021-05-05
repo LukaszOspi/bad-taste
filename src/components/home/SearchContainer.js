@@ -3,7 +3,7 @@ import axios from 'axios';
 import useDebounce from '../../services/useDebounce';
 import SearchOptionsList from './SearchOptionsList';
 import './SearchContainer.css';
-import loadingSpinner from '../../assets/loading.gif';
+import loadingSpinner from '../../assets/Eye (slow).gif';
 import fetchTMDB from '../../services/fetch/fetchTMDB';
 import MediaContext from '../../context';
 import '../../index.css';
@@ -42,7 +42,7 @@ const SearchBar = ({ search, setSearch, swipedMedia, dispatchSwipedMedia }) => {
     <div className="auto-container">
       <div className="flex-container flex-column pos-rel">
         <input
-          placeholder="Type to search"
+          placeholder="and Sprinkle your bad taste on top"
           value={search}
           onChange={(e) => {
             dispatchAppState({ type: 'loading' });
@@ -50,8 +50,8 @@ const SearchBar = ({ search, setSearch, swipedMedia, dispatchSwipedMedia }) => {
           }}
         />
         {appState.isLoading && (
-          <div className="loading-indicator">
-            <img src={loadingSpinner} alt="loading" />
+          <div>
+            <img className="loading-indicator" src={loadingSpinner} alt="loading" height="auto" width="150"/>
           </div>
         )}
         {appState.display && (
