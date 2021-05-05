@@ -1,35 +1,44 @@
 import React from 'react';
 import './Media.css';
 import '../../index.css';
+import bubble from '../../assets/yellow-bubble.png';
 
 const Media = (props) => {
   return (
     <div className="media-container">
-      <div>
+      <div className="media-image-div">
         <img
           className="media-image"
           src={
-            `https://image.tmdb.org/t/p/w92${props.img}` ||
+            `https://image.tmdb.org/t/p/w185${props.img}` ||
             './src/assets/img-placeholder.png'
           }
           alt="poster"
-        ></img>
+        />
       </div>
-      <div className="media-title">
-        {props.title}
-
-        <div className="media-year">
-          <p>
-            Release date:<br></br> {props.year}
-          </p>
+      <div className="media-info-container">
+        <div className="media-title">
+          <h1>{props.title}</h1>
+        </div>
+        <div className="button-div">
+          <div className="info-button-div">
+            <img
+              className="mobile-like-button"
+              alt="info"
+              src={bubble}
+              onClick={props.info}
+            />
+          </div>
+          <div className="info-button-div">
+            <img
+              className="mobile-like-button"
+              alt="info"
+              src={bubble}
+              onClick={props.remove}
+            />
+          </div>
         </div>
       </div>
-      <button className="button" onClick={props.info}>
-        Info
-      </button>
-      <button className="button" onClick={props.remove}>
-        Remove
-      </button>
     </div>
   );
 };

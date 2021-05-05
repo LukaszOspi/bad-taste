@@ -38,7 +38,6 @@ const MediaList = ({
             key={`${element.id}-${index}`}
             img={element[keyLegend[mediaType].poster]}
             title={element[keyLegend[mediaType].title]}
-            year={element[keyLegend[mediaType].date]}
             info={() => handleInfo(element.id, mediaType)}
             remove={() =>
               dispatchSwipedMedia({
