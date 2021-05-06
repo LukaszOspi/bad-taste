@@ -17,6 +17,15 @@
   align-items: center;
 }
 
+.delete-list-button {
+  height: 5px;
+  cursor: pointer;
+}
+
+.delete-list-button-img {
+  height: 5%;
+}
+
 .nav-button {
   color: #03f7eb;
   border: 2px solid #03f7eb;

@@ -42,7 +42,12 @@ const SearchBar = ({ search, setSearch, swipedMedia, dispatchSwipedMedia }) => {
     <div className="auto-container">
       <div className="flex-container flex-column pos-rel">
         <input
-          placeholder="and Sprinkle your bad taste on top"
+          disabled={appState.mediaType ? false : true}
+          placeholder={
+            appState.mediaType
+              ? 'now Sprinkle your bad taste on top'
+              : 'first select movies or tv shows'
+          }
           value={search}
           onChange={(e) => {
             dispatchAppState({ type: 'loading' });

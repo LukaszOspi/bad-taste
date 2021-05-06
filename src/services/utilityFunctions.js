@@ -19,7 +19,7 @@ const appStateReducer = (state, action) => {
         streamingProvidersList: undefined,
         mediaDetails: undefined,
         mediaCredits: undefined,
-        mediaType: 'movie',
+        mediaType: state.mediaType,
         swipedListIndex: '',
       };
     case 'loading':
