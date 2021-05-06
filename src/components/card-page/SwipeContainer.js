@@ -59,7 +59,7 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
   };
 
   return (
-    <>
+   <>
       {appState.mediaList.length === 0 ? null : (
         <div className="card-page">
           {/* <button className="button" onClick={() => history.push('/card-list')}>
@@ -145,8 +145,8 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
             </h1>
           </div>
         </div>
-      )}
-    </>
+      )};
+   </>
   );
 };
 

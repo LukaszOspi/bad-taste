@@ -6,7 +6,13 @@
 html {
   font-size: 16px;
   color: white;
-  background-color: black;
+  /*background-image: url(./assets/zebra-background-1980.jpg);*/
+  background-image: url(./assets/leopard2-purple.jpg);
+  position: fixed;
+  min-width: 100%;
+  min-height: 125%;
+  background-size: cover;
+  background-position: center;
 }
 
 @media only screen and (min-width: 768px) {
