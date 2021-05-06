@@ -18,12 +18,13 @@ const CardDetails = () => {
   };
 
   return (
-    <>
-      <br />
-      <button className="button back-button" onClick={showList}>
-        Back to the list
-      </button>
-      <div className="card-details">
+    <div className="card-details">
+      <div className="card-details-header">
+        <button className="button back-button" onClick={showList}>
+          Back to the list
+        </button>
+      </div>
+      <div className="card-details-container">
         <br />
         {!appState.mediaDetails ? (
           <p>Error while trying to gather information about this content</p>
@@ -39,7 +40,7 @@ const CardDetails = () => {
           <StreamingProvidersList />
         )}
       </div>
-    </>
+    </div>
   );
 };
 

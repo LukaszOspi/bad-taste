@@ -1,5 +1,4 @@
 import SearchOptions from './SearchOptions';
-import './SearchOptionsList.css';
 import { useHistory } from 'react-router-dom';
 import { useContext } from 'react';
 import MediaContext from '../../context';
@@ -51,7 +50,7 @@ const SearchOptionsList = ({ swipedMedia, dispatchSwipedMedia }) => {
   };
 
   return (
-    <div className="search-options-List">
+    <div className="search-options-list">
       {appState.options &&
         appState.options.map((option, index) => {
           return (
