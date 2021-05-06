@@ -20,14 +20,14 @@ const CardDetails = () => {
   return (
     <>
       <br />
-      <button className="button" onClick={showList}>
+      <button className="button back-button" onClick={showList}>
         Back to the list
       </button>
       <div className="card-details">
         <br />
         {!appState.mediaDetails ? (
           <p>Error while trying to gather information about this content</p>
-        ) : appState.mediaType === 'movie' ? (
+        ) : !appState.mediaDetails['episode_run_time'] ? (
           <MovieInfo />
         ) : (
           <TvShowInfo />

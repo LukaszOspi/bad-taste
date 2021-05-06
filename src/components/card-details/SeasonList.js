@@ -12,7 +12,7 @@ const SeasonList = () => {
         {appState.mediaDetails.seasons.map((s, i) => {
           return s.season_number > 0 ? (
             <button
-              className={`season-button ${
+              className={`arrow-button season-button ${
                 s.season_number === selectedSeason ? 'selected' : null
               }`}
               onClick={(e) => setSelectedSeason(parseInt(e.target.innerText))}
@@ -23,15 +23,17 @@ const SeasonList = () => {
           ) : null;
         })}
       </div>
-      <div className="season-info">
-        <img
-          alt="poster"
-          src={`https://image.tmdb.org/t/p/w500${appState.mediaDetails.seasons[selectedSeason].poster_path}`}
-        />
+      <div className="season-info-div">
         <div className="season-info">
           <p>{`Original air date: ${appState.mediaDetails.seasons[selectedSeason].air_date}`}</p>
           <p>{`Number of episodes: ${appState.mediaDetails.seasons[selectedSeason].episode_count}`}</p>
           <p>{appState.mediaDetails.seasons[selectedSeason].overview}</p>
+        </div>
+        <div className="season-info-poster">
+          <img
+            alt="poster"
+            src={`https://image.tmdb.org/t/p/w342${appState.mediaDetails.seasons[selectedSeason].poster_path}`}
+          />
         </div>
       </div>
     </div>

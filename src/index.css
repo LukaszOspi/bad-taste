@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;700&family=Permanent+Marker&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;700&family=Permanent+Marker&display=swap');
 
 /* font-family: 'Montserrat', sans-serif; */
 /* font-family: 'Permanent Marker', cursive; */
@@ -18,40 +18,37 @@ html {
 @media only screen and (min-width: 768px) {
 }
 
-@media only screen and (min-width: 1024px) {
-}
-
 h1 {
-  font-family: "Permanent Marker", cursive;
+  font-family: 'Permanent Marker', cursive;
   font-size: 3em;
 }
 
 h2 {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 700;
   font-size: 2.5em;
 }
 
 h3 {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 2em;
 }
 
 h4 {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 1.5em;
 }
 
 p {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 350;
   font-size: 1.25em;
 }
 
 .button {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-size: 16px;
   padding: 10px 30px;
@@ -62,7 +59,7 @@ p {
 }
 
 .arrow-button {
-  font-family: "Permanent Marker", cursive;
+  font-family: 'Permanent Marker', cursive;
   color: #03f7eb;
   font-size: 45px;
   border: none;
@@ -71,27 +68,3 @@ p {
   cursor: pointer;
   display: inline-block;
 }
-
-/* @media (min-width: 800px) {
-  html {
-    background-color: black;
-  }
-  .App {
-    background: black;
-    color: white;
-  }
-
-  .button {
-    background: grey;
-  }
-  .like-button {
-    background: grey;
-  }
-  h1 {
-    color: beige;
-  }
-
-  .auto-container {
-    background: black;
-  }
-} */

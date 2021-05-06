@@ -21,10 +21,10 @@ const MediaInfo = () => {
         src={`https://image.tmdb.org/t/p/w780${appState.mediaDetails.backdrop_path}`}
       />
       <div className="media-info">
-        <h3 id="media-title">
+        <h1 id="media-title">
           {appState.mediaDetails.original_name}{' '}
           {`(${appState.mediaDetails.first_air_date.slice(0, 4)})`}
-        </h3>
+        </h1>
         <div className="media-info-header">
           <div className="media-detail-poster">
             <img

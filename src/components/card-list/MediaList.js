@@ -17,7 +17,7 @@ const MediaList = ({
 }) => {
   const { dispatchAppState } = useContext(MediaContext);
   const history = useHistory();
-
+  console.log(likedMedia.type);
   const handleInfo = async (mediaId, mediaType) => {
     await dispatchAppState({
       type: 'fetch-details',
@@ -38,7 +38,7 @@ const MediaList = ({
             key={`${element.id}-${index}`}
             img={element[keyLegend[mediaType].poster]}
             title={element[keyLegend[mediaType].title]}
-            info={() => handleInfo(element.id, mediaType)}
+            info={() => handleInfo(element.id, likedMedia.type)}
             remove={() =>
               dispatchSwipedMedia({
                 type: 'remove-item',

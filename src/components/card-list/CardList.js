@@ -27,6 +27,7 @@ const CardList = ({ swipedMedia, dispatchSwipedMedia }) => {
           className="button nav-button"
           onClick={() => {
             localStorage.removeItem('swipedMedia');
+            history.push('/');
             window.location.reload();
           }}
         >
