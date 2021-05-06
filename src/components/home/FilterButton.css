@@ -40,13 +40,13 @@
 }
 
 .tv-button {
-  color: #faff7f;
-  border: 2px solid #faff7f;
+  color: #b553f5;
+  border: 2px solid #b553f5;
 }
 
 .list-button {
-  color: #e43f6f;
-  border: 2px solid #e43f6f;
+  color: #ec5f88;
+  border: 2px solid #ec5f88;
 }
 
 @media only screen and (min-width: 768px) {
@@ -61,6 +61,6 @@
   .movie-button,
   .tv-button,
   .list-button {
-    width: auto;
+    width: 150px;
   }
 }

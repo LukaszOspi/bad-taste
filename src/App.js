@@ -9,6 +9,8 @@ import CardPage from './components/card-page/CardPage';
 import CardDetails from './components/card-details/CardDetails';
 import CardList from './components/card-list/CardList';
 import MediaContext from './context';
+import zebra from './assets/zebra-background-1980.jpg';
+import leopard from './assets/leopard2-purple.jpg';
 
 const appStateInitializer = {
   isLoading: false,
@@ -24,7 +26,7 @@ const appStateInitializer = {
   streamingProvidersList: undefined,
   mediaDetails: undefined,
   mediaCredits: undefined,
-  mediaType: 'movie',
+  mediaType: '',
   swipedListIndex: '',
 };
 
@@ -55,6 +57,21 @@ function App() {
   useEffect(() => {
     localStorage.setItem('swipedMedia', JSON.stringify(swipedMedia));
   }, [swipedMedia]);
+
+  useEffect(() => {
+    if (appState.mediaType === 'movie') {
+      document.body.style.backgroundImage = `url(${zebra})`;
+      document.body.style.backgroundColor = '';
+    }
+    if (appState.mediaType === 'tv') {
+      document.body.style.backgroundImage = `url(${leopard})`;
+      document.body.style.backgroundColor = '';
+    }
+    if (!appState.mediaType) {
+      document.body.style.backgroundImage = `url()`;
+      document.body.style.backgroundColor = 'black';
+    }
+  }, [appState.mediaType]);
 
   return (
     <div className="App">

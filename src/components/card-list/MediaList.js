@@ -17,7 +17,7 @@ const MediaList = ({
 }) => {
   const { dispatchAppState } = useContext(MediaContext);
   const history = useHistory();
-  console.log(likedMedia.type);
+
   const handleInfo = async (mediaId, mediaType) => {
     await dispatchAppState({
       type: 'fetch-details',

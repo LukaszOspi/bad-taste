@@ -146,7 +146,6 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
           </div>
         </div>
       )}
-      ;
     </>
   );
 };
