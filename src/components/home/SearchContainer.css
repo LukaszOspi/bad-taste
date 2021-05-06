@@ -2,12 +2,13 @@ input {
   color: white;
   background-color: rgba(0, 0, 0, 0.6);
   padding: 10px;
-  height: 20px;
+  height: 50px;
   width: 85vw;
   border: 1px solid #fd239a;
   border-radius: 50px;
-  margin: 10px;
-  font-size: 18px;
+  margin-top: 5%;
+  font-size: 1.2em;
+  font-family: 'Permanent Marker';
   text-transform: capitalize;
   text-align: center;
 }
@@ -25,14 +26,14 @@ input:focus {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  /* position: absolute; */
   border-width: 0px 1px 1px 1px;
   border-style: solid;
   border-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.6);
-  right: 30px;
-  top: 52px;
-  width: 80vw;
+  /* right: 35px;
+  top: 52px; */
+  width: 75vw;
   margin-top: 0.5vh;
 }
 
@@ -52,6 +53,7 @@ span {
 
 .flex-container {
   display: flex;
+  align-items: center;
 }
 
 .flex-column {
@@ -62,14 +64,42 @@ span {
   margin-top: 10vh;
 }
 
+.search-options-list {
+  max-height: 550px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.search-options-list::-webkit-scrollbar {
+  display: none;
+}
+
+.search-options {
+  display: flex;
+  align-items: center;
+  border-width: 0px 0px 1px 0px;
+  border-style: solid;
+  border-color: rgb(0, 0, 0);
+}
+
+.search-details {
+  width: 100%;
+}
+
+.search-details h1 {
+  padding-left: 1%;
+  padding-right: 1%;
+  text-align: center;
+  font-size: 2em;
+}
+
 @media only screen and (min-width: 768px) {
   input {
     width: 500px;
-    margin-top: 5vh;
+    margin-top: 3vh;
   }
 
   .autoContainer {
-    width: 480px;
-    margin-top: 4.5vh;
+    width: 450px;
   }
 }

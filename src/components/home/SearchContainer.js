@@ -45,8 +45,8 @@ const SearchBar = ({ search, setSearch, swipedMedia, dispatchSwipedMedia }) => {
           disabled={appState.mediaType ? false : true}
           placeholder={
             appState.mediaType
-              ? 'now Sprinkle your bad taste on top'
-              : 'first select movies or tv shows'
+              ? 'now Sprinkle your bad taste...'
+              : 'select movies or tv shows'
           }
           value={search}
           onChange={(e) => {

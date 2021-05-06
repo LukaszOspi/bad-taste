@@ -3,6 +3,12 @@
   margin-right: 5%;
 }
 
+.card-details-header {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+}
+
 .card-details {
   width: 100%;
   max-width: 1024px;
@@ -175,7 +181,7 @@
   }
 
   .card-details {
-    width: 80%;
+    width: 100%;
   }
 
   .season-info-div {

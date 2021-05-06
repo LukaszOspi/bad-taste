@@ -1,6 +1,3 @@
-import "./SearchOptions.css";
-import "../../index.css";
-
 const SearchOptions = ({ poster, title, year }) => {
   return (
     <div className="search-options">
@@ -10,8 +7,8 @@ const SearchOptions = ({ poster, title, year }) => {
         src={`https://image.tmdb.org/t/p/w92${poster}`}
       />
       <div className="search-details">
-        <h3 className="search-title">{title}</h3>
-        <p className="search-year">{year}</p>
+        <h1 className="search-title">{title}</h1>
+        <p className="search-year">{year.slice(0, 4)}</p>
       </div>
     </div>
   );

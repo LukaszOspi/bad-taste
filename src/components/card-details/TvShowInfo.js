@@ -39,7 +39,7 @@ const MediaInfo = () => {
               <YoutubeModalPlayer
                 modalIsOpen={modalIsOpen}
                 setModalIsOpen={setModalIsOpen}
-                youtubeKey={mediaTrailerList[0]['key']}
+                youtubeKey={mediaTrailerList?.[0]?.['key']}
               />
             </div>
             <p className="genres">{`First air date: ${appState.mediaDetails.first_air_date}`}</p>

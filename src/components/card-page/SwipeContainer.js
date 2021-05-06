@@ -7,12 +7,13 @@ import fetchCreditsTMDB from '../../services/fetch/fetchCreditsTMDB';
 import fetchRecommendationsTMDB from '../../services/fetch/fetchRecommendationsTMDB';
 import keyLegend from '../../services/keyLegend';
 import LikeButton from './LikeButton';
-import './SwipeContainer.css';
+import './CardPage.css';
 import thumbDown from '../../assets/thumb-down.png';
 import thumbUp from '../../assets/thumb-up.png';
 import bubble from '../../assets/yellow-bubble.png';
 import list from '../../assets/list-1.png';
-const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
+
+const SwipeContainer = ({ dispatchSwipedMedia }) => {
   const history = useHistory();
   const { appState, dispatchAppState } = useContext(MediaContext);
 
@@ -59,13 +60,9 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
   };
 
   return (
-    <>
+    <div className="card-page-container">
       {appState.mediaList.length === 0 ? null : (
-        <div className="card-page">
-          {/* <button className="button" onClick={() => history.push('/card-list')}>
-            GO TO THE LIST
-          </button> */}
-
+        <>
           <div className="swipe-container">
             <div className="card-item">
               <LikeButton
@@ -144,9 +141,9 @@ const SwipeContainer = ({ dispatchSwipedMedia, swipedMedia }) => {
               }
             </h1>
           </div>
-        </div>
+        </>
       )}
-    </>
+    </div>
   );
 };
 
