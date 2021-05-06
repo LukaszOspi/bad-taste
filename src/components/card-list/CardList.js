@@ -35,10 +35,10 @@ const CardList = ({ swipedMedia, dispatchSwipedMedia }) => {
         </button>
       </div>
       {swipedMedia[0].id !== '' && (
-        <div className="card-list">
+        <div className="card-lists">
           {swipedMedia.map((e, i) => {
             return (
-              <div key={e.id}>
+              <div className="card-list" key={e.id}>
                 <div className="list-header">
                   <h1>{e.mediaTitle}</h1>
                   <div className="delete-list-button">
