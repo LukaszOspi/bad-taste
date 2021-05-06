@@ -42,6 +42,8 @@
 .nav-button {
   color: #03f7eb;
   border: 2px solid #03f7eb;
+  white-space: nowrap;
+  text-align: center;
 }
 
 .delete-list-button {

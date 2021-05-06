@@ -18,8 +18,8 @@ const FilterButton = ({ search, swipedMedia }) => {
       </p>
 
       <div className="buttons-div">
-        <button
-          className="button movie-button"
+        <a href="#"
+          className="neon-movie-button"
           onClick={() =>
             dispatchAppState({
               type: 'change-media-type',
@@ -29,9 +29,9 @@ const FilterButton = ({ search, swipedMedia }) => {
           }
         >
           Movies
-        </button>
-        <button
-          className="button tv-button"
+        </a>
+        <a href="#"
+          className="neon-tv-button"
           onClick={() =>
             dispatchAppState({
               type: 'change-media-type',
@@ -41,14 +41,14 @@ const FilterButton = ({ search, swipedMedia }) => {
           }
         >
           Tv Shows
-        </button>
+        </a>
         {swipedMedia[0].id !== '' && (
-          <button
-            className="button list-button"
+          <a href="#"
+            className="neon-list-button"
             onClick={() => history.push('/card-list')}
           >
             Your List
-          </button>
+          </a>
         )}
       </div>
     </div>

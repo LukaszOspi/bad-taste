@@ -150,6 +150,7 @@
   align-items: center;
   color: #03f7eb;
   border: 2px solid #03f7eb;
+  margin-top: 20px;
 }
 
 @media only screen and (min-width: 768px) {

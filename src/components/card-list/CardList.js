@@ -31,7 +31,7 @@ const CardList = ({ swipedMedia, dispatchSwipedMedia }) => {
             window.location.reload();
           }}
         >
-          NUKE
+          FORGET  🥃   
         </button>
       </div>
       {swipedMedia[0].id !== '' && (
