@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import MediaList from './MediaList';
 import './Media.css';
 import './CardList.css';
-import '../../index.css';
+
 import MediaContext from '../../context';
 import smiley from '../../assets/dead-smiley.png';
 
@@ -20,18 +20,18 @@ const CardList = ({ swipedMedia, dispatchSwipedMedia }) => {
   return (
     <div className="card-list-page">
       <div className="nav-button-div">
-        <button className="button nav-button" onClick={backCardPage}>
+        <button className="neon-movie-button" onClick={backCardPage}>
           RETURN
         </button>
         <button
-          className="button nav-button"
+          className="neon-movie-button"
           onClick={() => {
             localStorage.removeItem('swipedMedia');
             history.push('/');
             window.location.reload();
           }}
         >
-          FORGET  🥃   
+          FORGET
         </button>
       </div>
       {swipedMedia[0].id !== '' && (

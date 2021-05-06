@@ -2,7 +2,6 @@ import { useEffect, useContext, useCallback } from 'react';
 import SwipeContainer from './SwipeContainer';
 import fetchRecommendationsTMDB from '../../services/fetch/fetchRecommendationsTMDB';
 import MediaContext from '../../context';
-import '../../index.css';
 import './CardPage.css';
 
 const CardPage = ({ dispatchSwipedMedia, swipedMedia }) => {

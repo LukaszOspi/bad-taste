@@ -23,32 +23,6 @@
   font-weight: 700;
 }
 
-.movie-button,
-.tv-button,
-.list-button {
-  background-color: rgba(0, 0, 0, 0);
-  font-weight: 700;
-  width: 25vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.movie-button {
-  color: #03f7eb;
-  border: 2px solid #03f7eb;
-}
-
-.tv-button {
-  color: #b553f5;
-  border: 2px solid #b553f5;
-}
-
-.list-button {
-  color: #ec5f88;
-  border: 2px solid #ec5f88;
-}
-
 @media only screen and (min-width: 768px) {
   .filter-bar h1 {
     font-size: 70px;
@@ -56,11 +30,5 @@
 
   .buttons-div {
     margin-top: 5vh;
-  }
-
-  .movie-button,
-  .tv-button,
-  .list-button {
-    width: 150px;
   }
 }

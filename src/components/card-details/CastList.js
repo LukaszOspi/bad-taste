@@ -1,7 +1,5 @@
 import { useReducer, useMemo, useContext } from 'react';
 import CastMember from './CastMember';
-import '../../index.css';
-import './CastList.css';
 import MediaContext from '../../context';
 
 const reducer = (state, action) => {

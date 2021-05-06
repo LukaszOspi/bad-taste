@@ -5,7 +5,6 @@ import StreamingProvidersList from './StreamingProvidersList';
 import MovieInfo from './MovieInfo';
 import TvShowInfo from './TvShowInfo';
 import './CardDetails.css';
-import '../../index.css';
 
 const CardDetails = () => {
   const history = useHistory();
@@ -20,9 +19,9 @@ const CardDetails = () => {
   return (
     <div className="card-details">
       <div className="card-details-header">
-        <a href="#" className="neon-movie-button" onClick={showList}>
+        <button className="neon-movie-button" onClick={showList}>
           Back to the list
-        </a>
+        </button>
       </div>
       <div className="card-details-container">
         <br />

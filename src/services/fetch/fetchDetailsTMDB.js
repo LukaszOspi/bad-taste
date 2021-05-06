@@ -14,7 +14,6 @@ const fetchDetailsTMDB = async (searchID, type) => {
       }
     );
     const data = await res.data;
-    // if updater function is undefined then return data
     return await data;
   } catch (err) {
     console.error(`fetchDetailsTMDB() failed with error ${err}`);

@@ -14,7 +14,6 @@ const fetchStreamingProvidersTMDB = async (searchID, type) => {
       }
     );
     const data = await res.data.results.DE;
-
     return await data;
   } catch (err) {
     console.error(`fetchStreamingProvidersTMDB() failed with error ${err}`);

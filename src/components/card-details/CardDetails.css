@@ -158,6 +158,33 @@
   margin-top: 20px;
 }
 
+.streaming-options {
+  display: flex;
+  flex-direction: column;
+  width: 70vw;
+}
+
+.icons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.cast {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.cast-list {
+  display: flex;
+  justify-content: center;
+}
+
+.not-visible {
+  display: none;
+}
+
 @media only screen and (min-width: 768px) {
   .media-info-header {
     display: flex;

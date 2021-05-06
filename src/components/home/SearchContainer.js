@@ -6,7 +6,6 @@ import './SearchContainer.css';
 import loadingSpinner from '../../assets/Eye (slow).gif';
 import fetchTMDB from '../../services/fetch/fetchTMDB';
 import MediaContext from '../../context';
-import '../../index.css';
 
 const SearchBar = ({ search, setSearch, swipedMedia, dispatchSwipedMedia }) => {
   const { appState, dispatchAppState } = useContext(MediaContext);
@@ -24,8 +23,8 @@ const SearchBar = ({ search, setSearch, swipedMedia, dispatchSwipedMedia }) => {
         }
       }
     },
-    [search],
-    1000
+    [search, appState.dropdownSearchValue],
+    1500
   );
 
   useEffect(() => {

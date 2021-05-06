@@ -16,7 +16,6 @@ const fetchRecommendationsTMDB = async (searchID, type) => {
     const data = await res.data.results;
     // filter out movies without a poster image
     const filteredData = data.filter((media) => media.poster_path !== null);
-    // if updater function is undefined then return data
     return await filteredData;
   } catch (err) {
     console.error(`fetchRecommendationsTMDB() failed with error ${err}`);

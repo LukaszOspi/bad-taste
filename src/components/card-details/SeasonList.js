@@ -1,6 +1,5 @@
 import { useState, useContext } from 'react';
 import MediaContext from '../../context';
-import '../../index.css';
 
 const SeasonList = () => {
   const { appState } = useContext(MediaContext);

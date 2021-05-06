@@ -2,7 +2,6 @@ import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import Media from './Media';
 import './Media.css';
-import '../../index.css';
 import fetchDetailsTMDB from '../../services/fetch/fetchDetailsTMDB';
 import fetchCreditsTMDB from '../../services/fetch/fetchCreditsTMDB';
 import fetchStreamingProvidersTMDB from '../../services/fetch/fetchStreamingProvidersTMDB';

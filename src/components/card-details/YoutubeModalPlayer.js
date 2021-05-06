@@ -1,8 +1,7 @@
 import ModalVideo from 'react-modal-video';
 import 'react-modal-video/scss/modal-video.scss';
-import '../../index.css';
 
-const YoutubeModalPlayer = ({ modalIsOpen, setModalIsOpen, youtubeKey, neonStyle }) => {
+const YoutubeModalPlayer = ({ modalIsOpen, setModalIsOpen, youtubeKey }) => {
   return (
     <div>
       <ModalVideo
@@ -11,9 +10,12 @@ const YoutubeModalPlayer = ({ modalIsOpen, setModalIsOpen, youtubeKey, neonStyle
         videoId={youtubeKey}
         onClose={() => setModalIsOpen(false)}
       />
-      <a href="#" className="neon-movie-button" onClick={() => setModalIsOpen(true)}>
+      <button
+        className="neon-movie-button"
+        onClick={() => setModalIsOpen(true)}
+      >
         Play trailer
-      </a>
+      </button>
     </div>
   );
 };

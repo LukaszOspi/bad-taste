@@ -1,7 +1,3 @@
-const getUniqueListByKey = (arr, key) => {
-  return [...new Map(arr.map((item) => [item[key], item])).values()];
-};
-
 const appStateReducer = (state, action) => {
   switch (action.type) {
     case 'initialize':
@@ -142,11 +138,10 @@ const likeHandler = (state, action) => {
         ...currentState[action.arrIndex],
         liked: [...newLikedList],
       };
-      // currentState[action.arrIndex].liked.splice(action.index, 1);
       return currentState;
     default:
       return state;
   }
 };
 
-export { getUniqueListByKey, appStateReducer, likeHandler };
+export { appStateReducer, likeHandler };

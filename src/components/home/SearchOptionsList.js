@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import { useContext } from 'react';
 import MediaContext from '../../context';
 import keyLegend from '../../services/keyLegend';
-import '../../index.css';
 
 const SearchOptionsList = ({ swipedMedia, dispatchSwipedMedia }) => {
   const history = useHistory();

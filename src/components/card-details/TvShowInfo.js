@@ -2,7 +2,6 @@ import { useState, useContext } from 'react';
 import CastList from './CastList';
 import SeasonList from './SeasonList';
 import YoutubeModalPlayer from './YoutubeModalPlayer';
-import '../../index.css';
 import MediaContext from '../../context';
 
 const MediaInfo = () => {

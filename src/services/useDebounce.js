@@ -6,7 +6,7 @@ const useDebounce = (effect, dependencies, delay) => {
   const callback = useCallback(effect, dependencies);
 
   // wrap our callback function in a `setTimeout` function
-  // and clear the tim out when completed
+  // and clear the timeout when completed
   useEffect(
     () => {
       const timeout = setTimeout(callback, delay);

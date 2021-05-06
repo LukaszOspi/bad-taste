@@ -1,7 +1,5 @@
 import { useContext } from 'react';
 import StreamingProviders from './StreamingProviders';
-import './StreamingProvidersList.css';
-import '../../index.css';
 import MediaContext from '../../context';
 
 const StreamingProvidersList = () => {

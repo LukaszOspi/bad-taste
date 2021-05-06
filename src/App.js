@@ -1,6 +1,6 @@
 import { useReducer, useEffect } from 'react';
 import { Switch, Route, useHistory } from 'react-router-dom';
-import { appStateReducer, likeHandler } from './services/utilityFunctions';
+import { appStateReducer, likeHandler } from './services/reducerFunctions';
 import logo from './assets/mouth-3.png';
 import './App.css';
 import ScrollToTop from './services/ScrollToTop';
@@ -53,6 +53,10 @@ function App() {
       ? JSON.parse(localStorage.getItem('swipedMedia'))
       : swipedMediaInitializer
   );
+
+  useEffect(() => {
+    console.log(appState);
+  });
 
   useEffect(() => {
     localStorage.setItem('swipedMedia', JSON.stringify(swipedMedia));

@@ -1,7 +1,6 @@
 import { useState, useContext } from 'react';
 import CastList from './CastList';
 import YoutubeModalPlayer from './YoutubeModalPlayer';
-import '../../index.css';
 import MediaContext from '../../context';
 
 const MovieInfo = () => {
