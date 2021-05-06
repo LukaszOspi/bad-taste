@@ -104,7 +104,7 @@ p {
 .neon-movie-button {
   display: flex;
   font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 1rem;
   align-items: center;
   line-height: 2em;
@@ -162,7 +162,7 @@ p {
 .neon-tv-button {
   display: flex;
   font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 1rem;
   align-items: center;
   line-height: 2em;
@@ -194,7 +194,7 @@ p {
 .neon-tv-button:active,
 .neon-tv-button:focus {
   background: #b553f5;
-  color: #12615c;
+  color: #603080;
   text-shadow: none;
 }
 
@@ -220,7 +220,7 @@ p {
 .neon-list-button {
   display: flex;
   font-family: 'Montserrat', sans-serif;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 1rem;
   align-items: center;
   line-height: 2em;
@@ -252,7 +252,7 @@ p {
 .neon-list-button:active,
 .neon-list-button:focus {
   background: #ec5f88;
-  color: #12615c;
+  color: #8e3850;
   text-shadow: none;
 }
 

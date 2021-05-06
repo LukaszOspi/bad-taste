@@ -20,9 +20,9 @@ const CardDetails = () => {
   return (
     <div className="card-details">
       <div className="card-details-header">
-        <button className="button back-button" onClick={showList}>
+        <a href="#" className="neon-movie-button" onClick={showList}>
           Back to the list
-        </button>
+        </a>
       </div>
       <div className="card-details-container">
         <br />
