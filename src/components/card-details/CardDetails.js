@@ -20,9 +20,9 @@ const CardDetails = () => {
   return (
     <>
       <br />
-      <button className="button back-button" onClick={showList}>
+      <a href="#" className="neon-movie-button" onClick={showList}>
         Back to the list
-      </button>
+      </a>
       <div className="card-details">
         <br />
         {!appState.mediaDetails ? (
