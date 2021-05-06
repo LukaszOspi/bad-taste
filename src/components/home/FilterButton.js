@@ -11,14 +11,11 @@ const FilterButton = ({ search, swipedMedia }) => {
   return (
     <div className="filter-bar">
       <h1>BAD TASTE</h1>
-      <p>
-        Tell me what you like and I'll tell you what to watch...
-        <br />
-        Pick your flavor first.
-      </p>
+      <p>Tell me what you like and I'll tell you what to watch...</p>
 
       <div className="buttons-div">
-        <a href="#"
+        <a
+          href="#"
           className="neon-movie-button"
           onClick={() =>
             dispatchAppState({
@@ -30,7 +27,8 @@ const FilterButton = ({ search, swipedMedia }) => {
         >
           Movies
         </a>
-        <a href="#"
+        <a
+          href="#"
           className="neon-tv-button"
           onClick={() =>
             dispatchAppState({
@@ -43,7 +41,8 @@ const FilterButton = ({ search, swipedMedia }) => {
           Tv Shows
         </a>
         {swipedMedia[0].id !== '' && (
-          <a href="#"
+          <a
+            href="#"
             className="neon-list-button"
             onClick={() => history.push('/card-list')}
           >

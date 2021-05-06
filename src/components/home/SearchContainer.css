@@ -2,12 +2,12 @@ input {
   color: white;
   background-color: rgba(0, 0, 0, 0.6);
   padding: 10px;
-  height: 20px;
+  height: 50px;
   width: 85vw;
   border: 1px solid #fd239a;
   border-radius: 50px;
-  margin: 10px;
-  font-size: 1.5em;
+  margin-top: 5%;
+  font-size: 1.2em;
   font-family: 'Permanent Marker';
   text-transform: capitalize;
   text-align: center;
@@ -26,14 +26,14 @@ input:focus {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  /* position: absolute; */
   border-width: 0px 1px 1px 1px;
   border-style: solid;
   border-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.6);
-  right: 35px;
-  top: 52px;
-  width: 80vw;
+  /* right: 35px;
+  top: 52px; */
+  width: 75vw;
   margin-top: 0.5vh;
 }
 
@@ -96,12 +96,10 @@ span {
 @media only screen and (min-width: 768px) {
   input {
     width: 500px;
-    margin-top: 5vh;
+    margin-top: 3vh;
   }
 
   .autoContainer {
-    width: 480px;
-    margin-top: 4.5vh;
-    right: 30px;
+    width: 450px;
   }
 }
