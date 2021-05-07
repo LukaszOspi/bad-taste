@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;700&family=Permanent+Marker&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  color: white;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+.App {
+  width: 100%;
+  height: 100%;
+}
+
+h1 {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 3em;
+}
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 2.5em;
+}
+
+h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 2em;
+}
+
+h4 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 1.5em;
+}
+
+p {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 350;
+  font-size: 1.25em;
+}
+
+.arrow-button {
+  font-family: 'Permanent Marker', cursive;
+  color: #03f7eb;
+  font-size: 45px;
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.neon-movie-button {
+  display: flex;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  align-items: center;
+  line-height: 2em;
+  cursor: pointer;
+  text-decoration: none;
+  color: #03f7eb;
+  border: #03f7eb 0.125em solid;
+  padding: 0.25em 1em;
+  border-radius: 1.5em;
+  text-shadow: 0 0 0.7em hsl(0 0% 100% / 2), 0 0 0.7em currentColor;
+  box-shadow: inset 0 0 0.5em 0 #03f7eb, 0 0 1em 0 #03f7eb;
+  position: relative;
+  transition: background-color 100ms linear;
+  background-color: black;
+}
+
+.neon-movie-button::before {
+  content: '';
+  position: absolute;
+  background: #03f7eb;
+  top: 110%;
+  left: 0;
+  width: 100%;
+  height: 65%;
+  transform: perspective(1em) rotatex(40deg) translateZ(0em) scale(1, 0.5);
+  filter: blur(0.6em);
+  opacity: 0.7;
+}
+
+.neon-movie-button:active,
+.neon-movie-button:focus {
+  background: #03f7eb;
+  color: #12615c;
+  text-shadow: none;
+}
+
+.neon-movie-button::after {
+  content: '';
+  position: absolute;
+  border-radius: 1.5em;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0 1em 0.5em #03f7eb;
+  opacity: 0;
+  transition: opacity 100ms linear;
+}
+.neon-movie-button:active::before {
+  opacity: 1.5;
+}
+.neon-movie-button:active::after {
+  opacity: 1;
+}
+
+.neon-tv-button {
+  display: flex;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  align-items: center;
+  line-height: 2em;
+  cursor: pointer;
+  text-decoration: none;
+  color: #b553f5;
+  border: #b553f5 0.125em solid;
+  padding: 0.25em 1em;
+  border-radius: 1.5em;
+  text-shadow: 0 0 0.7em hsl(0 0% 100% / 2), 0 0 0.7em currentColor;
+  box-shadow: inset 0 0 0.5em 0 #b553f5, 0 0 1em 0 #b553f5;
+  position: relative;
+  transition: background-color 100ms linear;
+  background-color: black;
+}
+
+.neon-tv-button::before {
+  content: '';
+  position: absolute;
+  background: #b553f5;
+  top: 110%;
+  left: 0;
+  width: 100%;
+  height: 65%;
+  transform: perspective(1em) rotatex(40deg) translateZ(0em) scale(1, 0.5);
+  filter: blur(0.6em);
+  opacity: 0.7;
+}
+
+.neon-tv-button:active,
+.neon-tv-button:focus {
+  background: #b553f5;
+  color: #603080;
+  text-shadow: none;
+}
+
+.neon-tv-button::after {
+  content: '';
+  position: absolute;
+  border-radius: 1.5em;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0 1em 0.5em #b553f5;
+  opacity: 0;
+  transition: opacity 100ms linear;
+}
+.neon-tv-button:active::before {
+  opacity: 1.5;
+}
+.neon-tv-button:active::after {
+  opacity: 1;
+}
+
+.neon-list-button {
+  display: flex;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  align-items: center;
+  line-height: 2em;
+  cursor: pointer;
+  text-decoration: none;
+  color: #ec5f88;
+  border: #ec5f88 0.125em solid;
+  padding: 0.25em 1em;
+  border-radius: 1.5em;
+  text-shadow: 0 0 0.7em hsl(0 0% 100% / 2), 0 0 0.7em currentColor;
+  box-shadow: inset 0 0 0.5em 0 #ec5f88, 0 0 1em 0 #ec5f88;
+  position: relative;
+  transition: background-color 100ms linear;
+  background-color: black;
+}
+
+.neon-list-button::before {
+  content: '';
+  position: absolute;
+  background: #ec5f88;
+  top: 110%;
+  left: 0;
+  width: 100%;
+  height: 65%;
+  transform: perspective(1em) rotatex(40deg) translateZ(0em) scale(1, 0.5);
+  filter: blur(0.6em);
+  opacity: 0.7;
+}
+
+.neon-list-button:active,
+.neon-list-button:focus {
+  background: #ec5f88;
+  color: #8e3850;
+  text-shadow: none;
+}
+
+.neon-list-button::after {
+  content: '';
+  position: absolute;
+  border-radius: 1.5em;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0 1em 0.5em #ec5f88;
+  opacity: 0;
+  transition: opacity 100ms linear;
+}
+.neon-list-button:active::before {
+  opacity: 1.5;
+}
+.neon-list-button:active::after {
+  opacity: 1;
+}

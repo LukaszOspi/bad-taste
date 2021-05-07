@@ -1,36 +1,44 @@
 import { useHistory } from 'react-router-dom';
+import { useContext } from 'react';
+import MediaContext from '../../context';
 import StreamingProvidersList from './StreamingProvidersList';
-import MediaInfo from './MediaInfo';
+import MovieInfo from './MovieInfo';
+import TvShowInfo from './TvShowInfo';
 import './CardDetails.css';
 
-const CardDetails = ({
-  streamingProvidersList,
-  mediaDetails,
-  mediaCredits,
-}) => {
+const CardDetails = () => {
   const history = useHistory();
+  const { appState } = useContext(MediaContext);
 
   const showList = () => {
-    history.push('/card-page');
+    appState.mediaList.length === 0
+      ? history.push('./card-list')
+      : history.push('/card-page');
   };
 
   return (
     <div className="card-details">
-      <button onClick={showList}>Back to the list</button>
-      <br />
-      <br />
-      {!mediaDetails ? (
-        <p>Error while trying to gather information about this content</p>
-      ) : (
-        <MediaInfo mediaDetails={mediaDetails} mediaCredits={mediaCredits} />
-      )}
-      {streamingProvidersList === undefined ? (
-        <p>This content is not availabe online in your region</p>
-      ) : (
-        <StreamingProvidersList
-          streamingProvidersList={streamingProvidersList}
-        />
-      )}
+      <div className="card-details-header">
+        <button className="neon-movie-button" onClick={showList}>
+          Back to the list
+        </button>
+      </div>
+      <div className="card-details-container">
+        <br />
+        {!appState.mediaDetails ? (
+          <p>Error while trying to gather information about this content</p>
+        ) : !appState.mediaDetails['episode_run_time'] ? (
+          <MovieInfo />
+        ) : (
+          <TvShowInfo />
+        )}
+
+        {appState.streamingProvidersList === undefined ? (
+          <p>This content is not availabe online in your region</p>
+        ) : (
+          <StreamingProvidersList />
+        )}
+      </div>
     </div>
   );
 };

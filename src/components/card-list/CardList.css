@@ -1,0 +1,99 @@
+.card-list-page {
+  width: 100%;
+  max-width: 1024px;
+  height: 100%;
+}
+
+.nav-button-div {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  width: 100%;
+  font-weight: 700;
+}
+
+.nav-button,
+.delete-list-button {
+  background-color: rgba(0, 0, 0, 0);
+  font-weight: 700;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete-list-button {
+  height: 7vh;
+  width: max-content;
+  cursor: pointer;
+}
+
+.delete-list-button-img {
+  height: 100%;
+}
+
+.delete-list-button-img img {
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+}
+
+.nav-button {
+  color: #03f7eb;
+  border: 2px solid #03f7eb;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.delete-list-button {
+  color: #faff7f;
+}
+
+.list-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+.list-header h4 {
+  margin-bottom: 2%;
+}
+
+.media-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+}
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.455);
+}
+
+@media only screen and (min-width: 768px) {
+  .media-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    max-width: 1024px;
+  }
+
+  .card-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

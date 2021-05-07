@@ -1,16 +1,8 @@
-import { useReducer } from 'react';
+import { useReducer, useMemo, useContext } from 'react';
 import CastMember from './CastMember';
-// import './CastList.css';
+import MediaContext from '../../context';
 
 const reducer = (state, action) => {
-  // switch (action.type) {
-  //   case 'increment':
-  //     return state + 1;
-  //   case 'decrement':
-  //     return state - 1;
-  //   default:
-  //     return state;
-  // }
   const indexAction = {
     increment: () => state + 1,
     decrement: () => state - 1,
@@ -20,37 +12,33 @@ const reducer = (state, action) => {
   return (indexAction[action.type] || indexAction.default)();
 };
 
-const CastList = ({ mediaCredits }) => {
+const CastList = () => {
+  const { appState } = useContext(MediaContext);
   const [index, dispatch] = useReducer(reducer, 0);
+
+  const filteredCastList = useMemo(
+    () => appState.mediaCredits.cast.filter((a) => a.profile_path),
+    [appState.mediaCredits]
+  );
 
   return (
     <div className="cast">
       <h4 id="cast-title">Top Billed Cast: </h4>
       <div id="slide-show">
-        {index === 0 ? (
-          <button className="slide-show-button" disabled>{`<`}</button>
-        ) : (
-          <button
-            className="slide-show-button"
-            onClick={() => dispatch({ type: 'decrement' })}
-          >{`<`}</button>
-        )}
         <div className="cast-list">
-          {mediaCredits.cast.map((c, i) =>
-            i === index ? (
+          {filteredCastList.map((c, i) => (
+            <div key={c.id} className={i === index ? 'visible' : 'not-visible'}>
               <CastMember
-                key={c.id}
                 castPicture={c.profile_path}
                 name={c.name}
                 character={c.character}
+                index={index}
+                dispatch={dispatch}
+                filteredCastList={filteredCastList}
               />
-            ) : null
-          )}
+            </div>
+          ))}
         </div>
-        <button
-          className="slide-show-button"
-          onClick={() => dispatch({ type: 'increment' })}
-        >{`>`}</button>
       </div>
     </div>
   );

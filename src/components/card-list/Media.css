@@ -1,56 +1,98 @@
 .media-container {
   display: flex;
   flex-direction: row;
-  width: 500px;
-  height: 15%;
-  margin: 10px;
-  box-shadow: 5px 5px 2px 2px lightgrey;
-
-  .media-list {
-    display: flex;
-    flex-direction: column;
-    border: black 10px;
-  }
-  .media-title {
-    width: 25%;
-    margin: 2px;
-    font-style: italic;
-    font-size: x-large;
-  }
+  align-items: center;
+  border: 3px solid #03f7eb;
+  margin-left: 4%;
+  margin-right: 4%;
+  margin-bottom: 4%;
+  border-radius: 8px;
+  width: 100%;
+  height: 15vh;
 }
-.media-list h1 {
-  font: bold;
-  font-size: small;
+
+.media-title h1 {
+  font-size: 1.3em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.media-title {
+  max-width: 90%;
+}
+
+.button-div {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.media-info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 75%;
+  margin-left: 1%;
+}
+
+.media-image-div {
+  height: 100%;
 }
 
 .media-image {
-  width: 100px;
+  height: 100%;
 }
-.card-list {
-  display: flex;
-  flex-direction: column;
+
+.media-status {
+  margin-bottom: 25px;
 }
-.return-button {
-  width: 500px;
-  height: 5vw;
-  color: grey;
-  background-color: white;
-  border: none;
-  box-shadow: 5px 5px 2px 2px lightgrey;
-  font-weight: bold;
-  font-size: x-large;
-}
-.return-button:hover {
-  background-color: lightgrey;
-  opacity: 90%;
-}
-@media screen and (max-width: 800px) {
-  .return-button {
-    width: 100vw;
-    height: 10vh;
+
+@media only screen and (min-width: 768px) {
+  .media-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 3px solid #03f7eb;
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-bottom: 4%;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 1024px;
+    height: 15vh;
   }
 
-  .media-container {
-    width: 100vw;
+  .media-title h1 {
+    font-size: 2em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .media-title {
+    max-width: 75%;
+  }
+
+  .button-div {
+    width: 75%;
+  }
+
+  .media-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 75%;
+    margin-left: 1%;
+  }
+
+  .media-image {
+    height: 100%;
+  }
+
+  .media-status {
+    margin-bottom: 25px;
   }
 }

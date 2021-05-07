@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;700&family=Permanent+Marker&display=swap');
+
+.card-page {
+  width: 100%;
+  max-width: 1024px;
+  height: 100%;
+  padding-left: 1%;
+  padding-right: 1%;
+  background-color: rgba(0, 0, 0, 0.455);
+}
+
+.swipe-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  max-width: 1024px;
+  margin-top: 5%;
+}
+
+.like-button {
+  cursor: pointer;
+}
+
+.card-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.desktop-button {
+  display: none;
+}
+
+.mobile-button {
+  width: 80px;
+  height: 100%;
+}
+
+.mobile-like-button {
+  width: auto;
+  height: 70%;
+  cursor: pointer;
+  margin-top: 2vh;
+  object-fit: contain;
+}
+
+.swipe-media-desktop-title-div {
+  display: none;
+}
+
+.swipe-media-mobile-title-div {
+  width: 90vw;
+}
+
+.swipe-media-mobile-title {
+  margin: 3% 0%;
+  line-height: 120%;
+}
+
+.swipe-button-div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 10vh;
+}
+
+.card-page-img img {
+  width: 80vw;
+}
+
+.info-button-div {
+  height: 10vh;
+}
+
+@media only screen and (min-width: 768px) {
+  .desktop-button {
+    display: inline-block;
+    width: 15%;
+  }
+
+  .desktop-like-button {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    object-fit: contain;
+  }
+
+  .mobile-button {
+    display: none;
+  }
+
+  /*.button-div {
+    display: flex;
+    max-width: 1024px;
+    justify-content: space-around;
+    margin-top: 5%;
+  }*/
+
+  .card-page-img img {
+    width: 100%;
+  }
+
+  .swipe-media-mobile-title-div {
+    display: none;
+  }
+
+  .swipe-media-desktop-title-div {
+    display: inline-block;
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .swipe-media-desktop-title {
+    margin-top: 0px;
+  }
+}

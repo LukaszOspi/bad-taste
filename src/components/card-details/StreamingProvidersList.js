@@ -1,63 +1,61 @@
+import { useContext } from 'react';
 import StreamingProviders from './StreamingProviders';
-import './StreamingProvidersList.css';
+import MediaContext from '../../context';
 
-const StreamingProvidersList = ({ streamingProvidersList }) => {
+const StreamingProvidersList = () => {
+  const { appState } = useContext(MediaContext);
   return (
-    <div className="streaming-options">
-      {!streamingProvidersList.flatrate ? (
-        <p>This content is not availabe for streaming in your region</p>
-      ) : (
-        <div className="stream">
-          <h4 className="streaming-title">Stream:</h4>
-          <div className="icons">
-            {streamingProvidersList.flatrate.map((provider) => {
-              return (
-                <StreamingProviders
-                  logo={provider.logo_path}
-                  // name={provider.provider_name}
-                  key={provider.provider_id}
-                />
-              );
-            })}
+    <div className="streaming-providers-list">
+      <div className="streaming-options">
+        {!appState.streamingProvidersList.flatrate ? null : (
+          <div className="stream">
+            <h4 className="streaming-title">Stream:</h4>
+            <div className="icons">
+              {appState.streamingProvidersList.flatrate.map((provider) => {
+                return (
+                  <StreamingProviders
+                    logo={provider.logo_path}
+                    // name={provider.provider_name}
+                    key={provider.provider_id}
+                  />
+                );
+              })}
+            </div>
           </div>
-        </div>
-      )}
-      {!streamingProvidersList.buy ? (
-        <p>This content is not availabe for buy in your region</p>
-      ) : (
-        <div className="buy">
-          <h4 className="streaming-title">Buy:</h4>
-          <div className="icons">
-            {streamingProvidersList.buy.map((provider) => {
-              return (
-                <StreamingProviders
-                  logo={provider.logo_path}
-                  // name={provider.provider_name}
-                  key={provider.provider_id}
-                />
-              );
-            })}
+        )}
+        {!appState.streamingProvidersList.buy ? null : (
+          <div className="buy">
+            <h4 className="streaming-title">Buy:</h4>
+            <div className="icons">
+              {appState.streamingProvidersList.buy.map((provider) => {
+                return (
+                  <StreamingProviders
+                    logo={provider.logo_path}
+                    // name={provider.provider_name}
+                    key={provider.provider_id}
+                  />
+                );
+              })}
+            </div>
           </div>
-        </div>
-      )}
-      {!streamingProvidersList.rent ? (
-        <p>This content is not availabe for rent in your region</p>
-      ) : (
-        <div className="rent">
-          <h4 className="streaming-title">Rent:</h4>
-          <div className="icons">
-            {streamingProvidersList.rent.map((provider) => {
-              return (
-                <StreamingProviders
-                  logo={provider.logo_path}
-                  // name={provider.provider_name}
-                  key={provider.provider_id}
-                />
-              );
-            })}
+        )}
+        {!appState.streamingProvidersList.rent ? null : (
+          <div className="rent">
+            <h4 className="streaming-title">Rent:</h4>
+            <div className="icons">
+              {appState.streamingProvidersList.rent.map((provider) => {
+                return (
+                  <StreamingProviders
+                    logo={provider.logo_path}
+                    // name={provider.provider_name}
+                    key={provider.provider_id}
+                  />
+                );
+              })}
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
